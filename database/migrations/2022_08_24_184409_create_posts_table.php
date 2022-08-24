@@ -13,7 +13,7 @@ return new class extends Migration {
 	public function up()
 	{
 		Schema::create('posts', function (Blueprint $table) {
-			$table->id('id_post');
+			$table->id();
 			$table->text('comment');
 			$table->boolean('is_active')->default(0);
 			$table->timestamps();
