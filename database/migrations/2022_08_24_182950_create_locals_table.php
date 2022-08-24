@@ -13,7 +13,7 @@ return new class extends Migration {
 	public function up()
 	{
 		Schema::create('locals', function (Blueprint $table) {
-			$table->id('id_local');
+			$table->id();
 			$table->string('name', 60);
 			$table->string('address', 100);
 			$table->string('opening_time');
