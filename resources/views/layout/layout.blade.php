@@ -7,5 +7,25 @@
 		<title>Stacc | @yield('title', 'Bienvenido')</title>
 	</head>
 	<body>
+		<header>
+			<ul>
+				<li>
+					<a href="{{ route('home.index') }}">Home</a>
+				</li>
+				<li>
+					<a href="{{ route('locals.index') }}">Locales</a>
+				</li>
+				<li>
+					<a href="{{ route('login.create') }}">Inicias sesion</a>
+				</li>
+				<li>
+					<a href="{{ route('register.create') }}">Registrate</a>
+				</li>
+			</ul>
+		</header>
+		<main>
+			@yield('content')
+		</main>
+		<footer>FOOTER</footer>
 	</body>
 </html>
