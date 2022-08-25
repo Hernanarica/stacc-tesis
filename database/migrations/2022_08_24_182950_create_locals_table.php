@@ -14,17 +14,17 @@ return new class extends Migration {
 	{
 		Schema::create('locals', function (Blueprint $table) {
 			$table->id();
-			$table->string('name', 60);
-			$table->string('address', 100);
+			$table->string('name');
+			$table->string('address');
 			$table->string('opening_time');
 			$table->string('closing_time');
 			$table->string('url_site');
 			$table->text('url_map');
-			$table->string('phone', 25);
+			$table->string('phone');
 			$table->boolean('terms')->default(0);
 			$table->boolean('is_favorite')->default(0);
-			$table->string('image', 40);
-			$table->string('image_alt', 40)->nullable();
+			$table->string('image');
+			$table->string('image_alt')->nullable();
 			$table->boolean('is_public')->default(0);
 			$table->timestamps();
 		});
