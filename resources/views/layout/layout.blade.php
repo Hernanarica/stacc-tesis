@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<header>
-			<ul>
+			<ul class="flex justify-between">
 				<li>
 					<a href="{{ route('home.index') }}">Home</a>
 				</li>
@@ -16,11 +16,16 @@
 					<a href="{{ route('locals.index') }}">Locales</a>
 				</li>
 				<li>
-					<a href="{{ route('login.create') }}">Inicias sesion</a>
+					<a href="{{ route('login.index') }}">Inicias sesion</a>
 				</li>
 				<li>
 					<a href="{{ route('register.create') }}">Registrate</a>
 				</li>
+				@auth()
+					<li>
+						<a href="{{ route('logout.index') }}">Logout</a>
+					</li>
+				@endauth
 			</ul>
 		</header>
 		<main>
