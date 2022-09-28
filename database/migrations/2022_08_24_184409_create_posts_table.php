@@ -15,6 +15,7 @@ return new class extends Migration {
 		Schema::create('posts', function (Blueprint $table) {
 			$table->id();
 			$table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+			$table->text('title');
 			$table->text('comment');
 			$table->boolean('is_active')->default(0);
 			$table->timestamps();
