@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -32,10 +33,10 @@ class PostController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\JsonResponse
+	 * @param PostRequest $request
+	 * @return JsonResponse
 	 */
-	public function store(Request $request)
+	public function store(PostRequest $request)
 	{
 		try {
 			$post = Post::create([
@@ -76,10 +77,10 @@ class PostController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param Request $request
+	 * @param PostRequest $request
 	 * @return JsonResponse
 	 */
-	public function update(Request $request)
+	public function update(PostRequest $request)
 	{
 		try {
 			$post = Post::find($request->id);
