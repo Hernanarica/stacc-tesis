@@ -24,16 +24,15 @@ class LocalRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			//
-			'name' => ['required', 'min:2'],
-			'address' => ['required', 'min:5'],
-			'opening_time' => ['required'],
-			'closing_time' => ['required'],
-			'url_site' => ['required'],
-			'url_map' => ['required'],
-			'phone' => ['required', 'numeric'],
-			'terms' => ['required'],
-			'image' => ['required'],
+			'name'                  => ['required', 'min:2'],
+			'address'               => ['required', 'min:5'],
+			'opening_time'          => ['required'],
+			'closing_time'          => ['required'],
+			'url_site'              => ['required'],
+			'url_map'               => ['required'],
+			'phone'                 => ['required', 'numeric'],
+			'terms'                 => ['required'],
+			'image'                 => ['required'],
 		];
 	}
 	

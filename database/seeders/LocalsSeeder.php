@@ -17,7 +17,7 @@ class LocalsSeeder extends Seeder
     {
 	    DB::table('locals')->insert([
 		    [
-			    'id'     => 1,
+			    'id'           => 1,
 			    'name'         => 'Campobravo',
 			    'address'      => 'Honduras 5600, Palermo',
 			    'opening_time' => '11h',
@@ -34,7 +34,7 @@ class LocalsSeeder extends Seeder
 			    'updated_at'   => date('Y-m-d'),
 		    ],
 		    [
-			    'id'     => 2,
+			    'id'           => 2,
 			    'name'         => 'Sintaxis',
 			    'address'      => 'Nicaragua 4849, Palermo',
 			    'opening_time' => '10h',
@@ -51,7 +51,7 @@ class LocalsSeeder extends Seeder
 			    'updated_at'   => date('Y-m-d'),
 		    ],
 		    [
-			    'id'     => 3,
+			    'id'           => 3,
 			    'name'         => 'Gout Gluten Free',
 			    'address'      => 'Montevideo 1480, Barrio Norte',
 			    'opening_time' => '9h',
@@ -68,7 +68,7 @@ class LocalsSeeder extends Seeder
 			    'updated_at'   => date('Y-m-d'),
 		    ],
 		    [
-			    'id'     => 4,
+			    'id'           => 4,
 			    'name'         => 'Campobravo',
 			    'address'      => 'Báez 292, Cañitas',
 			    'opening_time' => '11h',
@@ -85,7 +85,7 @@ class LocalsSeeder extends Seeder
 			    'updated_at'   => date('Y-m-d'),
 		    ],
 		    [
-			    'id'     => 5,
+			    'id'           => 5,
 			    'name'         => 'Gout Gluten Free',
 			    'address'      => 'Juncal 2124, Villa Urquiza',
 			    'opening_time' => '9h',
@@ -102,7 +102,7 @@ class LocalsSeeder extends Seeder
 			    'updated_at'   => date('Y-m-d'),
 		    ],
 		    [
-			    'id'     => 6,
+			    'id'           => 6,
 			    'name'         => 'Sintaxis',
 			    'address'      => 'Bucarelli 2181, Villa Urquiza',
 			    'opening_time' => '10h',
@@ -119,7 +119,7 @@ class LocalsSeeder extends Seeder
 			    'updated_at'   => date('Y-m-d'),
 		    ],
 		    [
-			    'id'     => 7,
+			    'id'           => 7,
 			    'name'         => 'Gout Gluten Free',
 			    'address'      => 'Av. Federico Lacroze 2117, Belgrano',
 			    'opening_time' => '9h',
@@ -136,7 +136,7 @@ class LocalsSeeder extends Seeder
 			    'updated_at'   => date('Y-m-d'),
 		    ],
 		    [
-			    'id'     => 8,
+			    'id'           => 8,
 			    'name'         => 'Jade Sin Tacc',
 			    'address'      => 'Av. Monroe 2628, Belgrano',
 			    'opening_time' => '11h',

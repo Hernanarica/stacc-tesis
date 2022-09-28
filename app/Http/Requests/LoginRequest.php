@@ -24,17 +24,17 @@ class LoginRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'email'     => ['required'],
-			'password' => ['required', 'min:4'],
+			'email'               => ['required'],
+			'password'            => ['required', 'min:4'],
 		];
 	}
 	
 	public function messages()
 	{
 		return [
-			'email.required'     => 'El email es obligatorio',
-			'password.required' => 'La contrasena es obligatorio',
-			'password.min'      => 'Debe tener como minimo 4 caracteres',
+			'email.required'      => 'El email es obligatorio',
+			'password.required'   => 'La contrasena es obligatorio',
+			'password.min'        => 'Debe tener como minimo 4 caracteres',
 		];
 	}
 }
