@@ -24,27 +24,23 @@ class PostRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'title' => ['required', 'min:2'],
-			'text'  => ['required', 'min:20'],
+			'title'   => ['required', 'min:2'],
+			'comment' => ['required', 'min:20'],
 		];
 	}
 	
 	/**
 	 * The messages() function returns an array of messages that are used to display validation errors
 	 *
-	 * @return array [
-	 *      'title.required' => 'El titulo es obligatorio',
-	 *      'title.min'      => 'El titulo debe tener minimo 2 caracteres',
-	 *      'text.required'  => 'El texto es obligatorio',
-	 *      'text.min'
+	 * @return array []
 	 */
 	public function messages(): array
 	{
 		return [
-			'title.required' => 'El titulo es obligatorio',
-			'title.min'      => 'El titulo debe tener minimo 2 caracteres',
-			'text.required'  => 'El texto es obligatorio',
-			'text.min'       => 'El texto debe tener minimo 20 caracteres',
+			'title.required'   => 'El titulo es obligatorio',
+			'title.min'        => 'El titulo debe tener minimo 2 caracteres',
+			'comment.required' => 'El comentario es obligatorio',
+			'comment.min'      => 'El comentario debe tener minimo 20 caracteres',
 		];
 	}
 }
