@@ -15,7 +15,7 @@ class ImageService
 	public function __construct(object $newImage, string $directory)
 	{
 		$this->newImage  = $newImage;
-		$this->directory = public_path($directory);
+		$this->directory = createDirectoryIfNotExist($directory);
 		$this->imageName = Str::uuid() . '.' . $newImage->getClientOriginalExtension();
 		
 		$this->openImage();
@@ -33,6 +33,7 @@ class ImageService
 	
 	public function saveImage(): void
 	{
+//		dd("{$this->directory}/{$this->imageName}");
 		$this->image->save("{$this->directory}/{$this->imageName}");
 	}
 }
