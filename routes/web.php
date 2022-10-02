@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +43,10 @@ Route::controller(PostController::class)->prefix('post')->group(function () {
 	Route::post('', 'store')->name('post.store');
 	Route::patch('/{id}', 'update')->name('post.update');
 	Route::delete('/{id}', 'destroy')->name('post.destroy');
+});
+
+Route::controller(UserController::class)->prefix('users')->group(function () {
+	Route::post('', 'store')->name('post.store');
+	Route::patch('/{user}', 'update')->name('post.update');
+	Route::delete('/{user}', 'destroy')->name('post.destroy');
 });

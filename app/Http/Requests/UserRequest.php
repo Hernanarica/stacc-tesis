@@ -25,6 +25,7 @@ class UserRequest extends FormRequest
 		}
 	}
 	
+	
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -33,11 +34,11 @@ class UserRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'name'              => ['required'],
-			'lastname'          => ['required'],
-			'email'             => ['required', 'unique:users'],
-			'role_id'           => ['required'],
-			'password'          => ['required', 'min:4'],
+			'name'     => ['required'],
+			'lastname' => ['required'],
+			'email'    => ['required', 'unique:users'],
+			'role_id'  => ['required'],
+			'password' => ['required', 'min:4'],
 		];
 	}
 	
