@@ -9,5 +9,17 @@ class Local extends Model
 {
 	use HasFactory;
 	
-	public $fillable = [];
+	//protected $fillable = ['title', 'comment', 'is_active', 'user_id'];
+	public $fillable = [
+		'name',
+		'address',
+		'opening_time',
+		'closing_time',
+		'url_site',
+		'url_time',
+		'phone',
+		'terms',
+		'address',
+		'image',
+	];
 }
