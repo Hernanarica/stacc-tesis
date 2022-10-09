@@ -37,25 +37,16 @@ class LocalController extends Controller
 	public function store(LocalRequest $request)
 	{
 		try {
+			
 			if ($request->hasFile('image')) {
 				$image = new ImageService($request->image, public_path('uploads/images/local'));
 				$image->saveImage();
 			}
 			
-			$local = Local::create([
-				'name'            => $request->name,
-				'address'         => $request->address,
-				'opening_time'    => $request->opening_time,
-				'closing_time'    => $request->closing_time,
-				'url_site'        => $request->url_site,
-				'url_map'         => $request->url_map,
-				'phone'           => $request->phone,
-				'terms'           => $request->terms,
-				'is_favorite'     => $request->is_favorite,
-				'image'           => $image->imageName ?? null,
-				'image_alt'       => $request->image_alt,
-				'is_public'       => $request->is_public,
-			]);
+			$formData = $request->input();
+			$formData['image'] = $image->imageName ?? null;
+			
+			$local = Local::create($formData);
 			
 			return response()->json([
 				'status'  => 'success',
