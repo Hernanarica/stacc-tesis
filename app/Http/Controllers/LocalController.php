@@ -28,6 +28,12 @@ class LocalController extends Controller
 		//
 	}
 	
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param LocalRequest $request
+	 * @return \Illuminate\Http\JsonResponse
+	 */
 	public function store(LocalRequest $request)
 	{
 		try {
@@ -68,10 +74,10 @@ class LocalController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param int $id
+	 * @param Local $local
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show($local)
 	{
 		//
 	}
@@ -79,14 +85,21 @@ class LocalController extends Controller
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param int $id
+	 * @param Local $local
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit($local)
 	{
 		//
 	}
 	
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param Request $request
+	 * @param Local $local
+	 * @return \Illuminate\Http\JsonResponse
+	 */
 	public function update(Request $request, Local $local)
 	{
 		try {
@@ -139,21 +152,22 @@ class LocalController extends Controller
 	public function destroy(Local $local)
 	{
 		try {
-			$local->delete();
 			
-			File::delete(public_path("uploads/images/local/{$local->image}"));
+			$locale = Local::find($local->id);
+			
+			if (!$locale) throw new Exception('El local no existe');
+			
+			$locale->delete();
+			
+			File::delete(public_path("uploads/images/local/{$locale->image}"));
 			
 			return response()->json([
 				'status' => 'success',
-				'data'   => $local
-			]);
+				'data'   => $locale,
+			], 200);
 			
 		} catch (Exception $e) {
-			return response()->json([
-				'Exception' => $e->getMessage(),
-				'File'      => $e->getFile(),
-				'Line'      => $e->getLine(),
-			]);
+			return response()->json($e->getMessage(), 400);
 		}
 	}
 }

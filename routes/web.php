@@ -22,9 +22,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::controller(LocalController::class)->prefix('/locales')->group(function () {
-	Route::get('', [LocalController::class, 'index'])->name('locals.index');
-	Route::get('/{id}', [LocalController::class, 'index'])->name('locals.show');
+Route::controller(LocalController::class)->prefix('locals')->group(function () {
+	Route::get('', 'index')->name('locals.index');
+	Route::post('', 'store')->name('locals.store');
+	Route::get('/{local}', 'index')->name('locals.show');
+	Route::patch('/{local}', 'update')->name('locals.update');
+	Route::delete('/{local}', 'destroy')->name('locals.destroy');
 });
 
 Route::controller(RegisterController::class)->prefix('/registrar')->group(function () {
