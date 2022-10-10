@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LocalRequest;
-use App\Http\Requests\LocalRequestUpdate;
+use App\Http\Requests\LocalUpdateRequest;
 use App\Services\ImageService;
 use Exception;
 use Illuminate\Http\Request;
@@ -88,14 +88,14 @@ class LocalController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param LocalRequestUpdate $request
+	 * @param LocalUpdateRequest $request
 	 * @param $id
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function update(LocalRequestUpdate $request, $id)
+	public function update(LocalUpdateRequest $request, $id)
 	{
 		try {
-//		$request->validate((LocalRequestUpdate::rules()), LocalRequestUpdate::messages());
+//		$request->validate((LocalUpdateRequest::rules()), LocalUpdateRequest::messages());
 			$formData = $request->input();
 			$local = Local::findOrFail($id);
 			
