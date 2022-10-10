@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LocalRequest;
+use App\Http\Requests\LocalRequestUpdate;
 use App\Services\ImageService;
 use Exception;
 use Illuminate\Http\Request;
@@ -87,36 +88,31 @@ class LocalController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param Request $request
-	 * @param Local $local
+	 * @param LocalRequestUpdate $request
+	 * @param $id
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function update(Request $request, Local $local)
+	public function update(LocalRequestUpdate $request, $id)
 	{
 		try {
-			//TODO crear Request para LocalUpdate
+//		$request->validate((LocalRequestUpdate::rules()), LocalRequestUpdate::messages());
+			$formData = $request->input();
+			$local = Local::findOrFail($id);
 			
 			if($request->hasFile('image')) {
+				
 				$image = new ImageService($request->image, public_path('uploads/images/local'));
 				$image->saveImage();
 				
+				$formData['image'] = $image->imageName;
+				
 				File::delete(public_path("uploads/images/local/{$local->image}"));
+				
+			}else{
+				$formData['image'] = $local->image;
 			}
 			
-			$local->update([
-				'name'            => $request->name,
-				'address'         => $request->address,
-				'opening_time'    => $request->opening_time,
-				'closing_time'    => $request->closing_time,
-				'url_site'        => $request->url_site,
-				'url_map'         => $request->url_map,
-				'phone'           => $request->phone,
-				'terms'           => $request->terms,
-				'is_favorite'     => $request->is_favorite,
-				'image'           => $image->imageName ?? null,
-				'image_alt'       => $request->image_alt,
-				'is_public'       => $request->is_public,
-			]);
+			$local->update($formData);
 			
 			$local->save();
 			

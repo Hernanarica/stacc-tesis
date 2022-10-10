@@ -26,7 +26,7 @@ Route::controller(LocalController::class)->prefix('locals')->group(function () {
 	Route::get('', 'index')->name('locals.index');
 	Route::post('', 'store')->name('locals.store');
 	Route::get('/{local}', 'index')->name('locals.show');
-	Route::patch('/{local}', 'update')->name('locals.update');
+	Route::patch('/{id}', 'update')->name('locals.update');
 	Route::delete('/{local}', 'destroy')->name('locals.destroy');
 });
 
