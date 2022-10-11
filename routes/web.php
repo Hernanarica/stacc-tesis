@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::controller(LocalController::class)->prefix('/locales')->group(function () {
-	Route::get('', [LocalController::class, 'index'])->name('locals.index');
-	Route::get('/{id}', [LocalController::class, 'index'])->name('locals.show');
+Route::controller(LocalController::class)->prefix('locals')->group(function () {
+	Route::get('', 'index')->name('locals.index');
+	Route::post('', 'store')->name('locals.store');
+	Route::get('/{local}', 'index')->name('locals.show');
+	Route::patch('/{id}', 'update')->name('locals.update');
+	Route::delete('/{local}', 'destroy')->name('locals.destroy');
 });
 
 Route::controller(RegisterController::class)->prefix('/registrar')->group(function () {
@@ -42,4 +46,10 @@ Route::controller(PostController::class)->prefix('post')->group(function () {
 	Route::post('', 'store')->name('post.store');
 	Route::patch('/{id}', 'update')->name('post.update');
 	Route::delete('/{id}', 'destroy')->name('post.destroy');
+});
+
+Route::controller(UserController::class)->prefix('users')->group(function () {
+	Route::post('', 'store')->name('post.store');
+	Route::patch('/{user}', 'update')->name('post.update');
+	Route::delete('/{user}', 'destroy')->name('post.destroy');
 });
