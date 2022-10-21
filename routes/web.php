@@ -21,14 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-
-Route::controller(LocalController::class)->prefix('locals')->group(function () {
-	Route::get('', 'index')->name('locals.index');
-	Route::post('', 'store')->name('locals.store');
-	Route::get('/{local}', 'index')->name('locals.show');
-	Route::patch('/{id}', 'update')->name('locals.update');
-	Route::delete('/{local}', 'destroy')->name('locals.destroy');
-});
+Route::get('/logout', [LogoutController::class, 'index'])->name('logout.index')->middleware('auth');
+Route::get('/users', [UserController::class, 'store'])->name('user.store');
+Route::get('/posts', [UserController::class, 'index'])->name('post.index');
 
 Route::controller(RegisterController::class)->prefix('/registrar')->group(function () {
 	Route::get('', [RegisterController::class, 'index'])->name('register.create');
@@ -39,17 +34,27 @@ Route::controller(LoginController::class)->prefix('/login')->group(function () {
 	Route::get('', 'index')->name('login.index');
 	Route::post('', 'store')->name('login.store');
 });
-Route::get('/logout', [LogoutController::class, 'index'])->name('logout.index');
 
-Route::controller(PostController::class)->prefix('post')->group(function () {
-	Route::get('', 'index')->name('post.index');
+Route::controller(UserController::class)->middleware('auth')->prefix('users')->group(function () {
+	Route::patch('/{user}', 'update')->name('user.update');
+	Route::delete('/{user}', 'destroy')->name('user.destroy');
+});
+
+Route::controller(LocalController::class)->prefix('locals')->group(function () {
+	Route::get('', 'index')->name('locals.index');
+	Route::get('/{local}', 'show')->name('locals.show');
+});
+
+Route::group(['middleware' => ['role:admin', 'role:owner']], function () {
+	Route::controller(LocalController::class)->middleware('auth')->prefix('locals')->group(function () {
+		Route::post('', 'store')->name('locals.store');
+		Route::patch('/{id}', 'update')->name('locals.update');
+		Route::delete('/{local}', 'destroy')->name('locals.destroy');
+	});
+});
+
+Route::controller(PostController::class)->middleware('auth')->prefix('posts')->group(function () {
 	Route::post('', 'store')->name('post.store');
 	Route::patch('/{id}', 'update')->name('post.update');
 	Route::delete('/{id}', 'destroy')->name('post.destroy');
-});
-
-Route::controller(UserController::class)->prefix('users')->group(function () {
-	Route::post('', 'store')->name('post.store');
-	Route::patch('/{user}', 'update')->name('post.update');
-	Route::delete('/{user}', 'destroy')->name('post.destroy');
 });

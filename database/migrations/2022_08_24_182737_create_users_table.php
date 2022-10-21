@@ -18,6 +18,7 @@ return new class extends Migration {
 			$table->string('lastname')->nullable();
 			$table->string('email')->unique();
 			$table->string('password');
+			$table->enum('category', ['admin', 'visitor', 'owner']);
 			$table->string('image')->nullable();
 			$table->string('image_alt')->nullable();
 			$table->timestamps();
