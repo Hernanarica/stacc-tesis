@@ -49,7 +49,7 @@ class User extends Authenticatable
 	 */
 	public function local()
 	{
-		return $this->hasMany(Local::class);
+		return $this->hasMany(Locals::class);
 	}
 	
 	/**
