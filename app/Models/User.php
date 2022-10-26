@@ -47,9 +47,9 @@ class User extends Authenticatable
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany collection of Local objects.
 	 */
-	public function local()
+	public function locals()
 	{
-		return $this->hasMany(Locals::class);
+		return $this->hasMany(Local::class);
 	}
 	
 	/**
@@ -57,7 +57,7 @@ class User extends Authenticatable
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany collection of Post objects.
 	 */
-	public function post()
+	public function posts()
 	{
 		return $this->hasMany(Post::class);
 	}
