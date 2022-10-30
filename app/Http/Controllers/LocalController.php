@@ -13,9 +13,19 @@ use App\Models\Local;
 
 class LocalController extends Controller
 {
+	/**
+	 * It returns a view called "sections.locals" with a variable called "locales" that contains all the locales in the
+	 * database
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view with the name of 'sections.locals' and an array with the key 'locales' and the value of $locales.
+	 */
 	public function index()
 	{
-		return view('sections.locals');
+		$locals = Local::all()->where('is_public', '=', '1');
+		
+		return view('sections.locals', [
+			'locals' => $locals
+		]);
 	}
 	
 	
@@ -67,11 +77,17 @@ class LocalController extends Controller
 	 * Display the specified resource.
 	 *
 	 * @param Local $local
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
 	 */
-	public function show($local)
+	public function show($local): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
 	{
-		//
+		//por medio del ID del local, se obtiene el local
+		$local = Local::find($local);
+		
+		return view('sections.local-detail', [
+			'local' => $local
+		]);
+		
 	}
 	
 	/**
