@@ -18,6 +18,7 @@ class LocalsSeeder extends Seeder
 	    DB::table('locals')->insert([
 		    [
 			    'id'           => 1,
+					'user_id'      => 1,
 			    'name'         => 'Campobravo',
 			    'address'      => 'Honduras 5600, Palermo',
 			    'opening_time' => '11h',
@@ -35,6 +36,7 @@ class LocalsSeeder extends Seeder
 		    ],
 		    [
 			    'id'           => 2,
+					'user_id'      => 1,
 			    'name'         => 'Sintaxis',
 			    'address'      => 'Nicaragua 4849, Palermo',
 			    'opening_time' => '10h',
@@ -52,6 +54,7 @@ class LocalsSeeder extends Seeder
 		    ],
 		    [
 			    'id'           => 3,
+					'user_id'      => 1,
 			    'name'         => 'Gout Gluten Free',
 			    'address'      => 'Montevideo 1480, Barrio Norte',
 			    'opening_time' => '9h',
@@ -69,6 +72,7 @@ class LocalsSeeder extends Seeder
 		    ],
 		    [
 			    'id'           => 4,
+					'user_id'      => 1,
 			    'name'         => 'Campobravo',
 			    'address'      => 'Báez 292, Cañitas',
 			    'opening_time' => '11h',
@@ -86,6 +90,7 @@ class LocalsSeeder extends Seeder
 		    ],
 		    [
 			    'id'           => 5,
+					'user_id'      => 1,
 			    'name'         => 'Gout Gluten Free',
 			    'address'      => 'Juncal 2124, Villa Urquiza',
 			    'opening_time' => '9h',
@@ -103,6 +108,7 @@ class LocalsSeeder extends Seeder
 		    ],
 		    [
 			    'id'           => 6,
+					'user_id'      => 1,
 			    'name'         => 'Sintaxis',
 			    'address'      => 'Bucarelli 2181, Villa Urquiza',
 			    'opening_time' => '10h',
@@ -120,6 +126,7 @@ class LocalsSeeder extends Seeder
 		    ],
 		    [
 			    'id'           => 7,
+					'user_id'      => 1,
 			    'name'         => 'Gout Gluten Free',
 			    'address'      => 'Av. Federico Lacroze 2117, Belgrano',
 			    'opening_time' => '9h',
@@ -137,6 +144,7 @@ class LocalsSeeder extends Seeder
 		    ],
 		    [
 			    'id'           => 8,
+					'user_id'      => 1,
 			    'name'         => 'Jade Sin Tacc',
 			    'address'      => 'Av. Monroe 2628, Belgrano',
 			    'opening_time' => '11h',
