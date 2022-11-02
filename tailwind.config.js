@@ -5,6 +5,12 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			maxWidth: {
+				'8xl': '1366px'
+			},
+			screens: {
+				// 'wrapper': '1364px'
+			},
 			colors: {
 				'stacc-red': '#fa1d37',
 				'stacc-purple': '#941b7f'

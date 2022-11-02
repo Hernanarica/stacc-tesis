@@ -14,8 +14,11 @@
 			<div class="relative flex items-center justify-between">
 				<div class="flex items-center">
 					<a href="/" aria-label="Company" title="Company" class="inline-flex items-center mr-8">
-						<img src="{{ asset('src/assets/images/logos/logo.png') }}" alt="stacc">
-						<span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">Stacc</span>
+						<img
+							src="{{ asset('src/assets/images/logos/logo_red.png') }}"
+							alt="stacc logo"
+							width="80"
+						>
 					</a>
 					<ul class="flex items-center hidden space-x-8 lg:flex">
 						<li>
@@ -41,14 +44,6 @@
 								title="Contacto"
 								class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
 							>Contacto</a>
-						</li>
-						<li>
-							<a
-								href="/"
-								aria-label="About us"
-								title="About us"
-								class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-							>Otro item :P</a>
 						</li>
 						@auth()
 						<li>
@@ -167,7 +162,7 @@
 				<div class="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
 					<div class="md:max-w-md lg:col-span-2">
 						<a href="/" aria-label="Go home" title="Company" class="inline-flex items-center">
-							<img src="{{ asset('src/assets/images/logos/logo.png') }}" alt="stacc" width="100">
+							<img src="{{ asset('src/assets/images/logos/logo_white.png') }}" alt="stacc" width="100">
 						</a>
 						<div class="mt-4 lg:max-w-sm">
 							<p class="text-sm text-deep-purple-50">
