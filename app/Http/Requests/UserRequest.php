@@ -39,7 +39,7 @@ class UserRequest extends FormRequest
 			'lastname.required' => 'El apellido es obligatorio',
 			'email.required'    => 'El email es obligatorio',
 			'email.unique'      => 'El email ya existe',
-			'category'          => 'La categoria es obligatoria',
+			'category.required' => 'La categoria es obligatoria',
 			'password.required' => 'La contrasena es obligatorio',
 			'password.min'      => 'La contrasena debe tener como minimo 4 caracteres',
 		];

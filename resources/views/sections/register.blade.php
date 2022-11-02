@@ -1,94 +1,6 @@
 @extends('layout.layout')
 @section('title', 'Registrate')
 @section('content')
-{{--	<section>--}}
-{{--		<h2>Registrate</h2>--}}
-{{--		<form--}}
-{{--			action="{{ route('register.store') }}"--}}
-{{--			method="post"--}}
-{{--		>--}}
-{{--			@csrf--}}
-{{--			<div>--}}
-{{--				<label for="name">Name</label>--}}
-{{--				<input--}}
-{{--					type="text"--}}
-{{--					name="name"--}}
-{{--					id="name"--}}
-{{--					class="border"--}}
-{{--					value="{{ old('name') }}"--}}
-{{--				>--}}
-{{--			</div>--}}
-{{--			@error('name')--}}
-{{--				<div class="bg-red-600 text-white">--}}
-{{--					{{ $message }}--}}
-{{--				</div>--}}
-{{--			@enderror--}}
-{{--			--}}
-{{--			<div>--}}
-{{--				<label for="lastname">Lastname</label>--}}
-{{--				<input--}}
-{{--					type="text"--}}
-{{--					name="lastname"--}}
-{{--					id="lastname"--}}
-{{--					class="border"--}}
-{{--					value="{{ old('lastname') }}"--}}
-{{--				>--}}
-{{--			</div>--}}
-{{--			@error('lastname')--}}
-{{--				<div class="bg-red-600 text-white">--}}
-{{--					{{ $message }}--}}
-{{--				</div>--}}
-{{--			@enderror--}}
-{{--			--}}
-{{--			<div>--}}
-{{--				<label for="email">Email</label>--}}
-{{--				<input--}}
-{{--					type="email"--}}
-{{--					name="email"--}}
-{{--					id="email"--}}
-{{--					class="border"--}}
-{{--					value="{{ old('email') }}"--}}
-{{--				>--}}
-{{--			</div>--}}
-{{--			@error('email')--}}
-{{--				<div class="bg-red-600 text-white">--}}
-{{--					{{ $message }}--}}
-{{--				</div>--}}
-{{--			@enderror--}}
-{{--			--}}
-{{--			<div>--}}
-{{--				<label for="password">Password</label>--}}
-{{--				<input--}}
-{{--					type="password"--}}
-{{--					name="password"--}}
-{{--					id="password"--}}
-{{--					class="border"--}}
-{{--					value="{{ old('password') }}"--}}
-{{--				>--}}
-{{--			</div>--}}
-{{--			@error('password')--}}
-{{--				<div class="bg-red-600 text-white">--}}
-{{--					{{ $message }}--}}
-{{--				</div>--}}
-{{--			@enderror--}}
-{{--			--}}
-{{--			<div>--}}
-{{--				<label for="role_id" class="sr-only">Role</label>--}}
-{{--				<select name="role_id" id="role_id">--}}
-{{--					<option value="">Selecciona un rol</option>--}}
-{{--					<option value="1">Usuario</option>--}}
-{{--					<option value="2">Dueno de local</option>--}}
-{{--				</select>--}}
-{{--			</div>--}}
-{{--			@error('role_id')--}}
-{{--				<div class="bg-red-600 text-white">--}}
-{{--					{{ $message }}--}}
-{{--				</div>--}}
-{{--			@enderror--}}
-{{--			--}}
-{{--			<button class="bg-indigo-600 text-white px-4 py-2 rounded">Register</button>--}}
-{{--		</form>--}}
-{{--	</section>--}}
 <section class="bg-white">
 	<div class="flex justify-center min-h-screen">
 		<div class="hidden bg-cover lg:block lg:w-2/5" style="background-image: url('https://images.pexels.com/photos/9228613/pexels-photo-9228613.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
@@ -96,19 +8,18 @@
 		
 		<div class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
 			<div class="w-full">
-				<h1 class="text-2xl font-semibold tracking-wider text-gray-800 capitalize">
-					Ingresa tus datos
-				</h1>
-				
+				<h2 class="text-4xl font-bold text-center text-gray-700">Registrate</h2>
 				<p class="mt-4 text-gray-500 dark:text-gray-400">
 					Al registrarte podras realizar comentarios en nuestro blog y calificar restaurantes.
 				</p>
 				
 				<form
-					action="{{ route('register.store') }}"
-					method="post"
+					action="{{ route('user.store') }}"
+					method="POST"
 					class="flex flex-col gap-6"
+					enctype="multipart/form-data"
 				>
+					@csrf
 					<div class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
 						<div>
 							<label class="block mb-2 text-sm text-gray-600 dark:text-gray-200" for="name">Nombre</label>
@@ -117,8 +28,18 @@
 								name="name"
 								id="name"
 								placeholder="Nombre"
-								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+								value="{{ old('name') }}"
+								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+								focus:outline-none focus:ring focus:ring-opacity-40"
 							/>
+							@error('name')
+							<div class="flex items-center gap-2 py-1 px-2 mt-2 bg-red-600 text-white rounded">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+								</svg>
+								{{ $message }}
+							</div>
+							@enderror
 						</div>
 						
 						<div>
@@ -127,9 +48,40 @@
 								type="text"
 								name="lastname"
 								id="lastname"
-								placeholder="Snow"
-								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+								value="{{ old('lastname') }}"
+								placeholder="Apellido"
+								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+								focus:outline-none focus:ring focus:ring-opacity-40"
 							/>
+							@error('lastname')
+							<div class="flex items-center gap-2 py-1 px-2 mt-2 bg-red-600 text-white rounded">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+								</svg>
+								{{ $message }}
+							</div>
+							@enderror
+						</div>
+						
+						<div>
+							<label class="block mb-2 text-sm text-gray-600 dark:text-gray-200" for="email">Email</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								value="{{ old('email') }}"
+								placeholder="Email"
+								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+								focus:outline-none focus:ring focus:ring-opacity-40"
+							/>
+							@error('email')
+							<div class="flex items-center gap-2 py-1 px-2 mt-2 bg-red-600 text-white rounded">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+								</svg>
+								{{ $message }}
+							</div>
+							@enderror
 						</div>
 						
 						<div>
@@ -139,19 +91,38 @@
 								name="password"
 								id="password"
 								placeholder="Contrasena"
-								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+								focus:outline-none focus:ring focus:ring-opacity-40"
 							/>
+							@error('password')
+							<div class="flex items-center gap-2 py-1 px-2 mt-2 bg-red-600 text-white rounded">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+								</svg>
+								{{ $message }}
+							</div>
+							@enderror
 						</div>
 						
 						<div>
 							<label class="block mb-2 text-sm text-gray-600 dark:text-gray-200" for="category">Categoria</label>
-							<input
-								type="email"
+							<select
 								name="category"
 								id="category"
-								placeholder="johnsnow@example.com"
-								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-							/>
+								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+								focus:outline-none focus:ring focus:ring-opacity-40">
+								<option value="">Selecciona una categoria</option>
+								<option value="2">Dueno de local</option>
+								<option value="3">Usuario</option>
+							</select>
+							@error('category')
+							<div class="flex items-center gap-2 py-1 px-2 mt-2 bg-red-600 text-white rounded">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+								</svg>
+								{{ $message }}
+							</div>
+							@enderror
 						</div>
 						
 						<div>
@@ -161,7 +132,8 @@
 								name="image"
 								id="image"
 								placeholder="Enter your password"
-								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+								class="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:boring-stacc-purple focus:ring-stacc-purple
+								focus:outline-none focus:ring focus:ring-opacity-40"
 							/>
 						</div>
 					</div>
