@@ -77,7 +77,7 @@
 							</form>
 							<p class="mt-6 text-sm text-center text-gray-400">
 								No tenes una cuenta?
-								<a href="#" class="text-blue-500 focus:outline-none focus:underline hover:underline">Registrate</a>
+								<a href="{{ route('register.create') }}" class="text-blue-500 focus:outline-none focus:underline hover:underline">Registrate</a>
 							</p>
 						</div>
 					</div>
