@@ -39,7 +39,7 @@
 						</li>
 						<li>
 							<a
-								href=""
+								href="{{ route('contact.index') }}"
 								aria-label="Product pricing"
 								title="Contacto"
 								class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
