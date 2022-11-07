@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\LoginController;
@@ -56,6 +57,10 @@ Route::controller(PostController::class)->middleware('auth')->prefix('posts')->g
 	Route::post('', 'store')->name('post.store');
 	Route::patch('/{id}', 'update')->name('post.update');
 	Route::delete('/{id}', 'destroy')->name('post.destroy');
+});
+
+Route::controller(ContactController::class)->prefix('/contact')->group(function () {
+	Route::get('', 'index')->name('contact.index');
 });
 
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
