@@ -3,6 +3,14 @@
 @section('content')
 	<x-wrapper>
 		<section class="relative min-h-[calc(100vh-88px)] flex items-center">
+
+			<img
+				src="{{ asset('./src/assets/images/gaussean.png') }}"
+				alt="Desenfoque gauseano"
+				width="300"
+				class="absolute -top-6 left-[600px]"
+			>
+
 			<div class="flex flex-col gap-14 w-full lg:flex-row lg:gap-0">
 				<div class="flex flex-col gap-4 lg:w-1/2">
 					<h2 class="text-4xl font-extrabold sm:text-5xl lg:text-6xl">
