@@ -28,6 +28,15 @@ class LocalController extends Controller
 		]);
 	}
 	
+	/**
+	 * It returns the view for the register page.
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view called register-local.
+	 */
+	public function registerView()
+	{
+		return view('sections.register-local');
+	}
 	
 	/**
 	 * Show the form for creating a new local
@@ -56,6 +65,9 @@ class LocalController extends Controller
 			
 			$formData = $request->input();
 			$formData['image'] = $image->imageName ?? null;
+			
+			//obtener el user id con laravel permission
+			$formData['user_id'] = auth()->user()->id;
 			
 			$local = Local::create($formData);
 			
