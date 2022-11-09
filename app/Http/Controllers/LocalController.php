@@ -42,7 +42,7 @@ class LocalController extends Controller
 	 * Store a newly created resource in storage.
 	 *
 	 * @param LocalRequest $request
-	 * @return \Illuminate\Http\JsonResponse
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function store(LocalRequest $request)
 	{
@@ -73,17 +73,10 @@ class LocalController extends Controller
 				"image"        => $formData[ 'image' ],
 			]);
 			
-			return response()->json([
-				'status' => 'success',
-				'data'   => $local
-			]);
+			return redirect()->route('locals.index')->with('success', 'Local creado correctamente');
 			
 		} catch (Exception $e) {
-			return response()->json([
-				'Exception' => $e->getMessage(),
-				'File'      => $e->getFile(),
-				'Line'      => $e->getLine(),
-			]);
+			return redirect()->route('locals.index')->with('error', 'Error al crear el local');
 		}
 	}
 	
