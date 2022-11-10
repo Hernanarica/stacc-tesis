@@ -10,6 +10,14 @@
 			<a href="{{ route('locals.index') }}"
 			   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Volver</a>
 		</div>
+		@auth()
+		<div class="flex justify-end pb-4">
+			<form action="{{ route('favorite.store', [ 'id' => $local->id ]) }}" method="post">
+				@csrf
+				<button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Favorito</button>
+			</form>
+		</div>
+		@endauth
 		{{--		etiqueta main con stilos tailwind siendo el contenedor de produsctos show --}}
 		<main class="grid grid-flow-col justify-center gap-10">
 			<div class="col-span-2">

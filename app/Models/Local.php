@@ -11,6 +11,7 @@ class Local extends Model
 	use HasFactory, Favoriteable;
 	
 	protected $fillable = [
+		'user_id',
 		'name',
 		'address',
 		'opening_time',
