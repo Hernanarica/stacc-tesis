@@ -7,6 +7,7 @@ use App\Http\Requests\LocalUpdateRequest;
 use App\Services\ImageService;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\Models\Local;
 
@@ -19,13 +20,18 @@ class LocalController extends Controller
 	 *
 	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view with the name of 'sections.locals' and an array with the key 'locales' and the value of $locales.
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		$locals = Local::all()->where('is_public', '=', '1');
+		$texto = trim($request->get('texto'));
+//		$locales = Local::all();
+		$locals = DB::table('locals')
+			->select('locals.*')
+			->where('name', 'LIKE', '%' . $texto . '%')
+			->orderBy('name', 'asc');
+		return view('sections.locals', compact('locals', 'texto'));
+//		return view('sections.locals', ['locals' => $locals->paginate(10), 'texto' => $texto]);
 		
-		return view('sections.locals', [
-			'locals' => $locals
-		]);
+//		return view('sections.locals', ['locales' => $locales]);
 	}
 	
 	/**
