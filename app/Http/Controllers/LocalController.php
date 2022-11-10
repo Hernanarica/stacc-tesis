@@ -14,24 +14,21 @@ use App\Models\Local;
 
 class LocalController extends Controller
 {
-	/**
-	 * It returns a view called "sections.locals" with a variable called "locales" that contains all the locales in the
-	 * database
-	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view with the name of 'sections.locals' and an array with the key 'locales' and the value of $locales.
-	 */
+	
 	public function index(Request $request)
 	{
-		$texto = trim($request->get('texto'));
-//		$locales = Local::all();
-		$locals = DB::table('locals')
-			->select('locals.*')
-			->where('name', 'LIKE', '%' . $texto . '%')
-			->orderBy('name', 'asc');
-		return view('sections.locals', compact('locals', 'texto'));
-//		return view('sections.locals', ['locals' => $locals->paginate(10), 'texto' => $texto]);
+		//hacer la peticion al db  para traer todos los locales teniendo en cuenta los filtros
+		if(!empty($request->query('search')))
+		{
+			$locals = Local::where('is_public', 1)->get();
+		}
+		//si hay un filtro de buscadr por nombre
+		$locals = Local::where('name', 'like', '%'.$request->query('search').'%')->where('is_public', 1)->get();
 		
-//		return view('sections.locals', ['locales' => $locales]);
+		return view('sections.locals', [
+			'locals' => $locals,
+			'search' => $request->query('search')
+		]);
 	}
 	
 	/**
