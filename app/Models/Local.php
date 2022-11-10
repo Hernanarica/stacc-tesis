@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use ChristianKuri\LaravelFavorite\Traits\Favoriteable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Local extends Model
 {
-	use HasFactory;
+	use HasFactory, Favoriteable;
 	
 	protected $fillable = [
 		'name',

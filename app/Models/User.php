@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-	use HasRoles;
+	use HasRoles, Favoriteability;
 	
 	/**
 	 * The attributes that are mass assignable.
