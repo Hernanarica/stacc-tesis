@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-	use HasApiTokens, HasFactory, Notifiable;
+	use HasRoles;
 	
 	/**
 	 * The attributes that are mass assignable.
@@ -18,10 +16,10 @@ class User extends Authenticatable
 	 */
 	protected $fillable = [
 		'name',
-		'role_id',
 		'lastname',
 		'image',
 		'email',
+		'category',
 		'password',
 	];
 	
@@ -43,4 +41,24 @@ class User extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 	];
+	
+	/**
+	 * > The `locals()` function returns all the `Local`s that belong to the `User`
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany collection of Local objects.
+	 */
+	public function locals()
+	{
+		return $this->hasMany(Local::class);
+	}
+	
+	/**
+	 * The posts() function returns all the posts that belong to the user
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany collection of Post objects.
+	 */
+	public function posts()
+	{
+		return $this->hasMany(Post::class);
+	}
 }

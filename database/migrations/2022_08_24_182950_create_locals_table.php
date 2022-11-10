@@ -14,6 +14,7 @@ return new class extends Migration {
 	{
 		Schema::create('locals', function (Blueprint $table) {
 			$table->id();
+			$table->foreignId('user_id')->constrained('users')->after('id')->onDelete('cascade');
 			$table->string('name');
 			$table->string('address');
 			$table->string('opening_time');

@@ -16,16 +16,6 @@ class UserRequest extends FormRequest
 		return true;
 	}
 	
-	protected function prepareForValidation()
-	{
-		if (is_string($this->role_id)) {
-			$this->merge([
-				'role_id' => (int)$this->role_id
-			]);
-		}
-	}
-	
-	
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -37,7 +27,7 @@ class UserRequest extends FormRequest
 			'name'     => ['required'],
 			'lastname' => ['required'],
 			'email'    => ['required', 'unique:users'],
-			'role_id'  => ['required'],
+			'category' => ['required'],
 			'password' => ['required', 'min:4'],
 		];
 	}
@@ -49,7 +39,7 @@ class UserRequest extends FormRequest
 			'lastname.required' => 'El apellido es obligatorio',
 			'email.required'    => 'El email es obligatorio',
 			'email.unique'      => 'El email ya existe',
-			'role_id.required'  => 'El rol es obligatorio',
+			'category.required' => 'La categoria es obligatoria',
 			'password.required' => 'La contrasena es obligatorio',
 			'password.min'      => 'La contrasena debe tener como minimo 4 caracteres',
 		];

@@ -10,6 +10,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -38,23 +41,28 @@ class UserController extends Controller
 	 *
 	 * @param UserRequest $request
 	 * @return JsonResponse
+	 * @throws Throwable
 	 */
 	public function store(UserRequest $request)
 	{
 		try {
+//			throw_if(($request->category !== 'visitor' || $request->category !== 'owner'), 'Categoria invalida');
+			
 			if ($request->hasFile('image')) {
 				$image = new ImageService($request->image, public_path('uploads/images/profile'));
 				$image->saveImage();
 			}
 			
 			$user = User::create([
-				'role_id'  => $request->role_id,
 				'name'     => $request->name,
 				'lastname' => $request->lastname,
 				'image'    => $image->imageName ?? null,
 				'email'    => $request->email,
+				'category' => $request->category,
 				'password' => Hash::make($request->password)
 			]);
+			
+			$user->assignRole($request->category);
 			
 			return response()->json([
 				'status' => 'success',
@@ -112,7 +120,6 @@ class UserController extends Controller
 			}
 			
 			$user->update([
-				'role_id'  => $request->role_id,
 				'name'     => $request->name,
 				'lastname' => $request->lastname,
 				'image'    => $image->imageName ?? $user->image,
