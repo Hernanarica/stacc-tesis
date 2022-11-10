@@ -49,6 +49,9 @@
 						<li>
 							<a href="{{ route('logout.index') }}">Logout</a>
 						</li>
+						<li>
+							<a href="{{ route('locals.create') }}">Crear local</a>
+						</li>
 						@endauth
 					</ul>
 				</div>

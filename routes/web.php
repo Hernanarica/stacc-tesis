@@ -45,9 +45,10 @@ Route::controller(LocalController::class)->prefix('locals')->group(function () {
 	Route::get('/{local}', 'show')->name('locals.show');
 });
 
-Route::group(['middleware' => ['role:admin', 'role:owner']], function () {
-	Route::controller(LocalController::class)->middleware('auth')->prefix('locals')->group(function () {
-		Route::post('', 'store')->name('locals.store');
+Route::group(['middleware' => ['role:admin|owner']], function () {
+	Route::controller(LocalController::class)->prefix('panel')->group(function () {
+		Route::get('/registrar-local', 'create')->name('locals.create');
+		Route::post('/registrar-local', 'store')->name('locals.store');
 		Route::patch('/{id}', 'update')->name('locals.update');
 		Route::delete('/{local}', 'destroy')->name('locals.destroy');
 	});
