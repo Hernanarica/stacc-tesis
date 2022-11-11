@@ -5,9 +5,6 @@
 @section('title', 'Locales')
 @section('content')
 	<section class="container xl: mx-auto">
-{{--		ver que parame
-		<h2 class="text-4xl font-bold text-center text-gray-700">Locales</h2>
-{{--		formulario con input y boton para buscar locales por nombre--}}
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
 			<form action="{{route('locals.index')}}" method="get" class="flex items-center">
 				@csrf
@@ -20,7 +17,7 @@
 						name="search"
 						type="text"
 						id="simple-search"
-						class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+						class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:border-stacc-purple focus:ring-stacc-purple
 										focus:outline-none focus:ring focus:ring-opacity-40 block w-full pl-10 p-2.5"
 						placeholder="Search"
 						value=" {{request()->search}}"
@@ -44,5 +41,6 @@
 				</a>
 			@endforeach
 		</main>
+		{{ $locals->links('pagination::tailwind') }}
 	</section>
 @endsection

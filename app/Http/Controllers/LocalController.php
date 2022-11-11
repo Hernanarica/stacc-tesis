@@ -14,23 +14,23 @@ use App\Models\Local;
 
 class LocalController extends Controller
 {
-	
+
 	public function index(Request $request)
 	{
 		//hacer la peticion al db  para traer todos los locales teniendo en cuenta los filtros
 		if(!empty($request->query('search')))
 		{
-			$locals = Local::where('is_public', 1)->get();
+			$locals = Local::where('is_public', 1)->paginate(4);
 		}
 		//si hay un filtro de buscadr por nombre
-		$locals = Local::where('name', 'like', '%'.$request->query('search').'%')->where('is_public', 1)->get();
-		
+		$locals = Local::where('name', 'like', '%'.$request->query('search').'%')->where('is_public', 1)->paginate(4);
+
 		return view('sections.locals', [
 			'locals' => $locals,
 			'search' => $request->query('search')
 		]);
 	}
-	
+
 	/**
 	 * Show the form for creating a new local
 	 *
