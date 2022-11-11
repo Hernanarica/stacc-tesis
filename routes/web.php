@@ -68,3 +68,4 @@ Route::controller(ContactController::class)->prefix('/contact')->group(function 
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
 
 Route::post('/agregar-favorito/{id}', [FavoriteController::class, 'store'])->name('favorite.store')->middleware('auth');
+Route::get('/mis-favoritos', [FavoriteController::class, 'index'])->name('favorite.index')->middleware('auth');

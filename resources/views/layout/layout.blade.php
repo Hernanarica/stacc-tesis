@@ -50,6 +50,9 @@
 							<a href="{{ route('logout.index') }}">Logout</a>
 						</li>
 						<li>
+							<a href="{{ route('favorite.index') }}">Mis favoritos</a>
+						</li>
+						<li>
 							<a href="{{ route('locals.create') }}">Crear local</a>
 						</li>
 						@endauth
