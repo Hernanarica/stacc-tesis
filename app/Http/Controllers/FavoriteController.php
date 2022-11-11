@@ -19,6 +19,14 @@ class FavoriteController extends Controller
 		$local = Local::find($id);
 		$local->addFavorite();
 		
-		return to_route('home.index');
+		return to_route('locals.show', [ 'local' => $id ]);
+	}
+
+	public function destroy($id)
+	{
+		$local = Local::find($id);
+		auth()->user()->removeFavorite($local);
+		
+		return to_route('locals.show', [ 'local' => $id ]);
 	}
 }

@@ -69,3 +69,4 @@ Route::post('/users', [UserController::class, 'store'])->name('user.store');
 
 Route::post('/agregar-favorito/{id}', [FavoriteController::class, 'store'])->name('favorite.store')->middleware('auth');
 Route::get('/mis-favoritos', [FavoriteController::class, 'index'])->name('favorite.index')->middleware('auth');
+Route::delete('/eliminar-favorito/{local}', [FavoriteController::class, 'destroy'])->name('favorite.destroy')->middleware('auth');
