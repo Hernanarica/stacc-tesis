@@ -197,6 +197,9 @@ return [
 	      Intervention\Image\ImageServiceProvider::class,
 	      Spatie\Permission\PermissionServiceProvider::class,
 	    
+	      //Addons by ness
+	      Barryvdh\Debugbar\ServiceProvider::class,
+	    
     ],
 
     /*
@@ -213,6 +216,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
 	      'Image' => Intervention\Image\Facades\Image::class,
+	      'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
     ])->toArray(),
 
 ];
