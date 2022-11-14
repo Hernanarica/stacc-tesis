@@ -162,8 +162,8 @@
 		<main>
 			@yield('content')
 		</main>
-		<footer class="bg-white">
-			<div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+		<footer>
+			<div class="mx-auto max-w-8xl py-12 px-2 md:flex md:items-center md:justify-between 2xl:px-0">
 				<div class="flex justify-center space-x-6 md:order-2">
 					<a href="#" class="text-gray-400 hover:text-gray-500">
 						<span class="sr-only">Facebook</span>
