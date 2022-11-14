@@ -6,11 +6,13 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			backgroundImage: {
+				'local-bg': "url('https://www.mibsas.com/wp-content/uploads/2017/05/CAMPOBRAVO-1200x900.jpg')",
+			},
 			maxWidth: {
 				'8xl': '1366px'
 			},
 			screens: {
-				'local-detail-tablet': '540px'
 			},
 			colors: {
 				'stacc-red': '#fa1d37',
