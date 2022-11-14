@@ -10,7 +10,7 @@ module.exports = {
 				'8xl': '1366px'
 			},
 			screens: {
-				// 'wrapper': '1364px'
+				'local-detail-tablet': '540px'
 			},
 			colors: {
 				'stacc-red': '#fa1d37',

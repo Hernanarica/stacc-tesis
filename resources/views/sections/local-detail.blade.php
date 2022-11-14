@@ -54,16 +54,17 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 				@endif
 			@endauth
 		</div>
-		<div class="absolute top-32 left-0 w-full text-center px-2">
+		<div class="absolute top-32 left-0 w-full text-center px-2 lg:hidden">
 			<img
 				src="https://www.mibsas.com/wp-content/uploads/2017/05/CAMPOBRAVO-1200x900.jpg"
 				alt="{{ $local->name }}"
-				class="w-full max-w-sm inline-block aspect-video object-cover shadow-xl"
+				class="w-full max-w-lg inline-block aspect-video object-cover shadow-xl"
 			>
 		</div>
 	</div>
+	
 	<x-wrapper>
-		<div class="mt-44">
+		<div class="mt-[53%] local-detail-tablet:mt-64">
 			<div class="flex flex-col gap-6">
 				<div class="overflow-hidden">
 					<dl class="sm:divide-y sm:divide-gray-200">
@@ -89,32 +90,40 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 						</div>
 					</dl>
 				</div>
-				<div>
-					<h3 class="font-medium text-gray-900">Horarios</h3>
-					<dl class="mt-2 divide-y divide-gray-200 border-t border-b border-gray-200">
-						@foreach($days as $day)
-							<div class="flex justify-between py-3 text-sm font-medium">
-								<dt class="text-gray-500 capitalize">{{ $day }}</dt>
-								<dd class="whitespace-nowrap text-gray-900 flex items-center gap-1">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										class="w-3 h-3"
-									>
-										<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-									</svg>
-									<span>{{ $local->opening_time }} a {{ $local->closing_time }}</span>
-								</dd>
-							</div>
-						@endforeach
-					</dl>
+				
+				<div class="sm:px-6 flex flex-col items-center gap-8 md:flex-row">
+					<div class="w-full md:max-w-xs">
+						<h3 class="font-medium text-gray-900">Horarios</h3>
+						<dl class="mt-2 divide-y divide-gray-200 border-t border-b border-gray-200">
+							@foreach($days as $day)
+								<div class="flex justify-between py-3 text-sm font-medium">
+									<dt class="text-gray-500 capitalize">{{ $day }}</dt>
+									<dd class="whitespace-nowrap text-gray-900 flex items-center gap-1">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-3 h-3"
+										>
+											<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+										</svg>
+										<span>{{ $local->opening_time }} a {{ $local->closing_time }}</span>
+									</dd>
+								</div>
+							@endforeach
+						</dl>
+					</div>
+					
+					<div class="w-full">
+						<div class="overflow-hidden sm:w-fit sm:mx-auto md:w-[350px] md:aspect-square md:rounded-full">
+							{!! htmlspecialchars_decode($local->url_map) !!}
+						</div>
+					</div>
+					
 				</div>
-				<div class="h-64 aspect-video overflow-hidden">
-					{!! htmlspecialchars_decode($local->url_map) !!}
-				</div>
+				
 			</div>
 		</div>
 	</x-wrapper>
