@@ -62,7 +62,7 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 			>
 		</div>
 	</div>
-	<div class="hidden lg:block bg-stone-900">
+	<div class="hidden h-24 py-3 lg:block bg-stone-900">
 		<x-wrapper>
 			<div class="flex justify-between items-center">
 				<h2 class="text-white font-medium text-2xl">{{ $local->name }}</h2>
@@ -113,109 +113,56 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 			</div>
 		</x-wrapper>
 	</div>
-	
-	<div class="hidden lg:block h-[500px] bg-stone-900">
-		<x-wrapper>
-			
-			<div class="flex">
-				<div class="relative w-1/2 bg-local-bg bg-cover">
-					<div class="absolute inset-0 bg-gradient-to-t from-stone-900"></div>
-				</div>
+	<div class="lg:flex flex-col gap-10">
+		<div class="hidden lg:block h-[500px] bg-stone-900">
+			<x-wrapper>
 				
-				<div class="w-1/2 h-full">
-					<div class="w-full">
-						<div class="overflow-hidden sm:w-fit sm:mx-auto md:w-[450px] md:aspect-square md:rounded-full">
-							{!! htmlspecialchars_decode($local->url_map) !!}
+				<div class="flex">
+					<div class="relative w-1/2 bg-local-bg bg-cover">
+						<div class="absolute inset-0 bg-gradient-to-t from-stone-900"></div>
+					</div>
+					
+					<div class="w-1/2 h-full">
+						<div class="w-full">
+							<div class="overflow-hidden sm:w-fit sm:mx-auto md:w-[450px] md:aspect-square md:rounded-full">
+								{!! htmlspecialchars_decode($local->url_map) !!}
+							</div>
 						</div>
 					</div>
-				</div>
 				
-			</div>
+				</div>
 			
-		</x-wrapper>
-	</div>
-	
-	<x-wrapper>
-		<div class="hidden lg:block">
-			<div class="flex gap-12">
-				<div class="overflow-hidden">
-					<dl class="sm:divide-y sm:divide-gray-200">
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Direccion</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Teléfono</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Email</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">local@gmail.com</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Salary expectation</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Descripcion</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
-						</div>
-					</dl>
-				</div>
-				
-				<div class="w-full md:max-w-xs">
-					<h3 class="font-medium text-gray-900">Horarios</h3>
-					<dl class="mt-2 divide-y divide-gray-200 border-t border-b border-gray-200">
-						@foreach($days as $day)
-							<div class="flex justify-between py-3 text-sm font-medium">
-								<dt class="text-gray-500 capitalize">{{ $day }}</dt>
-								<dd class="whitespace-nowrap text-gray-900 flex items-center gap-1">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										class="w-3 h-3"
-									>
-										<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-									</svg>
-									<span>{{ $local->opening_time }} a {{ $local->closing_time }}</span>
-								</dd>
-							</div>
-						@endforeach
-					</dl>
-				</div>
-			</div>
+			</x-wrapper>
 		</div>
-		<div class="mt-[53%] sm:mt-64 lg:hidden">
-			<div class="flex flex-col gap-6">
-				<div class="overflow-hidden">
-					<dl class="sm:divide-y sm:divide-gray-200">
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Direccion</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Teléfono</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Email</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">local@gmail.com</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Salary expectation</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>
-						</div>
-						<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-							<dt class="text-sm font-medium text-gray-500">Descripcion</dt>
-							<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
-						</div>
-					</dl>
-				</div>
-				
-				<div class="sm:px-6 flex flex-col items-center gap-8 md:flex-row">
+		
+		<x-wrapper>
+			<div class="hidden lg:block">
+				<div class="flex gap-12">
+					<div class="overflow-hidden">
+						<dl class="sm:divide-y sm:divide-gray-200">
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Direccion</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Teléfono</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Email</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">local@gmail.com</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Salary expectation</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Descripcion</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+							</div>
+						</dl>
+					</div>
+					
 					<div class="w-full md:max-w-xs">
 						<h3 class="font-medium text-gray-900">Horarios</h3>
 						<dl class="mt-2 divide-y divide-gray-200 border-t border-b border-gray-200">
@@ -239,16 +186,70 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 							@endforeach
 						</dl>
 					</div>
-					
-					<div class="w-full">
-						<div class="overflow-hidden sm:w-fit sm:mx-auto md:w-[350px] md:aspect-square md:rounded-full">
-							{!! htmlspecialchars_decode($local->url_map) !!}
-						</div>
+				</div>
+			</div>
+			<div class="mt-[53%] sm:mt-64 lg:hidden">
+				<div class="flex flex-col gap-6">
+					<div class="overflow-hidden">
+						<dl class="sm:divide-y sm:divide-gray-200">
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Direccion</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Teléfono</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Email</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">local@gmail.com</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Salary expectation</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Descripcion</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+							</div>
+						</dl>
 					</div>
 					
-				</div>
+					<div class="sm:px-6 flex flex-col items-center gap-8 md:flex-row">
+						<div class="w-full md:max-w-xs">
+							<h3 class="font-medium text-gray-900">Horarios</h3>
+							<dl class="mt-2 divide-y divide-gray-200 border-t border-b border-gray-200">
+								@foreach($days as $day)
+									<div class="flex justify-between py-3 text-sm font-medium">
+										<dt class="text-gray-500 capitalize">{{ $day }}</dt>
+										<dd class="whitespace-nowrap text-gray-900 flex items-center gap-1">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke-width="1.5"
+												stroke="currentColor"
+												class="w-3 h-3"
+											>
+												<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+											</svg>
+											<span>{{ $local->opening_time }} a {{ $local->closing_time }}</span>
+										</dd>
+									</div>
+								@endforeach
+							</dl>
+						</div>
+						
+						<div class="w-full">
+							<div class="overflow-hidden sm:w-fit sm:mx-auto md:w-[350px] md:aspect-square md:rounded-full">
+								{!! htmlspecialchars_decode($local->url_map) !!}
+							</div>
+						</div>
+					
+					</div>
 				
+				</div>
 			</div>
-		</div>
-	</x-wrapper>
+		</x-wrapper>
+	</div>
 @endsection
