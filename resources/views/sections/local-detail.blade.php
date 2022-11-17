@@ -114,25 +114,16 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 		</x-wrapper>
 	</div>
 	
-	<div class="hidden lg:block h-[500px] bg-stone-900">
-		<x-wrapper>
-			
-			<div class="flex">
-				<div class="relative w-1/2 bg-local-bg bg-cover">
-					<div class="absolute inset-0 bg-gradient-to-t from-stone-900"></div>
+	<div class="hidden relative lg:block h-[500px] bg-local-bg bg-cover">
+		<div class="absolute inset-0 bg-gradient-to-t from-black"></div>
+		
+		<div class="absolute right-0 top-0 flex items-center h-full">
+			<div class="w-full">
+				<div class="overflow-hidden sm:w-fit sm:mx-auto md:w-[450px] md:aspect-square md:rounded-full">
+					{!! htmlspecialchars_decode($local->url_map) !!}
 				</div>
-				
-				<div class="w-1/2 h-full">
-					<div class="w-full">
-						<div class="overflow-hidden sm:w-fit sm:mx-auto md:w-[450px] md:aspect-square md:rounded-full">
-							{!! htmlspecialchars_decode($local->url_map) !!}
-						</div>
-					</div>
-				</div>
-				
 			</div>
-			
-		</x-wrapper>
+		</div>
 	</div>
 	
 	<x-wrapper>
