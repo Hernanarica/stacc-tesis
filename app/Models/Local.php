@@ -12,6 +12,7 @@ class Local extends Model
 	
 	protected $fillable = [
 		'user_id',
+		'neighborhood_id',
 		'name',
 		'address',
 		'opening_time',
@@ -24,4 +25,5 @@ class Local extends Model
 		'image',
 		'image_alt',
 	];
+	
 }

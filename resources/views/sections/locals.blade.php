@@ -1,10 +1,12 @@
 <?php
 /** @var \App\Models\Local[] $locals */
+/** @var \App\Models\Neighborhoods[]  $neighborhood */
 ?>
 @extends('layout.layout')
 @section('title', 'Locales')
 @section('content')
 	<x-wrapper>
+		
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			<form
 				action="{{route('locals.index')}}"
@@ -33,7 +35,6 @@
 				</button>
 			</form>
 		</div>
-		
 		<div class="mx-auto max-w-2xl py-12 sm:py-14 lg:max-w-7xl">
 			<div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
 				@foreach($locals as $local)
@@ -43,7 +44,11 @@
 								<img src="https://www.mibsas.com/wp-content/uploads/2017/05/CAMPOBRAVO-1200x900.jpg" alt="Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls." class="h-full w-full object-cover object-center">
 							</div>
 							<div class="relative mt-4">
-								<h3 class="text-sm font-medium text-gray-900">{{ $local->address }}</h3>
+								@foreach($neighborhoods as $neighborhood)
+									@if($local->neighborhood_id === $neighborhood->id)
+										<h3 class="text-sm font-medium text-gray-900">{{ $local->address }}, {{$neighborhood->name}}</h3>
+									@endif
+								@endforeach
 								<p class="flex items-center gap-1 mt-1 text-sm text-gray-500">
 									<svg
 										class="w-4 h-4"
@@ -60,7 +65,11 @@
 							</div>
 							<div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
 								<div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-								<p class="relative text-lg font-semibold text-white">Palermo</p>
+								@foreach($neighborhoods as $neighborhood)
+									@if($local->neighborhood_id === $neighborhood->id)
+										<p class="relative text-lg font-semibold text-white">{{$neighborhood->name}}</p>
+									@endif
+								@endforeach
 							</div>
 						</div>
 						<div class="mt-6">

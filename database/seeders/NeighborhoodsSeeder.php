@@ -188,7 +188,15 @@ class NeighborhoodsSeeder extends Seeder
 			],
 			[
 				'id' => 43,
-				'name' => 'Villa Luro'
+				'name' => 'Barrio Norte'
+			],
+			[
+				'id' => 44,
+				'name' => 'Cañitas'
+			],
+			[
+				'id' => 45,
+				'name' => 'Villa Urquiza'
 			],
 		]);
 		//

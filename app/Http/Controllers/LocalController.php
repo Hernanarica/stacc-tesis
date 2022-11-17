@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LocalRequest;
 use App\Http\Requests\LocalUpdateRequest;
+use App\Models\Neighborhoods;
 use App\Services\ImageService;
 use Exception;
 use Illuminate\Http\Request;
@@ -21,12 +22,15 @@ class LocalController extends Controller
 		if(!empty($request->query('search')))
 		{
 			$locals = Local::where('is_public', 1)->paginate(4);
+			$neighborhoods = Neighborhoods::all();
 		}
 		//si hay un filtro de buscadr por nombre
 		$locals = Local::where('name', 'like', '%'.$request->query('search').'%')->where('is_public', 1)->paginate(4);
+		$neighborhoods = Neighborhoods::all();
 
 		return view('sections.locals', [
 			'locals' => $locals,
+			'neighborhoods' => $neighborhoods,
 			'search' => $request->query('search')
 		]);
 	}
