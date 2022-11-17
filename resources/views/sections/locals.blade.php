@@ -1,6 +1,5 @@
 <?php
 /** @var \App\Models\Local[] $locals */
-/** @var \App\Models\Neighborhoods[]  $neighborhood */
 ?>
 @extends('layout.layout')
 @section('title', 'Locales')
@@ -44,11 +43,7 @@
 								<img src="https://www.mibsas.com/wp-content/uploads/2017/05/CAMPOBRAVO-1200x900.jpg" alt="Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls." class="h-full w-full object-cover object-center">
 							</div>
 							<div class="relative mt-4">
-								@foreach($neighborhoods as $neighborhood)
-									@if($local->neighborhood_id === $neighborhood->id)
-										<h3 class="text-sm font-medium text-gray-900">{{ $local->address }}, {{$neighborhood->name}}</h3>
-									@endif
-								@endforeach
+								<h3 class="text-sm font-medium text-gray-900">{{ $local->address }}, {{ $local->neighborhood->name }}</h3>
 								<p class="flex items-center gap-1 mt-1 text-sm text-gray-500">
 									<svg
 										class="w-4 h-4"
@@ -65,11 +60,7 @@
 							</div>
 							<div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
 								<div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-								@foreach($neighborhoods as $neighborhood)
-									@if($local->neighborhood_id === $neighborhood->id)
-										<p class="relative text-lg font-semibold text-white">{{$neighborhood->name}}</p>
-									@endif
-								@endforeach
+								<p class="relative text-lg font-semibold text-white">{{$local->neighborhood->name}}</p>
 							</div>
 						</div>
 						<div class="mt-6">

@@ -15,26 +15,20 @@ use App\Models\Local;
 
 class LocalController extends Controller
 {
-
+	
 	public function index(Request $request)
 	{
-		//hacer la peticion al db  para traer todos los locales teniendo en cuenta los filtros
-		if(!empty($request->query('search')))
-		{
+		if (!empty($request->query('search'))) {
 			$locals = Local::where('is_public', 1)->paginate(4);
-			$neighborhoods = Neighborhoods::all();
 		}
-		//si hay un filtro de buscadr por nombre
-		$locals = Local::where('name', 'like', '%'.$request->query('search').'%')->where('is_public', 1)->paginate(4);
-		$neighborhoods = Neighborhoods::all();
-
+		$locals = Local::where('name', 'like', '%' . $request->query('search') . '%')->where('is_public', 1)->paginate(4);
+		
 		return view('sections.locals', [
 			'locals' => $locals,
-			'neighborhoods' => $neighborhoods,
 			'search' => $request->query('search')
 		]);
 	}
-
+	
 	/**
 	 * Show the form for creating a new local
 	 *
@@ -60,12 +54,12 @@ class LocalController extends Controller
 				$image->saveImage();
 			}
 			
-			$formData = $request->input();
+			$formData            = $request->input();
 			$formData[ 'image' ] = $image->imageName ?? null;
 			
 			//obtener el user id con laravel permission
 			$formData[ 'user_id' ] = auth()->user()->id;
-
+			
 			$local = Local::create([
 				"user_id"      => $formData[ 'user_id' ],
 				"name"         => $formData[ 'name' ],

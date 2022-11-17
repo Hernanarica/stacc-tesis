@@ -26,4 +26,8 @@ class Local extends Model
 		'image_alt',
 	];
 	
+	public function neighborhood()
+	{
+		return $this->hasOne(Neighborhoods::class, 'id', 'neighborhood_id');
+	}
 }
