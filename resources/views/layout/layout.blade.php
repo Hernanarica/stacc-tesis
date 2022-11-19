@@ -10,175 +10,167 @@
 		<title>Stacc | @yield('title', 'Bienvenido')</title>
 	</head>
 	<body>
-		
-		<header class="p-2 py-4 md:px-0">
+		<header>
 			<x-wrapper>
-				<navbar class="relative flex items-center justify-between">
-					<div class="flex items-center">
-						<a href="{{ route('home.index') }}"
-						   aria-label="Company"
-						   title="Company"
-						   class="inline-flex items-center mr-8"
-						>
+				<div class="flex justify-between items-center">
+					<div>
+						<a href="{{ route('home.index') }}">
 							<img
 								src="{{ asset('src/assets/images/logos/logo_red.png') }}"
 								alt="stacc logo"
 								width="70"
+								class="align-middle"
 							>
 						</a>
-						<ul class="flex items-center hidden space-x-8 lg:flex">
+					</div>
+					
+					<nav class="py-3 hidden lg:block">
+						<ul class="flex items-center gap-6">
 							<li>
 								<a
 									href="{{ route('home.index') }}"
-									aria-label="Our product"
-									title="Home"
-									class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-								>Home</a>
+									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
+								>inicio</a>
 							</li>
 							<li>
 								<a
 									href="{{ route('locals.index') }}"
-									aria-label="Our product"
-									title="Locales"
-									class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
 								>Locales</a>
 							</li>
 							<li>
 								<a
 									href="{{ route('contact.index') }}"
-									aria-label="Product pricing"
-									title="Contacto"
-									class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
 								>Contacto</a>
 							</li>
-							@auth()
-								<li>
-									<a href="{{ route('favorite.index') }}">Mis favoritos</a>
-								</li>
-							@endauth
+							<li>
+								<a
+									href="{{ route('favorite.index') }}"
+									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
+								>Mis favoritos</a>
+							</li>
 							@role('admin')
-								<li>
-									<a href="{{ route('locals.create') }}">Crear local</a>
-								</li>
+							<li>
+								<a
+									href="{{ route('locals.create') }}"
+									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
+								>Crear local</a>
+							</li>
 							@endrole
 						</ul>
-					</div>
-					@guest()
-						<ul class="flex items-center hidden space-x-8 lg:flex">
+					</nav>
+					
+					<nav class="hidden lg:block">
+						<ul class="flex items-center gap-3">
+							@guest()
 							<li>
 								<a
 									href="{{ route('login.index') }}"
-									aria-label="Iniciar sesion"
-									title="Iniciar sesion"
 									class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-								>Iniciar sesion</a>
+								>Inicia sesion</a>
 							</li>
 							<li>
 								<a
 									href="{{ route('register.create') }}"
 									class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-stacc-purple to-stacc-red focus:shadow-outline focus:outline-none"
-									aria-label="Register"
-									title="Register"
-								>
-									Registrate
-								</a>
+								>Registrate</a>
 							</li>
+							@endguest
+							@auth()
+								<form
+									action="{{ route('logout.index') }}"
+									method="post"
+									class="hidden lg:block"
+								>
+									@csrf
+									<button type="submit" class="flex items-center gap-2 py-1 lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded font-medium">
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+										</svg>
+										Logout
+									</button>
+								</form>
+							@endauth
 						</ul>
-					@endguest
-					@auth()
-						<form action="{{ route('logout.index') }}" method="post">
-							@csrf
-							<button type="submit" class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-								</svg>
-								Logout
-							</button>
-						</form>
-					@endauth
-					<!-- Mobile menu -->
-					<div class="lg:hidden">
-						<button aria-label="Open Menu" title="Open Menu" class="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50">
-							<svg class="w-5 text-gray-600" viewBox="0 0 24 24">
-								<path fill="currentColor" d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"></path>
-								<path fill="currentColor" d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"></path>
-								<path fill="currentColor" d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"></path>
-							</svg>
-						</button>
-						<!-- Mobile menu dropdown
-						<div class="absolute top-0 left-0 w-full">
-							<div class="p-5 bg-white border rounded shadow-sm">
-								<div class="flex items-center justify-between mb-4">
-									<div>
-										<a href="/" aria-label="Company" title="Company" class="inline-flex items-center">
-											<svg class="w-8 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linejoin="round" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" stroke="currentColor" fill="none">
-												<rect x="3" y="1" width="7" height="12"></rect>
-												<rect x="3" y="17" width="7" height="6"></rect>
-												<rect x="14" y="1" width="7" height="6"></rect>
-												<rect x="14" y="11" width="7" height="12"></rect>
-											</svg>
-											<span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">Company</span>
-										</a>
-									</div>
-									<div>
-										<button aria-label="Close Menu" title="Close Menu" class="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-											<svg class="w-5 text-gray-600" viewBox="0 0 24 24">
-												<path
-													fill="currentColor"
-													d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-												></path>
-											</svg>
-										</button>
-									</div>
-								</div>
-								<nav>
-									<ul class="space-y-4">
-										<li><a href="/" aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Product</a></li>
-										<li><a href="/" aria-label="Our product" title="Our product" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Features</a></li>
-										<li><a href="/" aria-label="Product pricing" title="Product pricing" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Pricing</a></li>
-										<li><a href="/" aria-label="About us" title="About us" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">About us</a></li>
-										<li><a href="/" aria-label="Sign in" title="Sign in" class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400">Sign in</a></li>
-										<li>
-											<a
-												href="/"
-												class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-												aria-label="Sign up"
-												title="Sign up"
-											>
-												Sign up
-											</a>
-										</li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-						-->
-					</div>
-				</navbar>
+					</nav>
+					
+					<button class="lg:hidden" id="menuBtn">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-10 h-10 text-gray-500"
+							id="iconOpen"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+							/>
+						</svg>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-10 h-10 text-gray-500 hidden"
+							id="iconClose"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M6 18L18 6M6 6l12 12"
+							/>
+						</svg>
+					</button>
+				</div>
+				<nav class="py-3 hidden" id="navbar">
+					<ul class="w-full h-fit space-y-2">
+						<li>
+							<a href="{{ route('home.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">inicio</a>
+						</li>
+						<li>
+							<a href="{{ route('locals.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Locales</a>
+						</li>
+						<li>
+							<a href="{{ route('contact.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Contacto</a>
+						</li>
+						<li>
+							<a href="{{ route('favorite.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Mis favoritos</a>
+						</li>
+						@role('admin')
+						<li>
+							<a href="{{ route('locals.create') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Crear local</a>
+						</li>
+						@endrole
+						@guest()
+							<li>
+								<a href="{{ route('login.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Inicia sesion</a>
+							</li>
+							<li>
+								<a href="{{ route('register.create') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Registrate</a>
+							</li>
+						@endguest
+						@auth()
+							<form action="{{ route('logout.index') }}" method="post">
+								@csrf
+								<button type="submit" class="flex items-center gap-2 py-1 font-medium">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+									</svg>
+									Logout
+								</button>
+							</form>
+						@endauth
+					</ul>
+				</nav>
 			</x-wrapper>
 		</header>
 		
-{{--		<header>--}}
-{{--			<ul class="flex justify-between">--}}
-{{--				<li>--}}
-{{--					<a href="{{ route('home.index') }}">Home</a>--}}
-{{--				</li>--}}
-{{--				<li>--}}
-{{--					<a href="{{ route('locals.index') }}">Locales</a>--}}
-{{--				</li>--}}
-{{--				<li>--}}
-{{--					<a href="{{ route('login.index') }}">Inicias sesion</a>--}}
-{{--				</li>--}}
-{{--				<li>--}}
-{{--					<a href="{{ route('register.create') }}">Registrate</a>--}}
-{{--				</li>--}}
-{{--				@auth()--}}
-{{--					<li>--}}
-{{--						<a href="{{ route('logout.index') }}">Logout</a>--}}
-{{--					</li>--}}
-{{--				@endauth--}}
-{{--			</ul>--}}
-{{--		</header>--}}
 		<main>
 			@yield('content')
 		</main>
@@ -209,5 +201,6 @@
 				</div>
 			</div>
 		</footer>
+		@vite('resources/js/menu.js')
 	</body>
 </html>
