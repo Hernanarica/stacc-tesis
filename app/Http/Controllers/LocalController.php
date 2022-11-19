@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LocalRequest;
 use App\Http\Requests\LocalUpdateRequest;
+use App\Models\Neighborhoods;
 use App\Services\ImageService;
 use Exception;
 use Illuminate\Http\Request;
@@ -14,23 +15,20 @@ use App\Models\Local;
 
 class LocalController extends Controller
 {
-
+	
 	public function index(Request $request)
 	{
-		//hacer la peticion al db  para traer todos los locales teniendo en cuenta los filtros
-		if(!empty($request->query('search')))
-		{
+		if (!empty($request->query('search'))) {
 			$locals = Local::where('is_public', 1)->paginate(4);
 		}
-		//si hay un filtro de buscadr por nombre
-		$locals = Local::where('name', 'like', '%'.$request->query('search').'%')->where('is_public', 1)->paginate(4);
-
+		$locals = Local::where('name', 'like', '%' . $request->query('search') . '%')->where('is_public', 1)->paginate(4);
+		
 		return view('sections.locals', [
 			'locals' => $locals,
 			'search' => $request->query('search')
 		]);
 	}
-
+	
 	/**
 	 * Show the form for creating a new local
 	 *
@@ -56,12 +54,12 @@ class LocalController extends Controller
 				$image->saveImage();
 			}
 			
-			$formData = $request->input();
+			$formData            = $request->input();
 			$formData[ 'image' ] = $image->imageName ?? null;
 			
 			//obtener el user id con laravel permission
 			$formData[ 'user_id' ] = auth()->user()->id;
-
+			
 			$local = Local::create([
 				"user_id"      => $formData[ 'user_id' ],
 				"name"         => $formData[ 'name' ],
