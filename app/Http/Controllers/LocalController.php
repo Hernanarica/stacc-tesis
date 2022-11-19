@@ -36,7 +36,10 @@ class LocalController extends Controller
 	 */
 	public function create()
 	{
-		return view('sections.register-local');
+		$neighborhoods = Neighborhoods::all();
+		return view('sections.register-local', [
+			'neighborhoods' => $neighborhoods
+		]);
 	}
 	
 	/**
@@ -61,17 +64,18 @@ class LocalController extends Controller
 			$formData[ 'user_id' ] = auth()->user()->id;
 			
 			$local = Local::create([
-				"user_id"      => $formData[ 'user_id' ],
-				"name"         => $formData[ 'name' ],
-				"address"      => $formData[ 'address' ],
-				"opening_time" => $formData[ 'opening_time' ],
-				"closing_time" => $formData[ 'closing_time' ],
-				"url_site"     => $formData[ 'url_site' ],
-				"phone"        => $formData[ 'phone' ],
-				"url_map"      => $formData[ 'url_map' ],
-				"terms"        => $formData[ 'terms' ],
-				"image_alt"    => $formData[ 'image_alt' ],
-				"image"        => $formData[ 'image' ],
+				"user_id"         => $formData[ 'user_id' ],
+				"neighborhood_id" => $formData[ 'neighborhood_id' ],
+				"name"            => $formData[ 'name' ],
+				"address"         => $formData[ 'address' ],
+				"opening_time"    => $formData[ 'opening_time' ],
+				"closing_time"    => $formData[ 'closing_time' ],
+				"url_site"        => $formData[ 'url_site' ],
+				"phone"           => $formData[ 'phone' ],
+				"url_map"         => $formData[ 'url_map' ],
+				"terms"           => $formData[ 'terms' ],
+				"image_alt"       => $formData[ 'image_alt' ],
+				"image"           => $formData[ 'image' ],
 			]);
 			
 			return redirect()->route('locals.index')->with('success', 'Local creado correctamente');

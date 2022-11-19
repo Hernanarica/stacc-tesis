@@ -40,7 +40,11 @@
 					<div>
 						<div class="relative">
 							<div class="relative h-72 w-full overflow-hidden rounded-lg">
-								<img src="https://www.mibsas.com/wp-content/uploads/2017/05/CAMPOBRAVO-1200x900.jpg" alt="Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls." class="h-full w-full object-cover object-center">
+								<img
+									src="{{ url('/uploads/images/local/' . $local->image)}}"
+									alt="{{ $local->image_alt }}"
+									class=" max-w-lg inline-block aspect-video object-cover shadow-xl"
+								 />
 							</div>
 							<div class="relative mt-4">
 								<h3 class="text-sm font-medium text-gray-900">{{ $local->address }}, {{ $local->neighborhood->name }}</h3>
