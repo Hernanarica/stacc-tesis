@@ -30,4 +30,5 @@ class Local extends Model
 	{
 		return $this->hasOne(Neighborhoods::class, 'id', 'neighborhood_id');
 	}
+	
 }

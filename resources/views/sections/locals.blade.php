@@ -33,6 +33,10 @@
 					<span class="sr-only">Search</span>
 				</button>
 			</form>
+			{{--				leyenda que indica al usuario que el input busca por nombre y por barrio abajo del buscador --}}
+			<div class="col-span-3 md:col-span-2 lg:col-span-3">
+				<p class="text-sm text-gray-500 dark:text-gray-400">Busca por nombre o por barrio</p>
+			</div>
 		</div>
 		<div class="mx-auto max-w-2xl py-12 sm:py-14 lg:max-w-7xl">
 			<div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
@@ -47,6 +51,9 @@
 								 />
 							</div>
 							<div class="relative mt-4">
+								<h3 class="text-lg font-semibold text-gray-900 ">
+									{{ $local->name }}
+								</h3>
 								<h3 class="text-sm font-medium text-gray-900">{{ $local->address }}, {{ $local->neighborhood->name }}</h3>
 								<p class="flex items-center gap-1 mt-1 text-sm text-gray-500">
 									<svg

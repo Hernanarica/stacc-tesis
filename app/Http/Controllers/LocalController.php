@@ -16,13 +16,25 @@ use App\Models\Local;
 class LocalController extends Controller
 {
 	
+	/**
+	 * It will search for locals by name or neighborhood name, and paginate the results
+	 *
+	 * @param Request $request request The request object.
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view with the locals and the search query.
+	 */
 	public function index(Request $request)
 	{
-		if (!empty($request->query('search'))) {
+		if (empty($request->query('search'))) {
 			$locals = Local::where('is_public', 1)->paginate(4);
 		}
-		$locals = Local::where('name', 'like', '%' . $request->query('search') . '%')->where('is_public', 1)->paginate(4);
-		
+		$locals = Local::with('neighborhood')
+			->where('is_public', 1)
+			->where('name', 'like', '%' . $request->query('search') . '%')
+			->orWhereHas('neighborhood', function ($query) use ($request) {
+				$query->where('name', 'like', '%' . $request->query('search') . '%');
+			})
+			->paginate(4);
 		return view('sections.locals', [
 			'locals' => $locals,
 			'search' => $request->query('search')
@@ -57,25 +69,25 @@ class LocalController extends Controller
 				$image->saveImage();
 			}
 			
-			$formData            = $request->input();
-			$formData[ 'image' ] = $image->imageName ?? null;
+			$formData = $request->input();
+			$formData['image'] = $image->imageName ?? null;
 			
 			//obtener el user id con laravel permission
-			$formData[ 'user_id' ] = auth()->user()->id;
+			$formData['user_id'] = auth()->user()->id;
 			
 			$local = Local::create([
-				"user_id"         => $formData[ 'user_id' ],
-				"neighborhood_id" => $formData[ 'neighborhood_id' ],
-				"name"            => $formData[ 'name' ],
-				"address"         => $formData[ 'address' ],
-				"opening_time"    => $formData[ 'opening_time' ],
-				"closing_time"    => $formData[ 'closing_time' ],
-				"url_site"        => $formData[ 'url_site' ],
-				"phone"           => $formData[ 'phone' ],
-				"url_map"         => $formData[ 'url_map' ],
-				"terms"           => $formData[ 'terms' ],
-				"image_alt"       => $formData[ 'image_alt' ],
-				"image"           => $formData[ 'image' ],
+				"user_id" => $formData['user_id'],
+				"neighborhood_id" => $formData['neighborhood_id'],
+				"name" => $formData['name'],
+				"address" => $formData['address'],
+				"opening_time" => $formData['opening_time'],
+				"closing_time" => $formData['closing_time'],
+				"url_site" => $formData['url_site'],
+				"phone" => $formData['phone'],
+				"url_map" => $formData['url_map'],
+				"terms" => $formData['terms'],
+				"image_alt" => $formData['image_alt'],
+				"image" => $formData['image'],
 			]);
 			
 			return redirect()->route('locals.index')->with('success', 'Local creado correctamente');
@@ -125,19 +137,19 @@ class LocalController extends Controller
 		try {
 //		$request->validate((LocalUpdateRequest::rules()), LocalUpdateRequest::messages());
 			$formData = $request->input();
-			$local    = Local::findOrFail($id);
+			$local = Local::findOrFail($id);
 			
 			if ($request->hasFile('image')) {
 				
 				$image = new ImageService($request->image, public_path('uploads/images/local'));
 				$image->saveImage();
 				
-				$formData[ 'image' ] = $image->imageName;
+				$formData['image'] = $image->imageName;
 				
 				File::delete(public_path("uploads/images/local/{$local->image}"));
 				
 			} else {
-				$formData[ 'image' ] = $local->image;
+				$formData['image'] = $local->image;
 			}
 			
 			$local->update($formData);
@@ -146,14 +158,14 @@ class LocalController extends Controller
 			
 			return response()->json([
 				'status' => 'success',
-				'data'   => $local
+				'data' => $local
 			]);
 			
 		} catch (Exception $e) {
 			return response()->json([
 				'Exception' => $e->getMessage(),
-				'File'      => $e->getFile(),
-				'Line'      => $e->getLine(),
+				'File' => $e->getFile(),
+				'Line' => $e->getLine(),
 			]);
 		}
 	}
@@ -178,7 +190,7 @@ class LocalController extends Controller
 			
 			return response()->json([
 				'status' => 'success',
-				'data'   => $locale,
+				'data' => $locale,
 			], 200);
 			
 		} catch (Exception $e) {
