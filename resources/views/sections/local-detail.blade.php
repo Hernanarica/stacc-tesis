@@ -118,8 +118,15 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 			<x-wrapper>
 				
 				<div class="flex">
-					<div class="relative w-1/2 bg-local-bg bg-cover">
-						<div class="absolute inset-0 bg-gradient-to-t from-stone-900"></div>
+					<div class="relative w-1/2  bg-cover">
+						<div class="absolute inset-0 bg-gradient-to-t from-stone-900">
+{{--							la imagen del local va aqui--}}
+							<img
+								src="{{ url('/uploads/images/local/' . $local->image)}}"
+								alt="{{ $local->image_alt }}"
+								class=" max-w-lg inline-block aspect-video object-cover shadow-xl"
+							>
+						</div>
 					</div>
 					
 					<div class="w-1/2 h-full">
@@ -141,8 +148,12 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 					<div class="overflow-hidden">
 						<dl class="sm:divide-y sm:divide-gray-200">
 							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-								<dt class="text-sm font-medium text-gray-500">Direccion</dt>
+								<dt class="text-sm font-medium text-gray-500">Dirección</dt>
 								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>
+							</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+								<dt class="text-sm font-medium text-gray-500">Barrio</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->neighborhood->name }}</dd>
 							</div>
 							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
 								<dt class="text-sm font-medium text-gray-500">Teléfono</dt>
