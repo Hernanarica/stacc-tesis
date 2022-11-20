@@ -38,7 +38,7 @@
 				<p class="text-sm text-gray-500 dark:text-gray-400">Busca por nombre o por barrio</p>
 			</div>
 		</div>
-		<div class="mx-auto max-w-2xl py-12 sm:py-14 lg:max-w-7xl">
+		<div class="min-h-[calc(100vh-140px)] mx-auto max-w-2xl py-12 sm:py-14 lg:max-w-8xl">
 			<div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
 				@foreach($locals as $local)
 					<div>

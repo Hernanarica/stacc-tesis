@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/logout', [LogoutController::class, 'index'])->name('logout.index')->middleware('auth');
+Route::post('/logout', [LogoutController::class, 'index'])->name('logout.index')->middleware('auth');
 Route::get('/posts', [UserController::class, 'index'])->name('post.index');
 
 Route::controller(RegisterController::class)->prefix('/registrar')->group(function () {

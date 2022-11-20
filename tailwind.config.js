@@ -8,6 +8,7 @@ module.exports = {
 		extend: {
 			backgroundImage: {
 				'local-bg': "url('https://www.mibsas.com/wp-content/uploads/2017/05/CAMPOBRAVO-1200x900.jpg')",
+				'login': "url('../../../public/src/assets/images/login.jpg')",
 			},
 			maxWidth: {
 				'8xl': '1366px'
