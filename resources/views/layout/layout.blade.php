@@ -44,20 +44,22 @@
 									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
 								>Contacto</a>
 							</li>
-							<li>
-								<a
-									href="{{ route('favorite.index') }}"
-									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-								>Mis favoritos</a>
-							</li>
-							@role('admin')
-							<li>
-								<a
-									href="{{ route('locals.create') }}"
-									class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-								>Crear local</a>
-							</li>
-							@endrole
+							@auth()
+								<li>
+									<a
+										href="{{ route('favorite.index') }}"
+										class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
+									>Mis favoritos</a>
+								</li>
+								@role('admin|owner')
+								<li>
+									<a
+										href="{{ route('locals.create') }}"
+										class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
+									>Crear local</a>
+								</li>
+								@endrole
+							@endauth
 						</ul>
 					</nav>
 					
