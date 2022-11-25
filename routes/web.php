@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalController;
@@ -47,9 +48,9 @@ Route::controller(LocalController::class)->prefix('locals')->group(function () {
 });
 
 Route::group(['middleware' => ['role:admin|owner']], function () {
-	Route::controller(LocalController::class)->prefix('panel')->group(function () {
-		Route::get('/registrar-local', 'create')->name('locals.create');
-		Route::post('/registrar-local', 'store')->name('locals.store');
+	Route::controller(LocalController::class)->prefix('local')->group(function () {
+		Route::get('/registrar', 'create')->name('locals.create');
+		Route::post('/registrar', 'store')->name('locals.store');
 		Route::patch('/{id}', 'update')->name('locals.update');
 		Route::delete('/{local}', 'destroy')->name('locals.destroy');
 	});
@@ -58,9 +59,14 @@ Route::group(['middleware' => ['role:admin|owner']], function () {
 		Route::get('', 'index')->name('favorite.index');
 		Route::post('/{local}', 'store')->name('favorite.store');
 		Route::delete('/{local}', 'destroy')->name('favorite.destroy');
-//		Route::post('/agregar-favorito/{id}', [FavoriteController::class, 'store'])->name('favorite.store')->middleware('auth');
-//		Route::get('/mis-favoritos', [FavoriteController::class, 'index'])->name('favorite.index')->middleware('auth');
-//		Route::delete('/eliminar-favorito/{local}', [FavoriteController::class, 'destroy'])->name('favorite.destroy')->middleware('auth');
+	});
+});
+
+Route::group(['middleware' => ['role:admin']], function () {
+	Route::controller(DashboardController::class)->prefix('panel')->group(function () {
+		Route::get('', 'index')->name('dashboard.index');
+		Route::get('/usuarios', 'usersView')->name('dashboard.users.view');
+		Route::get('/locales', 'localsView')->name('dashboard.locals.view');
 	});
 });
 

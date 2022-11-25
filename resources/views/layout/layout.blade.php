@@ -59,6 +59,14 @@
 									>Crear local</a>
 								</li>
 								@endrole
+								@role('admin')
+								<li>
+									<a
+										href="{{ route('dashboard.index') }}"
+										class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
+									>Panel de control</a>
+								</li>
+								@endrole
 							@endauth
 						</ul>
 					</nav>
