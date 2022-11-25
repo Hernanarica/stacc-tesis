@@ -1,3 +1,6 @@
+<?php
+/** @var \App\Models\User[] $users */
+?>
 @extends('sections.dashboard')
 @section('title', 'Panel de control | Usuarios')
 @section('dashboard')
@@ -57,24 +60,20 @@
 										</tr>
 									</thead>
 									<tbody class="divide-y divide-gray-200 bg-white">
+									@foreach($users as $user)
 										<tr>
-											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Lindsay nombre de local</td>
-											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Direcicon del local</td>
-											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Telefono del local</td>
-											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-												<button class="px-3 py-2 flex items-center gap-2 bg-amber-500 text-white rounded">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-														<path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-													</svg>
-													Deshabilitado
-												</button>
-{{--												<button class="px-3 py-2 flex items-center gap-2 bg-green-600 text-white rounded">--}}
+											<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$user->name}}</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$user->lastname}}</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$user->email}}</td>
+											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$user->category}}</td>
+{{--											<td>--}}
+{{--												<button class="px-3 py-2 flex items-center gap-2 bg-amber-500 text-white rounded">--}}
 {{--													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">--}}
-{{--														<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />--}}
+{{--														<path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />--}}
 {{--													</svg>--}}
-{{--													Habilitado--}}
+{{--													Deshabilitado--}}
 {{--												</button>--}}
-											</td>
+{{--											</td>--}}
 											<td class="whitespace-nowrap px-3 py-4 flex items-center gap-2 text-sm text-gray-500">
 												<button class="px-3 py-2 flex items-center gap-2 bg-blue-500 text-white rounded">
 													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -90,8 +89,7 @@
 												</button>
 											</td>
 										</tr>
-										
-										<!-- More people... -->
+										@endforeach
 									</tbody>
 								</table>
 							</div>
