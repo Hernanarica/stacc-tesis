@@ -15,7 +15,7 @@
 			</nav>
 			
 			<div class="w-3/4">
-				@yield('dashboard')
+				@yield('dashboard', view('sections.dashboard-users'))
 			</div>
 		</div>
 	</x-wrapper>
