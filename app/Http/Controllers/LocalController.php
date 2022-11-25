@@ -115,6 +115,18 @@ class LocalController extends Controller
 	}
 	
 	/**
+	 * It enables a local
+	 *
+	 * @param local The name of the route parameter.
+	 */
+	public function enable($local){
+		$local = Local::find($local);
+		$local->is_public = 1;
+		$local->save();
+		return redirect()->route('sections.locals')->with('success', 'Local habilitado correctamente');
+	}
+	
+	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param Local $local
