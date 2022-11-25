@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use ChristianKuri\LaravelFavorite\Traits\Favoriteability;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-	use HasRoles, Favoriteability;
+	use HasRoles, Favoriteability, HasFactory;
 	
 	/**
 	 * The attributes that are mass assignable.
