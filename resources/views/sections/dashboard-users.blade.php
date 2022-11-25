@@ -1,5 +1,5 @@
 @extends('sections.dashboard')
-@section('title', 'Panel de control')
+@section('title', 'Panel de control | Usuarios')
 @section('dashboard')
 	<x-wrapper>
 		<div class="p-2 ">
@@ -47,8 +47,8 @@
 									<thead class="bg-gray-50">
 										<tr>
 											<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Nombre</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Direccion</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Teléfono</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Apellido</th>
+											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Estado</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Acciones</th>
 											<th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
