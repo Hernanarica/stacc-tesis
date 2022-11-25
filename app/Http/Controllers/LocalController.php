@@ -118,11 +118,15 @@ class LocalController extends Controller
 	/**
 	 * It changes the status of a local.
 	 *
-	 * @param local The name of the route parameter.
+	 * @param local $local The name of the route parameter.
 	 */
 	public function changeStatus($local){
 		$local = Local::find($local);
-		$local->is_public = $local->is_public == 1 ? 0 : 1;
+		if($local->is_public == 1){
+			$local->is_public = 0;
+		}else{
+			$local->is_public = 1;
+		}
 		$local->save();
 		return redirect()->route('sections.locals')->with('success', 'Local actualizado correctamente');
 	}
