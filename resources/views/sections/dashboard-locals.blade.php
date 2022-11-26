@@ -67,49 +67,39 @@
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->address}}</td>
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->phone}}</td>
 											<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-{{--												mostrar botones diferentes dependiendo de si esta habilitado o no --}}
 												@if($local->is_public == 1)
+													<form action="{{ route('dashboard.locals.disable', $local->id)}}" method="POST">
+														@csrf
+														@method('PATCH')
 													<button class="px-3 py-2 flex items-center gap-2 bg-green-600 text-green-100 rounded">
 														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
 															<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
 														</svg>
 														Deshabilitar
 													</button>
-{{--													<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">--}}
-{{--														Habilitado--}}
-{{--													</span>--}}
+													</form>
 												@else
+													<form action="{{ route('dashboard.locals.enable', $local->id)}}" method="POST">
+														@csrf
+														@method('PATCH')
 													<button class="px-3 py-2 flex items-center gap-2 bg-amber-500 text-white rounded">
 														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
 															<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
 														</svg>
 														Habilitar
 													</button>
-													
-{{--													<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">--}}
-{{--														Deshabilitado--}}
-{{--													</span>--}}
+													</form>
 												@endif
-{{--												<button class="px-3 py-2 flex items-center gap-2 bg-amber-500 text-white rounded">--}}
-{{--													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">--}}
-{{--														<path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />--}}
-{{--													</svg>--}}
-{{--													Deshabilitado--}}
-{{--												</button>--}}
-												{{--												<button class="px-3 py-2 flex items-center gap-2 bg-green-600 text-white rounded">--}}
-												{{--													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">--}}
-												{{--														<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />--}}
-												{{--													</svg>--}}
-												{{--													Habilitado--}}
-												{{--												</button>--}}
 											</td>
 											<td class="whitespace-nowrap px-3 py-4 flex items-center gap-2 text-sm text-gray-500">
-												<button class="px-3 py-2 flex items-center gap-2 bg-blue-500 text-white rounded">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-														<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-													</svg>
-													Editar
-												</button>
+												<a href="{{ route('dashboard.local.edit', ['id' => $local->id]) }}" class="" aria-label="Editar el local {{$local->name}}">
+													<button class="px-3 py-2 flex items-center gap-2 bg-blue-500 text-white rounded">
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+															<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+														</svg>
+														Editar
+													</button>
+												</a>
 												<button class="px-3 py-2 flex items-center gap-2 bg-red-500 text-white rounded">
 													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
 														<path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />

@@ -62,13 +62,24 @@ Route::group(['middleware' => ['role:admin|owner']], function () {
 	});
 });
 
+//Route::get('panel/locales', [DashboardController::class, 'localsView'])->name('dashboard.locals.view');
+//Route::get('panel/usuarios', [DashboardController::class, 'usersView'])->name('dashboard.users.view');
+
 Route::group(['middleware' => ['role:admin']], function () {
 	Route::controller(DashboardController::class)->prefix('panel')->group(function () {
 		Route::get('', 'index')->name('dashboard.index');
 		Route::get('/usuarios', 'usersView')->name('dashboard.users.view');
 		Route::get('/locales', 'localsView')->name('dashboard.locals.view');
+		Route::patch('/disable-local/{local}', 'changeStatus')->name('dashboard.locals.disable');
+		Route::patch('/enable-local/{local}', 'changeStatus')->name('dashboard.locals.enable');
+		Route::get('/{id}/editar-local', 'localEdit')->name('dashboard.local.edit');
 	});
 });
+
+
+Route::delete('eliminar/{id}', [LocalController::class, 'delete'])->name('local.delete')->middleware(['auth', 'only_admin']);
+Route::patch('enable-local/{id}', [LocalController::class, 'enable'])->name('local.enable')->middleware(['auth', 'only_admin']);
+Route::patch('disable-local/{id}', [LocalController::class, 'disable'])->name('local.disable')->middleware(['auth', 'only_admin']);
 
 Route::controller(PostController::class)->middleware('auth')->prefix('posts')->group(function () {
 	Route::post('', 'store')->name('post.store');

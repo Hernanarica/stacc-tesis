@@ -25,16 +25,18 @@ class LocalController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		if (empty($request->query('search'))) {
+		if (empty($request->search)) {
+			//traer todos los locales solo si son visibles
 			$locals = Local::where('is_public', 1)->paginate(4);
+		}else{
+			$locals = Local::with('neighborhood')
+				->where('is_public', 1)
+				->where('name', 'like', '%' . $request->query('search') . '%')
+				->orWhereHas('neighborhood', function ($query) use ($request) {
+					$query->where('name', 'like', '%' . $request->query('search') . '%');
+				})
+				->paginate(4);
 		}
-		$locals = Local::with('neighborhood')
-			->where('is_public', 1)
-			->where('name', 'like', '%' . $request->query('search') . '%')
-			->orWhereHas('neighborhood', function ($query) use ($request) {
-				$query->where('name', 'like', '%' . $request->query('search') . '%');
-			})
-			->paginate(4);
 		return view('sections.locals', [
 			'locals' => $locals,
 			'search' => $request->query('search')
@@ -114,22 +116,6 @@ class LocalController extends Controller
 		
 	}
 	
-	
-	/**
-	 * It changes the status of a local.
-	 *
-	 * @param local $local The name of the route parameter.
-	 */
-	public function changeStatus($local){
-		$local = Local::find($local);
-		if($local->is_public == 1){
-			$local->is_public = 0;
-		}else{
-			$local->is_public = 1;
-		}
-		$local->save();
-		return redirect()->route('sections.locals')->with('success', 'Local actualizado correctamente');
-	}
 	
 	/**
 	 * Show the form for editing the specified resource.
