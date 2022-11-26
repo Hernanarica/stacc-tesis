@@ -70,6 +70,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::get('', 'index')->name('dashboard.index');
 		Route::get('/usuarios', 'usersView')->name('dashboard.users.view');
 		Route::get('/locales', 'localsView')->name('dashboard.locals.view');
+		
+//		RUTAS PARA TESTEAR
 		Route::patch('/disable-local/{local}', 'changeStatus')->name('dashboard.locals.disable');
 		Route::patch('/enable-local/{local}', 'changeStatus')->name('dashboard.locals.enable');
 		Route::get('/{id}/editar-local', 'localEdit')->name('dashboard.local.edit');
