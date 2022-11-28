@@ -2,13 +2,15 @@
 /** @var \Illuminate\Support\ViewErrorBag $errors */
 /** @var \App\Models\Local $local */
 /** @var \App\Models\Neighborhoods[] $neighborhoods */
-?>@extends('layout.layout.dashboard')@section('title', 'Panel de control | Editar local' . $local->name)
+?>@extends('layout.layout-dashboard')@section('title', 'Panel de control | Editar local' . $local->name)
 @section('dashboard')
 	<x-wrapper>
 		{{-- Register local form --}}
 		<div class="flex justify-center py-5">
 			{{--			<form action="{{ route('register.edit', ['id' => $local->id_local]) }}" enctype="multipart/form-data" method="post" class="form-edit">--}}
-			<form action="">
+			<form action="{{ route('dashboard.locals.update', ['id' => $local->id]) }}" enctype="multipart/form-data" method="post" class="form-edit">
+				@csrf
+				@method('PUT')
 				<div class="text-center">
 					<h2 class="text-4xl font-bold text-center text-gray-700">Actualizar local</h2>
 				</div>
@@ -186,7 +188,7 @@
 								Imagen Actual:
 							</p>
 							@if($local->image != null)
-								<img src="{{ url('/uploads/images/local/' . $local->image)}}" alt="{{ $local->image_alt }}" class="object-cover w-full h-full">
+								<img src="{{ url('uploads/images/local/' . $local->image)}}" alt="{{ $local->image_alt }}" class="object-cover w-full h-full">
 							@endif
 						</div>
 						<label for="image" class="block form-label mb-2">
@@ -295,19 +297,6 @@
 					</div>
 				</div>
 				<div class="mx-auto col-12 col-md-11">
-					<div class="">
-						{{--@formatter:off--}}
-						<input type="checkbox"
-						       value="1"
-						       name="terms"
-						       id="terms"
-						       @if(old('terms') === "1")
-							       checked="true"
-							@endif
-						>
-						{{--@formatter:on--}}
-						<label for="terms">He leído y acepto los términos y condiciones...</label>
-					</div>
 					<div>
 						{{--@formatter:off--}}
 						@error('terms')

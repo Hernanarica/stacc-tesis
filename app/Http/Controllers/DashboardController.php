@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LocalUpdateRequest;
 use App\Models\Local;
 use App\Models\Neighborhoods;
 use App\Models\User;
+use App\Services\ImageService;
+use http\Env\Request;
+use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {
@@ -67,4 +71,48 @@ class DashboardController extends Controller
 			'neighborhoods' => $neighborhoods
 		]);
 	}
+	
+	/**
+	 * It validates the request, gets the form data, finds the local, checks if there's an image, if there is, it creates a
+	 * new image service, saves the image, adds the image name to the form data, deletes the old image, updates the local and
+	 * saves it
+	 *
+	 * @param LocalUpdateRequest $request request The request object.
+	 * @param id $id The id of the local to update
+	 *
+	 * @return A view with the local data
+	 */
+	public function updateLocal(LocalUpdateRequest $request, $id)
+	{
+		try {
+			$request->validated();
+//			$request->validate(LocalUpdateRequest::rules(), LocalUpdateRequest::messages());
+			$formData = $request->input();
+			$local = Local::findOrFail($id);
+			
+			if ($request->hasFile('image')) {
+				
+				$image = new ImageService($request->image, public_path('uploads/images/local'));
+				$image->saveImage();
+				
+				$formData['image'] = $image->imageName;
+				
+				File::delete(public_path("uploads/images/local/{$local->image}"));
+				
+			} else {
+				$formData['image'] = $local->image;
+			}
+			
+			$local->update($formData);
+			
+			$local->save();
+			
+			return redirect()->route('dashboard.locals.view')->with('success', 'Local actualizado correctamente');
+			
+		} catch (Exception $e) {
+			return redirect()->route('dashboard.locals.view')->with('error', 'Error al actualizar el local');
+		}
+		
+	}
+	
 }

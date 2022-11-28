@@ -57,8 +57,8 @@ Route::group(['middleware' => ['role:admin|owner']], function () {
 	
 	Route::controller(FavoriteController::class)->prefix('favorito')->group(function () {
 		Route::get('', 'index')->name('favorite.index');
-		Route::post('/{local}', 'store')->name('favorite.store');
-		Route::delete('/{local}', 'destroy')->name('favorite.destroy');
+		Route::post('/{id}', 'store')->name('favorite.store');
+		Route::delete('/{id}', 'destroy')->name('favorite.destroy');
 	});
 });
 
@@ -75,18 +75,20 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::patch('/disable-local/{local}', 'changeStatus')->name('dashboard.locals.disable');
 		Route::patch('/enable-local/{local}', 'changeStatus')->name('dashboard.locals.enable');
 		Route::get('/{id}/editar-local', 'localEdit')->name('dashboard.local.edit');
+		Route::put('/update-local/{id}', 'updateLocal')->name('dashboard.locals.update');
 	});
 });
 
 
-Route::delete('eliminar/{id}', [LocalController::class, 'delete'])->name('local.delete')->middleware(['auth', 'only_admin']);
+Route::delete('eliminar/{id}', [LocalController::class, 'delete'])->name('local.delete')->middleware(['role:admin']);
 Route::patch('enable-local/{id}', [LocalController::class, 'enable'])->name('local.enable')->middleware(['auth', 'only_admin']);
 Route::patch('disable-local/{id}', [LocalController::class, 'disable'])->name('local.disable')->middleware(['auth', 'only_admin']);
 
 Route::controller(PostController::class)->middleware('auth')->prefix('posts')->group(function () {
 	Route::post('', 'store')->name('post.store');
-	Route::patch('/{id}', 'update')->name('post.update');
-	Route::delete('/{id}', 'destroy')->name('post.destroy');
+	//routes únicamente del dashboard
+//	Route::patch('/{id}', 'update')->name('post.update');
+//	Route::delete('/{id}', 'destroy')->name('post.destroy');
 });
 
 Route::controller(ContactController::class)->prefix('/contact')->group(function () {

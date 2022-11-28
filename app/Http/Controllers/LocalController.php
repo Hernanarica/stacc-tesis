@@ -138,7 +138,7 @@ class LocalController extends Controller
 	public function update(LocalUpdateRequest $request, $id)
 	{
 		try {
-//		$request->validate((LocalUpdateRequest::rules()), LocalUpdateRequest::messages());
+		$request->validate((LocalUpdateRequest::rules()), LocalUpdateRequest::messages());
 			$formData = $request->input();
 			$local = Local::findOrFail($id);
 			
@@ -176,14 +176,13 @@ class LocalController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param Local $local
-	 * @return \Illuminate\Http\JsonResponse
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function destroy(Local $local)
+	public function delete($id): \Illuminate\Http\RedirectResponse
 	{
 		try {
-			
-			$locale = Local::find($local->id);
+			$locale = Local::find($id);
 			
 			if (!$locale) throw new Exception('El local no existe');
 			
@@ -191,13 +190,10 @@ class LocalController extends Controller
 			
 			File::delete(public_path("uploads/images/local/{$locale->image}"));
 			
-			return response()->json([
-				'status' => 'success',
-				'data' => $locale,
-			], 200);
+			return redirect()->route('dashboard.locals.view')->with('success', 'Local eliminado correctamente');
 			
 		} catch (Exception $e) {
-			return response()->json($e->getMessage(), 400);
+			return redirect()->route('dashboard.locals.view')->with('error', 'Error al eliminar el local');
 		}
 	}
 }
