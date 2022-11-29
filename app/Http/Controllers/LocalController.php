@@ -25,16 +25,18 @@ class LocalController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		if (empty($request->query('search'))) {
+		if (empty($request->search)) {
+			//traer todos los locales solo si son visibles
 			$locals = Local::where('is_public', 1)->paginate(4);
+		}else{
+			$locals = Local::with('neighborhood')
+				->where('is_public', 1)
+				->where('name', 'like', '%' . $request->query('search') . '%')
+				->orWhereHas('neighborhood', function ($query) use ($request) {
+					$query->where('name', 'like', '%' . $request->query('search') . '%');
+				})
+				->paginate(4);
 		}
-		$locals = Local::with('neighborhood')
-			->where('is_public', 1)
-			->where('name', 'like', '%' . $request->query('search') . '%')
-			->orWhereHas('neighborhood', function ($query) use ($request) {
-				$query->where('name', 'like', '%' . $request->query('search') . '%');
-			})
-			->paginate(4);
 		return view('sections.locals', [
 			'locals' => $locals,
 			'search' => $request->query('search')
@@ -116,22 +118,6 @@ class LocalController extends Controller
 	
 	
 	/**
-	 * It changes the status of a local.
-	 *
-	 * @param local $local The name of the route parameter.
-	 */
-	public function changeStatus($local){
-		$local = Local::find($local);
-		if($local->is_public == 1){
-			$local->is_public = 0;
-		}else{
-			$local->is_public = 1;
-		}
-		$local->save();
-		return redirect()->route('sections.locals')->with('success', 'Local actualizado correctamente');
-	}
-	
-	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param Local $local
@@ -152,7 +138,7 @@ class LocalController extends Controller
 	public function update(LocalUpdateRequest $request, $id)
 	{
 		try {
-//		$request->validate((LocalUpdateRequest::rules()), LocalUpdateRequest::messages());
+		$request->validate((LocalUpdateRequest::rules()), LocalUpdateRequest::messages());
 			$formData = $request->input();
 			$local = Local::findOrFail($id);
 			
@@ -190,14 +176,13 @@ class LocalController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param Local $local
-	 * @return \Illuminate\Http\JsonResponse
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
-	public function destroy(Local $local)
+	public function delete($id): \Illuminate\Http\RedirectResponse
 	{
 		try {
-			
-			$locale = Local::find($local->id);
+			$locale = Local::find($id);
 			
 			if (!$locale) throw new Exception('El local no existe');
 			
@@ -205,13 +190,10 @@ class LocalController extends Controller
 			
 			File::delete(public_path("uploads/images/local/{$locale->image}"));
 			
-			return response()->json([
-				'status' => 'success',
-				'data' => $locale,
-			], 200);
+			return redirect()->route('dashboard.locals.view')->with('success', 'Local eliminado correctamente');
 			
 		} catch (Exception $e) {
-			return response()->json($e->getMessage(), 400);
+			return redirect()->route('dashboard.locals.view')->with('error', 'Error al eliminar el local');
 		}
 	}
 }

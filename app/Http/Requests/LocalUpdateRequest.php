@@ -31,7 +31,6 @@ class LocalUpdateRequest extends FormRequest
 	    'url_site'              => ['required'],
 	    'url_map'               => ['required'],
 	    'phone'                 => ['required', 'numeric'],
-	    'terms'                 => ['required'],
     ];
   }
 
@@ -48,7 +47,6 @@ class LocalUpdateRequest extends FormRequest
 			'url_map.required'      => 'El iframe del mapa no puede estar vacío.',
 			'phone.required'        => 'El teléfono no puede estar vacío.',
 			'phone.numeric'         => 'Escribe un número telefónico válido',
-			'terms.required'        => 'Tiene que aceptar los términos para continuar',
 		];
 	}
 }
