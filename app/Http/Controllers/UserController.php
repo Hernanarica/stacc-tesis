@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Services\ImageService;
 use Exception;
@@ -54,10 +55,11 @@ class UserController extends Controller
 			}
 			
 			$user = User::create([
-				'name'     => $request->name,
+				'name' => $request->name,
 				'lastname' => $request->lastname,
-				'image'    => $image->imageName ?? null,
-				'email'    => $request->email,
+				'image' => $image->imageName ?? null,
+				'image_alt' => $image->imageAlt ?? null,
+				'email' => $request->email,
 				'category' => $request->category,
 				'password' => Hash::make($request->password)
 			]);
@@ -66,14 +68,14 @@ class UserController extends Controller
 			
 			return response()->json([
 				'status' => 'success',
-				'data'   => $user
+				'data' => $user
 			]);
 			
 		} catch (Exception $e) {
 			return response()->json([
 				'Exception' => $e->getMessage(),
-				'File'      => $e->getFile(),
-				'Line'      => $e->getLine(),
+				'File' => $e->getFile(),
+				'Line' => $e->getLine(),
 			]);
 		}
 	}
@@ -100,72 +102,77 @@ class UserController extends Controller
 		//
 	}
 	
+	
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param Request $request
-	 * @param User $user
-	 * @return JsonResponse
+	 * @param \App\Http\Requests\UserUpdateRequest $request
+	 * @param $id
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
-	public function update(Request $request, User $user)
+	public function updateUser(UserUpdateRequest $request, $id)
 	{
-		try {
-//			TODO: Crear Request para UserUpdate.
+		$user = User::find($id);
+		
+		$request->validated();
+		
+		if ($request->hasFile('image')) {
+			$image = new ImageService($request->image, public_path('uploads/images/profile'));
+			$image->saveImage();
 			
-			if ($request->hasFile('image')) {
-				$image = new ImageService($request->image, public_path('uploads/images/profile'));
-				$image->saveImage();
-				
-				File::delete(public_path("uploads/images/profile/{$user->image}"));
-			}
-			
-			$user->update([
-				'name'     => $request->name,
-				'lastname' => $request->lastname,
-				'image'    => $image->imageName ?? $user->image,
-			]);
-			
-			$user->save();
-			
-			return response()->json([
-				'status' => 'success',
-				'data'   => $user
-			]);
-			
-		} catch (Exception $e) {
-			return response()->json([
-				'Exception' => $e->getMessage(),
-				'File'      => $e->getFile(),
-				'Line'      => $e->getLine(),
-			]);
+			File::delete(public_path("uploads/images/profile/{$user->image}"));
 		}
+		if($request->input('password') ) {
+			$user->password = Hash::make($request->input('password'));
+		}
+		
+		$user->update([
+			'name'        => $request->name,
+			'lastname'    => $request->lastname,
+			'email'       => $request->email,
+			'image'       => $image->imageName ?? $user->image,
+			'image_alt'   => $image->imageAlt ?? $user->image_alt,
+			'category'    => $request->category,
+		]);
+	
+	
+
+		
+		$user->save();
+		
+		return redirect()->route('dashboard.users.view')->with('success', 'Usuario actualizado correctamente');
+	}
+	
+	
+	/**
+	 * It finds the user by the id, deletes the image from the public folder, deletes the user from the database, and
+	 * redirects the user back to the view page with a success message
+	 *
+	 * @param id $id The id of the user to be deleted.
+	 */
+	public function destroy($id)
+	{
+		$user = User::find($id);
+		
+		File::delete(public_path("uploads/images/profile/{$user->image}"));
+		$user->delete();
+		
+		return redirect()->route('dashboard.users.view')->with('success', 'Usuario fue borrado correctamente');
+		
 	}
 	
 	/**
-	 * Remove the specified resource from storage.
+	 * This function is used to edit a user
 	 *
-	 * @param User $user
-	 * @return JsonResponse
+	 * @param id The id of the user we want to edit.
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View editUser function is returning the view of the edit page for the user with the id that is passed in.
 	 */
-	public function destroy(User $user)
+	public function editUser($id)
 	{
-		try {
-//			TODO: Crear Request para UserDelete.
-			$user->delete();
-			
-			File::delete(public_path("uploads/images/profile/{$user->image}"));
-			
-			return response()->json([
-				'status' => 'success',
-				'data'   => $user
-			]);
-			
-		} catch (Exception $e) {
-			return response()->json([
-				'Exception' => $e->getMessage(),
-				'File'      => $e->getFile(),
-				'Line'      => $e->getLine(),
-			]);
-		}
+		$user = User::find($id);
+		
+		return view('sections.dashboard-user-edit', [
+			'user' => $user
+		]);
 	}
+	
 }

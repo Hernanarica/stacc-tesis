@@ -2,12 +2,12 @@
 /** @var \Illuminate\Support\ViewErrorBag $errors */
 /** @var \App\Models\Local $local */
 /** @var \App\Models\Neighborhoods[] $neighborhoods */
-?>@extends('layout.layout-dashboard')@section('title', 'Panel de control | Editar local' . $local->name)
+?>
+@extends('layout.layout-dashboard')@section('title', 'Panel de control | Editar local' . $local->name)
 @section('dashboard')
 	<x-wrapper>
 		{{-- Register local form --}}
 		<div class="flex justify-center py-5">
-			{{--			<form action="{{ route('register.edit', ['id' => $local->id_local]) }}" enctype="multipart/form-data" method="post" class="form-edit">--}}
 			<form action="{{ route('dashboard.locals.update', ['id' => $local->id]) }}" enctype="multipart/form-data" method="post" class="form-edit">
 				@csrf
 				@method('PUT')
@@ -15,7 +15,7 @@
 					<h2 class="text-4xl font-bold text-center text-gray-700">Actualizar local</h2>
 				</div>
 				@csrf
-				@method('PUT')
+				@method('put')
 				<div class="grid grid-cols-1 gap-6 mt-2 md:grid-cols-2">
 					<div class="">
 						<label for="name" class="block form-label mb-2">

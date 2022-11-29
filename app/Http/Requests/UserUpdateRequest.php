@@ -4,17 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize(): bool
-	{
-		return true;
-	}
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
 	
 	/**
 	 * Get the validation rules that apply to the request.
@@ -26,9 +26,8 @@ class UserRequest extends FormRequest
 		return [
 			'name'     => ['required'],
 			'lastname' => ['required'],
-			'email'    => ['required', 'unique:users'],
+			'email'    => ['required'],
 			'category' => ['required'],
-			'password' => ['required', 'min:4'],
 		];
 	}
 	
@@ -38,10 +37,7 @@ class UserRequest extends FormRequest
 			'name.required'     => 'El nombre es obligatorio',
 			'lastname.required' => 'El apellido es obligatorio',
 			'email.required'    => 'El email es obligatorio',
-			'email.unique'      => 'El email ya existe',
 			'category.required' => 'La categoria es obligatoria',
-			'password.required' => 'La contraseña es obligatorio',
-			'password.min'      => 'La contraseña debe tener como minimo 4 caracteres',
 		];
 	}
 }

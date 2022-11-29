@@ -38,7 +38,7 @@ Route::controller(LoginController::class)->prefix('/login')->group(function () {
 });
 
 Route::controller(UserController::class)->middleware('auth')->prefix('users')->group(function () {
-	Route::patch('/{user}', 'update')->name('user.update');
+//	Route::patch('/{user}', 'update')->name('user.update');
 	Route::delete('/{user}', 'destroy')->name('user.destroy');
 });
 
@@ -79,10 +79,15 @@ Route::group(['middleware' => ['role:admin']], function () {
 	});
 });
 
+//user dashboard
+Route::delete('panel/eliminar-usuario/{id}', [UserController::class, 'destroy'])->name('dashboard.user.destroy')->middleware(['role:admin']);
+Route::get('panel/edit-usuario/{id}', [UserController::class, 'editUser'])->name('dashboard.user.edit')->middleware(['role:admin']);
+Route::put('panel/update-usuario/{id}', [UserController::class, 'updateUser'])->name('dashboard.user.update')->middleware(['role:admin']);
 
+//local dashboard
 Route::delete('eliminar/{id}', [LocalController::class, 'delete'])->name('local.delete')->middleware(['role:admin']);
-Route::patch('enable-local/{id}', [LocalController::class, 'enable'])->name('local.enable')->middleware(['auth', 'only_admin']);
-Route::patch('disable-local/{id}', [LocalController::class, 'disable'])->name('local.disable')->middleware(['auth', 'only_admin']);
+//Route::patch('enable-local/{id}', [LocalController::class, 'enable'])->name('local.enable')->middleware(['auth', 'only_admin']);
+//Route::patch('disable-local/{id}', [LocalController::class, 'disable'])->name('local.disable')->middleware(['auth', 'only_admin']);
 
 Route::controller(PostController::class)->middleware('auth')->prefix('posts')->group(function () {
 	Route::post('', 'store')->name('post.store');

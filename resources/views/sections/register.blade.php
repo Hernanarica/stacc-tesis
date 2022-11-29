@@ -103,7 +103,6 @@
 							</div>
 							@enderror
 						</div>
-						
 						<div>
 							<label class="block mb-2 text-sm text-gray-600 dark:text-gray-200" for="category">Categoria</label>
 							<select
