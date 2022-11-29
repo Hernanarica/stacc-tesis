@@ -12,7 +12,7 @@
 				</a>
 			</div>
 			<div class="">
-				<form action="{{route('locals.index')}}" method="get" class="flex items-center max-w-sm">
+				<form action="{{route('dashboard.locals.view')}}" method="get" class="flex items-center max-w-sm">
 					@csrf
 					<label for="simple-search" class="sr-only">Search</label>
 					<div class="relative w-full">
@@ -32,6 +32,9 @@
 						<span class="sr-only">Search</span>
 					</button>
 				</form>
+			</div>
+			<div class="mt-3 col-span-3 md:col-span-2 lg:col-span-3">
+				<p class="text-sm text-gray-500 dark:text-gray-400">Busca por nombre del local</p>
 			</div>
 			<div>
 				<div class="mt-8 flex flex-col">
