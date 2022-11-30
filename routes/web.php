@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\StoresOwnController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -101,3 +102,5 @@ Route::controller(ContactController::class)->prefix('/contact')->group(function 
 });
 
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
+
+Route::get('/mis-locales', [StoresOwnController::class, 'index'])->name('store.index')->middleware(['role:owner']);
