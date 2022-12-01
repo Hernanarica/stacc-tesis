@@ -43,7 +43,7 @@ class UserController extends Controller
 	 *
 	 * @param UserRequest request The request object.
 	 *
-	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view with a success message
+	 * @return \Illuminate\Http\RedirectResponse view with a success message
 	 */
 	public function store(UserRequest $request)
 	{
@@ -66,9 +66,9 @@ class UserController extends Controller
 			
 			$user->assignRole($request->category);
 			
-			return view('admin.users.index')->with('success', 'Usuario creado con exito');
+			return redirect()->route('home.index')->with('success', 'Usuario registrado con exito');
 		}catch (Throwable $e) {
-			return view('admin.users.index')->with('error', 'Error al crear el usuario');
+			return redirect()->route('home.index')->with('error', 'Error al crear el usuario');
 		}
 	}
 	
