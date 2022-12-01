@@ -67,6 +67,14 @@
 									>Crear local</a>
 								</li>
 								@endrole
+								@role('owner|visitor')
+								<li>
+									<a
+										href="{{ route('profile.index') }}"
+										class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
+									>Mi perfil</a>
+								</li>
+								@endrole
 								@role('admin')
 								<li>
 									<a

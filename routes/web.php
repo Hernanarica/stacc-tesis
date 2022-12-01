@@ -8,6 +8,7 @@ use App\Http\Controllers\LocalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StoresOwnController;
 use App\Http\Controllers\UserController;
@@ -108,3 +109,8 @@ Route::get('/mis-locales', [StoresOwnController::class, 'index'])->name('store.i
 Route::get('/mis-locales/{id}', [StoresOwnController::class, 'show'])->name('store.show')->middleware(['role:owner']);
 Route::get('/mis-locales/{id}/pedir-baja', [StoresOwnController::class, 'delete'])->name('store.delete')->middleware(['role:owner']);
 Route::patch('/mis-locales/{id}', [StoresOwnController::class, 'update'])->name('store.update')->middleware(['role:owner']);
+
+//perfil
+Route::get('/perfil', [ProfileController::class, 'index'])->name('profile.index')->middleware(['role:owner|visitor']);
+Route::get('/perfil/editar', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['role:owner|visitor']);
+Route::put('/perfil/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['role:owner|visitor']);
