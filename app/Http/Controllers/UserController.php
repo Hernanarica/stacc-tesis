@@ -37,18 +37,18 @@ class UserController extends Controller
 		//
 	}
 	
+
 	/**
-	 * Store a newly created resource in storage.
+	 * It creates a new user, assigns a role to it, and returns a view with a success message
 	 *
-	 * @param UserRequest $request
-	 * @return JsonResponse
-	 * @throws Throwable
+	 * @param UserRequest request The request object.
+	 *
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view with a success message
 	 */
 	public function store(UserRequest $request)
 	{
-		try {
 //			throw_if(($request->category !== 'visitor' || $request->category !== 'owner'), 'Categoria invalida');
-			
+		try {
 			if ($request->hasFile('image')) {
 				$image = new ImageService($request->image, public_path('uploads/images/profile'));
 				$image->saveImage();
@@ -66,17 +66,9 @@ class UserController extends Controller
 			
 			$user->assignRole($request->category);
 			
-			return response()->json([
-				'status' => 'success',
-				'data' => $user
-			]);
-			
-		} catch (Exception $e) {
-			return response()->json([
-				'Exception' => $e->getMessage(),
-				'File' => $e->getFile(),
-				'Line' => $e->getLine(),
-			]);
+			return view('admin.users.index')->with('success', 'Usuario creado con exito');
+		}catch (Throwable $e) {
+			return view('admin.users.index')->with('error', 'Error al crear el usuario');
 		}
 	}
 	
@@ -120,21 +112,19 @@ class UserController extends Controller
 			
 			File::delete(public_path("uploads/images/profile/{$user->image}"));
 		}
-		if($request->input('password') ) {
+		if ($request->input('password')) {
 			$user->password = Hash::make($request->input('password'));
 		}
 		
 		$user->update([
-			'name'        => $request->name,
-			'lastname'    => $request->lastname,
-			'email'       => $request->email,
-			'image'       => $image->imageName ?? $user->image,
-			'image_alt'   => $image->imageAlt ?? $user->image_alt,
-			'category'    => $request->category,
+			'name' => $request->name,
+			'lastname' => $request->lastname,
+			'email' => $request->email,
+			'image' => $image->imageName ?? $user->image,
+			'image_alt' => $image->imageAlt ?? $user->image_alt,
+			'category' => $request->category,
 		]);
-	
-	
-
+		
 		
 		$user->save();
 		

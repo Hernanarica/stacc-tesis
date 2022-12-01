@@ -24,6 +24,6 @@ class RegisterController extends Controller
 			'password' => Hash::make($request->password)
 		]);
 		
-		return to_route('home.index');
+		return to_route('home.index')->with('success', 'Usuario registrado con exito');
 	}
 }

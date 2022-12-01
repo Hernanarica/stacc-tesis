@@ -11,6 +11,6 @@ class LogoutController extends Controller
 	{
 		Auth::logout();
 		
-		return to_route('login.index');
+		return to_route('login.index')->with('success', 'Logout realizado com exito, te esperamos pronto');
 	}
 }

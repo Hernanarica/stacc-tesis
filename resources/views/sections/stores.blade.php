@@ -7,54 +7,66 @@
 	<x-wrapper>
 {{--		titulo de mis locales --}}
 		<h2 class="text-3xl font-bold text-gray-700">Mis Locales</h2>
-		<div class="min-h-[calc(100vh-140px)] mx-auto max-w-2xl py-12 sm:py-14 lg:max-w-8xl">
-			<div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-			@foreach($locals as $local)
-				<div>
-					<div class="relative">
-						<div class="relative h-72 w-full overflow-hidden rounded-lg">
-							<img
-								src="{{ url('/uploads/images/local/' . $local->image)}}"
-								alt="{{ $local->image_alt }}"
-								class=" max-w-lg inline-block aspect-video object-cover shadow-xl"
-							/>
-						</div>
-						<div class="relative mt-4">
-							<h3 class="text-lg font-semibold text-gray-900 ">
-								{{ $local->name }}
-							</h3>
-							<h3 class="text-sm font-medium text-gray-900">{{ $local->address }}, {{ $local->neighborhood->name }}</h3>
-							<p class="flex items-center gap-1 mt-1 text-sm text-gray-500">
-								<svg
-									class="w-4 h-4"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="currentColor"
-								>
-									<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-								</svg>
-								{{ $local->opening_time }} a {{ $local->closing_time }}
-							</p>
-						</div>
-						<div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
-							<div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
-							<p class="relative text-lg font-semibold text-white">{{$local->neighborhood->name}}</p>
-						</div>
-					</div>
-					<div class="mt-6">
-						<a
-							href="{{ route('locals.show', ['local' => $local->id]) }}"
-							class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 py-2 px-8 text-sm font-medium text-gray-900 hover:bg-gray-200"
-						>
-							Ver más
-						</a>
+		<div class="mt-8 flex flex-col">
+			<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+				<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+					<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+					@foreach($locals as $local)
+		{{--				listado de mis locales con su funcion de editar --}}
+					<table class="min-w-full divide-y divide-gray-300">
+						<thead class="bg-gray-50">
+						<tr>
+							
+							<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">imagen</th>
+							<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Nombre</th>
+							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Direccion</th>
+							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Teléfono</th>
+							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Estado</th>
+							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Acciones</th>
+						
+						</thead>
+						<tbody class="bg-white divide-y divide-gray-200">
+						<tr>
+							<td class="px-3 py-4 whitespace-nowrap">
+								<div class="flex items-center">
+									<div class="flex-shrink-0 h-10 w-10">
+										<img class="h-10 w-10 rounded-full" src="{{ url('/uploads/images/local/' . $local->image)}}" alt="{{$local->image_alt}}">
+									</div>
+								</div>
+							</td>
+							<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$local->name}}</td>
+							<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->address}}</td>
+							<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->phone}}</td>
+							{{--								poner si esta habilitado o no --}}
+							@if($local->is_public === 1)
+								<td>
+									<span class="inline-flex leading-5 font-semibold rounded-full bg-emerald-300 text-emerald-700 p-1.5">
+										Habilitado
+									</span>
+								</td>
+							@else
+								<td>
+									<span class="inline-flex leading-5 font-semibold rounded-full bg-red-300 text-red-700 p-1.5">
+										Deshabilitado
+									</span>
+								</td>
+							@endif
+							<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+								<a href="{{ route('store.show', $local->id) }}" class="" aria-label="Editar el usuario {{$local->name}}">
+									<button class="px-3 py-2 flex items-center gap-2 bg-blue-500 text-white rounded">
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+											<path stroke-linecap="round" stroke-linejoin="round"
+											      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+										</svg>
+										Editar
+									</button>
+								</a>
+							</td>
+					</table>
+					@endforeach
 					</div>
 				</div>
-			@endforeach
 			</div>
 		</div>
-		
 	</x-wrapper>
 @endsection

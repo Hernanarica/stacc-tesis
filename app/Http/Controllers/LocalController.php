@@ -128,13 +128,7 @@ class LocalController extends Controller
 		//
 	}
 	
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param LocalUpdateRequest $request
-	 * @param $id
-	 * @return \Illuminate\Http\JsonResponse
-	 */
+	
 	public function update(LocalUpdateRequest $request, $id)
 	{
 		try {
@@ -159,17 +153,11 @@ class LocalController extends Controller
 			
 			$local->save();
 			
-			return response()->json([
-				'status' => 'success',
-				'data' => $local
-			]);
+			return redirect()->route('locals.index')->with('success', 'Local actualizado correctamente');
+
 			
 		} catch (Exception $e) {
-			return response()->json([
-				'Exception' => $e->getMessage(),
-				'File' => $e->getFile(),
-				'Line' => $e->getLine(),
-			]);
+			return redirect()->route('locals.index')->with('error', 'Error al actualizar el local');
 		}
 	}
 	

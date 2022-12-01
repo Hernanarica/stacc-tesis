@@ -193,6 +193,58 @@
 				</nav>
 			</x-wrapper>
 		</header>
+{{--	 mensajes globales de notificaciones con estilos en tailwindcss	--}}
+		
+		@if(session('success'))
+			<div class="fixed top-0 right-0 z-50 w-full max-w-xs mx-4 mt-4 overflow-hidden bg-green-500 rounded-lg shadow-lg pointer-events-auto md:max-w-xs message-session">
+				<div class="overflow-hidden bg-green-500 rounded-lg shadow-xs">
+					<div class="p-4">
+						<div class="flex items-center">
+							<div class="p-2 text-green-100 bg-green-600 rounded-full">
+								<svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+									<path d="M5 13l4 4L19 7"></path>
+								</svg>
+							</div>
+							<div class="mx-3">
+								<p class="text-sm font-medium text-white">
+									{{ session('success') }}
+								</p>
+							</div>
+							<button class="p-1 transition duration-150 ease-in-out rounded-md hover:bg-green-600 focus:outline-none focus:bg-green-600">
+								<svg class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor" id="close">
+									<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414l-4.293 4.293 4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414l4.293-4.293-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		@endif
+		@if(session('error'))
+			<div class="fixed top-0 right-0 z-50 w-full max-w-sm mx-4 mt-4 overflow-hidden bg-red-500 rounded-lg shadow-lg pointer-events-auto md:max-w-md message-session">
+				<div class="overflow-hidden bg-red-500 rounded-lg shadow-xs">
+					<div class="p-4">
+						<div class="flex items center">
+							<div class="p-2 text-red-100 bg-red-600 rounded-full">
+								<svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
+									<path d="M5 13l4 4L19 7"></path>
+								</svg>
+							</div>
+							<div class="mx-3">
+								<p class="text-sm font-medium text-white">
+									{{ session('error') }}
+								</p>
+							</div>
+							<button class="p-1 transition duration-150 ease-in-out rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">
+								<svg class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor" id="close">
+									<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414l-4.293 4.293 4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414l4.293-4.293-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		@endif
 		
 		<main>
 			@yield('content')

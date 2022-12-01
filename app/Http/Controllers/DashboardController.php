@@ -89,7 +89,7 @@ class DashboardController extends Controller
 	 * @param LocalUpdateRequest $request request The request object.
 	 * @param id $id The id of the local to update
 	 *
-	 * @return A view with the local data
+	 * @return \Illuminate\Http\RedirectResponse view with the local data
 	 */
 	public function updateLocal(LocalUpdateRequest $request, $id)
 	{

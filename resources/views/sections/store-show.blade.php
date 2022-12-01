@@ -3,19 +3,20 @@
 /** @var \App\Models\Local $local */
 /** @var \App\Models\Neighborhoods[] $neighborhoods */
 ?>
-@extends('layout.layout-dashboard')@section('title', 'Panel de control | Editar local' . $local->name)
+@extends('layout.layout-dashboard')
+@section('title', 'Mis locales | Editar local' . $local->name)
 @section('dashboard')
 	<x-wrapper>
 		{{-- Register local form --}}
 		<div class="flex justify-center py-5">
-			<form action="{{ route('dashboard.locals.update', ['id' => $local->id]) }}" enctype="multipart/form-data" method="post" class="form-edit">
+			<form action="{{ route('store.update', ['id' => $local->id]) }}" enctype="multipart/form-data" method="post" class="form-edit">
 				@csrf
 				@method('PUT')
 				<div class="text-center">
 					<h2 class="text-4xl font-bold text-center text-gray-700">Actualizar local</h2>
 				</div>
 				@csrf
-				@method('put')
+				@method('PATCH')
 				<div class="grid grid-cols-1 gap-6 mt-2 md:grid-cols-2">
 					<div class="">
 						<label for="name" class="block form-label mb-2">
@@ -35,7 +36,7 @@
 						       value="{{ old('name', $local->name) }}"
 						       @error('name')
 						       aria-describedby="error-name"
-									 @enderror
+							@enderror
 						>
 						@error('name')
 						<div class="text-red-700" id="error-name">{{ $errors->first('name') }}</div>
@@ -95,7 +96,6 @@
 						@enderror
 						{{--@formatter:on--}}
 					</div>
-					{{--					mostrar los neighborhoods--}}
 					<div class="">
 						<label for="neighborhood_id" class="block form-label mb-2">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="inline-block bi bi-geo-alt" viewBox="0 0 16 16">
