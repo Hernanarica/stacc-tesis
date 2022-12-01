@@ -72,4 +72,12 @@ class StoresOwnController extends Controller
 		
 		return redirect()->route('store.index')->with('success', 'Local actualizado correctamente');
 	}
+	
+	public function delete($id)
+	{
+		$local = Local::with('neighborhood')->find($id);
+		return view('sections.stores-delete', [
+			'local' => $local
+		]);
+	}
 }

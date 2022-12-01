@@ -6,11 +6,6 @@
 @section('dashboard')
 	<x-wrapper>
 		<div class="p-2 ">
-			<div class="text-right">
-				<a href="" class="px-8 py-3 w-fit text-sm font-medium tracking-wide text-white bg-gradient-to-r from-stacc-purple to-stacc-red rounded-md focus:opacity-90
-					focus:outline-none">Agregar
-				</a>
-			</div>
 			<div class="">
 				<form action="{{route('dashboard.users.view')}}" method="get" class="flex items-center max-w-sm">
 					@csrf

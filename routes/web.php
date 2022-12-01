@@ -106,4 +106,5 @@ Route::post('/users', [UserController::class, 'store'])->name('user.store');
 //Controller de mis locales
 Route::get('/mis-locales', [StoresOwnController::class, 'index'])->name('store.index')->middleware(['role:owner']);
 Route::get('/mis-locales/{id}', [StoresOwnController::class, 'show'])->name('store.show')->middleware(['role:owner']);
+Route::get('/mis-locales/{id}/pedir-baja', [StoresOwnController::class, 'delete'])->name('store.delete')->middleware(['role:owner']);
 Route::patch('/mis-locales/{id}', [StoresOwnController::class, 'update'])->name('store.update')->middleware(['role:owner']);
