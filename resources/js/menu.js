@@ -11,13 +11,13 @@ $menuBtn.addEventListener('click', () => {
 	$iconClose.classList.toggle('hidden');
 });
 
-$close.addEventListener('click', () => {
-   $msj[0].classList.add('hidden');
-});
+// $close.addEventListener('click', () => {
+//    $msj[0].classList.add('hidden');
+// });
 
 //cuando pase un tiempo determinado cerrar la ventada de $msj con una transition
-setTimeout(() => {
-   $msj[0].classList.add('hidden');
-} , 4000);
+// setTimeout(() => {
+//    $msj[0].classList.add('hidden');
+// } , 4000);
 
 

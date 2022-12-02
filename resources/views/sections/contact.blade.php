@@ -15,7 +15,12 @@
 					</div>
 					<div class="bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
 						<div class="mx-auto max-w-lg lg:max-w-none">
-							<form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
+							<form
+								action="#"
+								method="POST"
+								class="grid grid-cols-1 gap-y-6"
+								id="form"
+							>
 								<div>
 									<label for="name" class="sr-only">Nombre</label>
 									<input type="text" name="name" id="name" autocomplete="name" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm
@@ -46,3 +51,4 @@
 			</div>
 		</x-wrapper>
 @endsection
+@vite('./resources/js/emailContact.js')
