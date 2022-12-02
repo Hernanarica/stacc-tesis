@@ -227,6 +227,7 @@
 					</div>
 				</div>
 			</div>
+			@vite('resources/js/notification.js')
 		@endif
 		@if(session('error'))
 			<div class="fixed top-0 right-0 z-50 w-full max-w-sm mx-4 mt-4 overflow-hidden bg-red-500 rounded-lg shadow-lg pointer-events-auto md:max-w-md message-session">
@@ -252,8 +253,8 @@
 					</div>
 				</div>
 			</div>
+			@vite('resources/js/notification.js')
 		@endif
-		
 		<main>
 			@yield('content')
 		</main>

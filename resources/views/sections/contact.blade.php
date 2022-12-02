@@ -23,22 +23,23 @@
 							>
 								<div>
 									<label for="name" class="sr-only">Nombre</label>
-									<input type="text" name="name" id="name" autocomplete="name" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm
-									focus:border-indigo-500 focus:ring-indigo-500" placeholder="Nombre">
+									<input type="text" name="name" id="name" autocomplete="name" class="block w-full bg-white border py-3 px-4 border-gray-300 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+										focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Nombre">
 								</div>
 								<div>
 									<label for="email" class="sr-only">Email</label>
-									<input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" placeholder="Email">
+									<input id="email" name="email" type="email" autocomplete="email" class="block w-full bg-white border py-3 px-4 border-gray-300 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+										focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email">
 								</div>
 								<div>
 									<label for="phone" class="sr-only">Teléfono</label>
-									<input type="text" name="phone" id="phone" autocomplete="tel" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm
-									focus:border-indigo-500 focus:ring-indigo-500" placeholder="Teléfono">
+									<input type="text" name="phone" id="phone" autocomplete="tel" class="block w-full bg-white border py-3 px-4 border-gray-300 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+										focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Teléfono">
 								</div>
 								<div>
 									<label for="message" class="sr-only">Mensaje</label>
-									<textarea id="message" name="message" rows="4" class="block w-full rounded-md border-gray-300 py-3 px-4 placeholder-gray-500 shadow-sm focus:border-indigo-500
-									focus:ring-indigo-500" placeholder="Mensaje"></textarea>
+									<textarea id="message" name="message" rows="4" class="block w-full bg-white border py-3 px-4 border-gray-300 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
+										focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Mensaje"></textarea>
 								</div>
 								<div>
 									<button type="submit" class="px-8 py-3 w-fit text-sm font-medium tracking-wide text-white bg-gradient-to-r from-stacc-purple to-stacc-red
