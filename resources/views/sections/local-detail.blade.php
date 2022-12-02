@@ -161,29 +161,27 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 				<div class="flex gap-12">
 					<div class="overflow-hidden">
 						<dl class="sm:divide-y sm:divide-gray-200">
-							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-5">
 								<dt class="text-sm font-medium text-gray-500">Dirección</dt>
 								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>
 							</div>
-							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-5">
 								<dt class="text-sm font-medium text-gray-500">Barrio</dt>
 								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->neighborhood->name }}</dd>
 							</div>
-							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-								<dt class="text-sm font-medium text-gray-500">Teléfono</dt>
-								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
+								<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-5">
+									<dt class="text-sm font-medium text-gray-500">Teléfono</dt>
+									<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
+								</div>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-5">
+								<dt class="text-sm font-medium text-gray-500">Sitio web</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+							<a href="{{ $local->url_site }}" target="_blank">{{ $local->url_site }}</a>
+							</dd>
 							</div>
-							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-								<dt class="text-sm font-medium text-gray-500">Email</dt>
-								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">local@gmail.com</dd>
-							</div>
-							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-								<dt class="text-sm font-medium text-gray-500">Salary expectation</dt>
-								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>
-							</div>
-							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
-								<dt class="text-sm font-medium text-gray-500">Descripcion</dt>
-								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+							<div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-5">
+								<dt class="text-sm font-medium text-gray-500">Restaurant</dt>
+								<dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{$local->name}} es un establecimiento de servicio cuyo objetivo es preparar y vender comidas y bebidas para satisfacer a los clientes. También, se encarga de ofrecer otras comodidades a los clientes, como servicio a la mesa, servicio de entregas a domicilio, métodos de pago óptimos, y más.</dd>
 							</div>
 						</dl>
 					</div>
