@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$user = User::create([
+		$userAdmin = User::create([
 			'id'         => 1,
 			'name'       => 'Admin',
 			'lastname'   => 'Admin',
@@ -27,8 +27,32 @@ class UsersSeeder extends Seeder
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
 		]);
+
+		$userOwner = User::create([
+			'id'         => 2,
+			'name'       => 'Owner',
+			'lastname'   => 'Owner',
+			'email'      => 'owner@gmail.com',
+			'category'   => 'owner',
+			'password'   => Hash::make('asdf1234'),
+			'created_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		]);
+
+		$userVisitor = User::create([
+			'id'         => 3,
+			'name'       => 'Visitor',
+			'lastname'   => 'Visitor',
+			'email'      => 'visitor@gmail.com',
+			'category'   => 'visitor',
+			'password'   => Hash::make('asdf1234'),
+			'created_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
+		]);
 		
-		$user->assignRole('admin');
+		$userAdmin->assignRole('admin');
+		$userOwner->assignRole('owner');
+		$userVisitor->assignRole('visitor');
 		
 		User::factory(20)->create();
 	}

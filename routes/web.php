@@ -56,7 +56,9 @@ Route::group(['middleware' => ['role:admin|owner']], function () {
 		Route::patch('/{id}', 'update')->name('locals.update');
 		Route::delete('/{local}', 'destroy')->name('locals.destroy');
 	});
-	
+});
+
+Route::group(['middleware' => ['role:admin|owner|visitor']], function () {
 	Route::controller(FavoriteController::class)->prefix('favorito')->group(function () {
 		Route::get('', 'index')->name('favorite.index');
 		Route::post('/{id}', 'store')->name('favorite.store');

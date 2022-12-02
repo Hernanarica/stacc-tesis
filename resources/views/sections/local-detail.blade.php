@@ -31,7 +31,7 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 						</button>
 					</form>
 				@else
-					<form action="{{ route('favorite.destroy', [ 'local' => $local->id ]) }}" method="post">
+					<form action="{{ route('favorite.destroy', [ 'id' => $local->id ]) }}" method="post">
 						@csrf
 						@method('delete')
 						<button class="group">
@@ -88,7 +88,7 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
 							</button>
 						</form>
 					@else
-						<form action="{{ route('favorite.destroy', [ 'local' => $local->id ]) }}" method="post">
+						<form action="{{ route('favorite.destroy', [ 'id' => $local->id ]) }}" method="post">
 							@csrf
 							@method('delete')
 							<button class="group">
