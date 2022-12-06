@@ -6,7 +6,6 @@
 @section('dashboard')
 	<x-wrapper>
 		<div class="p-2 ">
-			</div>
 			<div class="">
 				<form action="{{route('dashboard.locals.view')}}" method="get" class="flex items-center max-w-sm">
 					@csrf
@@ -110,6 +109,11 @@
 									</tbody>
 								</table>
 							</div>
+							
+							<div class="mt-5">
+								{{ $locals->links() }}
+							</div>
+							
 						</div>
 					</div>
 				</div>

@@ -24,11 +24,11 @@ class DashboardController extends Controller
 	public function usersView(\Illuminate\Http\Request $request)
 	{
 		if ($request->query('search') == null) {
-			$users = User::all();
+			$users = User::paginate(10);
 		} else {
 			$users = User::where('name', 'like', '%' . $request->query('search') . '%')
 				->orWhere('email', 'like', '%' . $request->query('search') . '%')
-				->get();
+				->paginate(10);
 		}
 		
 		return view('sections.dashboard-users', [
@@ -39,9 +39,9 @@ class DashboardController extends Controller
 	public function localsView(\Illuminate\Http\Request $request)
 	{
 		if($request->query('search') == null){
-			$locals = Local::all();
+			$locals = Local::paginate(10);
 		}else{
-			$locals = Local::where('name', 'like', '%' . $request->query('search') . '%')->get();
+			$locals = Local::where('name', 'like', '%' . $request->query('search') . '%')->paginate(10);
 		}
 		return view('sections.dashboard-locals', [
 			'locals' => $locals

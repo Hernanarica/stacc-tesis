@@ -44,7 +44,6 @@
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rol</th>
 											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Acciones</th>
-										
 										</tr>
 									</thead>
 									<tbody class="divide-y divide-gray-200 bg-white">
@@ -64,7 +63,6 @@
 															Editar
 														</button>
 													</a>
-{{--													form para elimiinar usuario --}}
 													<form action="{{ route('dashboard.user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('¿Seguro deseas eliminar el usuario?')">
 														@csrf
 														@method('DELETE')
@@ -82,6 +80,11 @@
 									</tbody>
 								</table>
 							</div>
+							
+							<div class="mt-5">
+								{{ $users->links() }}
+							</div>
+							
 						</div>
 					</div>
 				</div>
