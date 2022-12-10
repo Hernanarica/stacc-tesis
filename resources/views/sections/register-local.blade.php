@@ -2,7 +2,7 @@
 /** @var \App\Models\Local[] $neighborhoods */
 ?>
 @extends('layout.layout')
-@section('title', 'Registro de local')
+@section('title', 'Registra tu local')
 @section('content')
 	<x-wrapper>
 {{-- Register local form --}}
@@ -132,12 +132,11 @@
 							Apertura
 						</label>
 						{{--@formatter:off--}}
-						<input type="text"
+						<input type="time"
 						       name="opening_time"
 						       id="opening_time"
 						       class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
 										focus:outline-none focus:ring focus:ring-opacity-40"
-						       placeholder="Ingresa el horario de apertura EJ: 7h"
 						       @error('opening_time')
 						       aria-describedby="error-opening_time"
 						       @enderror
@@ -159,12 +158,11 @@
 							Cierre
 						</label>
 						{{--@formatter:off--}}
-						<input type="text"
+						<input type="time"
 						       name="closing_time"
 						       id="closing_time"
 						       class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-stacc-purple focus:ring-stacc-purple
 										focus:outline-none focus:ring focus:ring-opacity-40"
-						       placeholder="Ingresa el horario de cierre EJ: 23h"
 						       @error('closing_time')
 						       aria-describedby="error-closing_time"
 						       @enderror
@@ -176,7 +174,7 @@
 						{{--@formatter:on--}}
 					</div>
 				</div>
-				
+
 				<div class="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">
 					<div class="">
 						<label for="image" class="block form-label mb-2">
