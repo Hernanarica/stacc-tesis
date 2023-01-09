@@ -35,7 +35,7 @@ class UsersSeeder extends Seeder
 			'lastname'   => 'Arica',
 			'email'      => 'hernan@gmail.com',
 			'category'   => 'owner',
-		    'image' 	 => 'https://media.tycsports.com/files/2022/06/14/440393/las-20-mejores-fotos-de-perfil-para-tu-cuenta-de-free-fire_w416.webp',
+		    'image' 	 => 'https://i.pravatar.cc/350',
 			'password'   => Hash::make('asdf1234'),
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
