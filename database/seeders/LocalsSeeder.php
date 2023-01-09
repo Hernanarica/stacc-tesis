@@ -120,7 +120,7 @@ class LocalsSeeder extends Seeder
 			    'opening_time' 		=> '11h',
 			    'closing_time' 		=> '20h',
 			    'url_site'     		=> 'https://www.chilarestaurant.com/en/home/',
-			    'url_map'      		=> '<iframe src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d52530.02394970238!2d-58.43207868765824!3d-34.62624349598567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d-34.6409174!2d-58.4287612!4m5!1s0x95a3352a1cbc33af%3A0x8663ae2be358730c!2schila%20restaurante!3m2!1d-34.610966!2d-58.366119999999995!5e0!3m2!1ses-419!2sar!4v1673272467055!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+			    'url_map'      		=> '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.7310605966854!2d-58.368694923476255!3d-34.61096155788202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3352a1cbc33af%3A0x8663ae2be358730c!2sCHILA!5e0!3m2!1ses!2sar!4v1673283207733!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
 			    'phone'        		=> '011 4343-6067',
 			    'terms'        		=> 1,
 			    'is_favorite'  		=> 0,
