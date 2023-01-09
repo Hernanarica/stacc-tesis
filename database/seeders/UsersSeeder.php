@@ -23,6 +23,7 @@ class UsersSeeder extends Seeder
 			'lastname'   => 'Admin',
 			'email'      => 'admin@gmail.com',
 			'category'   => 'admin',
+			'image'      => 'https://i.pravatar.cc/350',
 			'password'   => Hash::make('asdf1234'),
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
@@ -30,10 +31,11 @@ class UsersSeeder extends Seeder
 
 		$userOwner = User::create([
 			'id'         => 2,
-			'name'       => 'Owner',
-			'lastname'   => 'Owner',
-			'email'      => 'owner@gmail.com',
+			'name'       => 'Hernan',
+			'lastname'   => 'Arica',
+			'email'      => 'hernan@gmail.com',
 			'category'   => 'owner',
+		    'image' 	 => 'https://i.pravatar.cc/350',
 			'password'   => Hash::make('asdf1234'),
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
@@ -41,9 +43,10 @@ class UsersSeeder extends Seeder
 
 		$userVisitor = User::create([
 			'id'         => 3,
-			'name'       => 'Visitor',
-			'lastname'   => 'Visitor',
-			'email'      => 'visitor@gmail.com',
+			'name'       => 'Albert',
+			'lastname'   => 'Villarroel',
+			'email'      => 'beto@gmail.com',
+		    'image' 	 => 'https://i.pravatar.cc/350',
 			'category'   => 'visitor',
 			'password'   => Hash::make('asdf1234'),
 			'created_at' => date('Y-m-d H:i:s'),
