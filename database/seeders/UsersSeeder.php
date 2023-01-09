@@ -23,6 +23,7 @@ class UsersSeeder extends Seeder
 			'lastname'   => 'Admin',
 			'email'      => 'admin@gmail.com',
 			'category'   => 'admin',
+			'image'      => 'https://us.123rf.com/450wm/artenot/artenot1202/artenot120200116/12487742-divertida-caricatura-de-empleado-de-oficina.jpg?ver=6',
 			'password'   => Hash::make('asdf1234'),
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
@@ -30,10 +31,11 @@ class UsersSeeder extends Seeder
 
 		$userOwner = User::create([
 			'id'         => 2,
-			'name'       => 'Owner',
-			'lastname'   => 'Owner',
-			'email'      => 'owner@gmail.com',
+			'name'       => 'Hernan',
+			'lastname'   => 'Arica',
+			'email'      => 'hernan@gmail.com',
 			'category'   => 'owner',
+		    'image' 	 => 'https://media.tycsports.com/files/2022/06/14/440393/las-20-mejores-fotos-de-perfil-para-tu-cuenta-de-free-fire_w416.webp',
 			'password'   => Hash::make('asdf1234'),
 			'created_at' => date('Y-m-d H:i:s'),
 			'updated_at' => date('Y-m-d H:i:s'),
@@ -41,9 +43,10 @@ class UsersSeeder extends Seeder
 
 		$userVisitor = User::create([
 			'id'         => 3,
-			'name'       => 'Visitor',
-			'lastname'   => 'Visitor',
-			'email'      => 'visitor@gmail.com',
+			'name'       => 'Albert',
+			'lastname'   => 'Villarroel',
+			'email'      => 'beto@gmail.com',
+		    'image' 	 => 'https://trome.pe/resizer/lu3BjiBV2ogrUz7C8h200leHJec=/1200x1200/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/32OSZMYA3ZHOBEURIVCHUASRCM.jpg',
 			'category'   => 'visitor',
 			'password'   => Hash::make('asdf1234'),
 			'created_at' => date('Y-m-d H:i:s'),
