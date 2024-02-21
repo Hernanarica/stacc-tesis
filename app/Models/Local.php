@@ -8,27 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Local extends Model
 {
-	use HasFactory, Favoriteable;
-	
-	protected $fillable = [
-		'user_id',
-		'neighborhood_id',
-		'name',
-		'address',
-		'opening_time',
-		'closing_time',
-		'url_site',
-		'url_map',
-		'phone',
-		'terms',
-		'address',
-		'image',
-		'image_alt',
-	];
-	
-	public function neighborhood()
-	{
-		return $this->hasOne(Neighborhoods::class, 'id', 'neighborhood_id');
-	}
-	
+    use HasFactory, Favoriteable;
+
+    protected $fillable = [
+        'user_id',
+        'neighborhood_id',
+        'name',
+        'address',
+        'opening_time',
+        'closing_time',
+        'url_site',
+        'url_map',
+        'phone',
+        'terms',
+        'address',
+        'image',
+        'image_alt',
+    ];
+
+    public function neighborhood()
+    {
+        return $this->hasOne(Neighborhoods::class, 'id', 'neighborhood_id');
+    }
 }

@@ -194,12 +194,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-	      Intervention\Image\ImageServiceProvider::class,
-	      Spatie\Permission\PermissionServiceProvider::class,
-	    
-	      //Addons by ness
-	      Barryvdh\Debugbar\ServiceProvider::class,
-	    
+        Intervention\Image\ImageServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+
+        //Addons by ness
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
@@ -215,8 +215,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-	      'Image' => Intervention\Image\Facades\Image::class,
-	      'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
     ])->toArray(),
 
 ];

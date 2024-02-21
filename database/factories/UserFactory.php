@@ -10,21 +10,21 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserFactory extends Factory
 {
-	/**
-	 * Define the model's default state.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public function definition()
-	{
-		return [
-			'name'      => fake()->name(),
-			'lastname'  => fake()->lastName(),
-			'email'     => fake()->email(),
-			'category'  => fake()->randomElement(['visitor', 'owner']),
-			'image'     => 'default-image.png',
-			'image_alt' => 'default alt',
-			'password'  => Hash::make('asdf1234'),
-		];
-	}
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'lastname' => fake()->lastName(),
+            'email' => fake()->email(),
+            'category' => fake()->randomElement(['visitor', 'owner']),
+            'image' => 'default-image.png',
+            'image_alt' => 'default alt',
+            'password' => Hash::make('asdf1234'),
+        ];
+    }
 }

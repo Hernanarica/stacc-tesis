@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-	use HasFactory;
-	
-	public $fillable = [];
+    use HasFactory;
+
+    public $fillable = [];
 }

@@ -15,29 +15,29 @@ class UserUpdateRequest extends FormRequest
     {
         return true;
     }
-	
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public function rules(): array
-	{
-		return [
-			'name'     => ['required'],
-			'lastname' => ['required'],
-			'email'    => ['required'],
-			'category' => ['required'],
-		];
-	}
-	
-	public function messages(): array
-	{
-		return [
-			'name.required'     => 'El nombre es obligatorio',
-			'lastname.required' => 'El apellido es obligatorio',
-			'email.required'    => 'El email es obligatorio',
-			'category.required' => 'La categoria es obligatoria',
-		];
-	}
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, mixed>
+     */
+    public function rules(): array
+    {
+        return [
+            'name' => ['required'],
+            'lastname' => ['required'],
+            'email' => ['required'],
+            'category' => ['required'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'El nombre es obligatorio',
+            'lastname.required' => 'El apellido es obligatorio',
+            'email.required' => 'El email es obligatorio',
+            'category.required' => 'La categoria es obligatoria',
+        ];
+    }
 }
