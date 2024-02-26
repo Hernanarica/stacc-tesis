@@ -60,8 +60,9 @@ class LocalController extends Controller
      * @param  LocalRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(LocalRequest $request)
+    public function store(Request $request)
     {
+        dd($request->all());
         try {
             if ($request->hasFile('image')) {
                 $image = new ImageService($request->image, public_path('uploads/images/local'));
