@@ -19,7 +19,7 @@
                   type="text"
                   name="street"
                   id="street"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -30,7 +30,7 @@
                   type="number"
                   name="street-number"
                   id="street-number"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -41,7 +41,7 @@
                   type="tel"
                   name="phone"
                   id="phone"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -51,7 +51,7 @@
                 <select
                   id="neighborhood"
                   name="neighborhood"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>Seleccionar</option>
                   @foreach($neighborhoods as $neighborhood)
@@ -61,10 +61,10 @@
               </div>
             </div>
             <div class="sm:col-span-3">
-              <label for="map" class="text-sm font-medium leading-6 text-gray-900 flex items-center gap-1">Mapa
+              <label for="map" class="flex items-center gap-1 text-sm font-medium leading-6 text-gray-900">Mapa
                 <span>
                   <a href="https://www.google.com/maps" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
                   </a>
@@ -75,7 +75,7 @@
                   type="text"
                   name="map"
                   id="map"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -86,7 +86,7 @@
                   type="text"
                   name="website"
                   id="website"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -97,7 +97,7 @@
                   id="description"
                   name="description"
                   rows="3"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 ></textarea>
               </div>
               <p class="mt-3 text-sm leading-6 text-gray-600">Descripción del local, podés incluir datos históricos del local</p>
@@ -154,7 +154,7 @@
                   type="url"
                   name="social-facebook"
                   id="social-facebook"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -165,7 +165,7 @@
                   type="url"
                   name="social-instagram"
                   id="social-instagram"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -176,7 +176,7 @@
                   type="url"
                   name="social-tiktok"
                   id="social-tiktok"
-                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
             </div>
@@ -188,14 +188,14 @@
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-3 sm:col-start-1">
               <label for="monday" class="block text-sm font-medium leading-6 text-gray-900">Lunes</label>
-              <div class="flex justify-between gap-4 items-center">
+              <div class="flex items-center justify-between gap-4">
                 <div class="mt-2 flex-1">
                   <label for="monday-opening-time" class="sr-only">Lunes</label>
                   <input
                     type="time"
                     name="monday-opening-time"
                     id="monday-opening-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
                 <span>a</span>
@@ -205,21 +205,21 @@
                     type="time"
                     name="monday-closing-time"
                     id="monday-closing-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
               </div>
             </div>
             <div class="sm:col-span-3">
               <label for="tuesday" class="block text-sm font-medium leading-6 text-gray-900">Martes</label>
-              <div class="flex justify-between gap-4 items-center">
+              <div class="flex items-center justify-between gap-4">
                 <div class="mt-2 flex-1">
                   <label for="tuesday-opening-time" class="sr-only">Martes</label>
                   <input
                     type="time"
                     name="tuesday-opening-time"
                     id="tuesday-opening-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
                 <span>a</span>
@@ -229,21 +229,21 @@
                     type="time"
                     name="tuesday-closing-time"
                     id="tuesday-closing-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
               </div>
             </div>
             <div class="sm:col-span-3">
               <label for="wednesday" class="block text-sm font-medium leading-6 text-gray-900">Miércoles</label>
-              <div class="flex justify-between gap-4 items-center">
+              <div class="flex items-center justify-between gap-4">
                 <div class="mt-2 flex-1">
                   <label for="wednesday-opening-time" class="sr-only">Miércoles</label>
                   <input
                     type="time"
                     name="wednesday-opening-time"
                     id="wednesday-opening-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
                 <span>a</span>
@@ -253,21 +253,21 @@
                     type="time"
                     name="wednesday-closing-time"
                     id="wednesday-closing-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
               </div>
             </div>
             <div class="sm:col-span-3">
               <label for="thursday" class="block text-sm font-medium leading-6 text-gray-900">Jueves</label>
-              <div class="flex justify-between gap-4 items-center">
+              <div class="flex items-center justify-between gap-4">
                 <div class="mt-2 flex-1">
                   <label for="thursday-opening-time" class="sr-only">Jueves</label>
                   <input
                     type="time"
                     name="thursday-opening-time"
                     id="thursday-opening-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
                 <span>a</span>
@@ -277,21 +277,21 @@
                     type="time"
                     name="thursday-closing-time"
                     id="thursday-closing-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
               </div>
             </div>
             <div class="sm:col-span-3">
               <label for="friday" class="block text-sm font-medium leading-6 text-gray-900">Viernes</label>
-              <div class="flex justify-between gap-4 items-center">
+              <div class="flex items-center justify-between gap-4">
                 <div class="mt-2 flex-1">
                   <label for="friday-opening-time" class="sr-only">Viernes</label>
                   <input
                     type="time"
                     name="friday-opening-time"
                     id="friday-opening-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
                 <span>a</span>
@@ -301,21 +301,21 @@
                     type="time"
                     name="friday-closing-time"
                     id="friday-closing-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
               </div>
             </div>
             <div class="sm:col-span-3">
               <label for="saturday" class="block text-sm font-medium leading-6 text-gray-900">Sábado</label>
-              <div class="flex justify-between gap-4 items-center">
+              <div class="flex items-center justify-between gap-4">
                 <div class="mt-2 flex-1">
                   <label for="saturday-opening-time" class="sr-only">Sábado</label>
                   <input
                     type="time"
                     name="saturday-opening-time"
                     id="saturday-opening-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
                 <span>a</span>
@@ -325,21 +325,21 @@
                     type="time"
                     name="saturday-closing-time"
                     id="saturday-closing-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
               </div>
             </div>
             <div class="sm:col-span-3">
               <label for="sunday" class="block text-sm font-medium leading-6 text-gray-900">Domingo</label>
-              <div class="flex justify-between gap-4 items-center">
+              <div class="flex items-center justify-between gap-4">
                 <div class="mt-2 flex-1">
                   <label for="sunday-opening-time" class="sr-only">Domingo</label>
                   <input
                     type="time"
                     name="sunday-opening-time"
                     id="sunday-opening-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
                 <span>a</span>
@@ -349,7 +349,7 @@
                     type="time"
                     name="sunday-closing-time"
                     id="sunday-closing-time"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                 </div>
               </div>

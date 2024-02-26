@@ -73,7 +73,7 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
                               viewBox="0 0 24 24"
                               stroke-width="1.5"
                               stroke="currentColor"
-                              class="h-7 w-7 fill-white text-white transition-colors duration-300"
+                              class="h-7 w-7 fill-red-500 text-red-500 transition-colors duration-300"
                           >
                             <path
                                 stroke-linecap="round"
