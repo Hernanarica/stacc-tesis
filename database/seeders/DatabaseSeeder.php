@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             //      PostsSeeder::class,
             NeighborhoodsSeeder::class,
             LocalsSeeder::class,
+            OpinionSeeder::class,
         ]);
     }
 }
