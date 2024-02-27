@@ -13,6 +13,17 @@
           <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-3">
+              <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                >
+              </div>
+            </div>
+            <div class="sm:col-span-3">
               <label for="street" class="block text-sm font-medium leading-6 text-gray-900">Calle</label>
               <div class="mt-2">
                 <input

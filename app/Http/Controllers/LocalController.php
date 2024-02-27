@@ -117,6 +117,7 @@ class LocalController extends Controller
 
             Local::create([
                 'user_id' => $formData['user_id'],
+                'name' => $formData['name'],
                 'street' => $formData['street'],
                 'street-number' => $formData['street-number'],
                 'phone' => $formData['phone'],
