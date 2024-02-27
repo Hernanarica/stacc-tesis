@@ -1,7 +1,14 @@
 <?php
-/** @var \App\Models\Local[] $local */
+/** @var \App\Models\Local $local */
 
-$days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+$daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+//foreach ($daysOfWeek as $day) {
+//  echo '<pre>';
+//  print_r($local['schedules'][$day]['day']);
+//  echo '</pre>';
+//}
+//dd($local['schedules']);
 ?>
 @extends('layout.layout')
 @section('title', $local->name)
@@ -87,15 +94,13 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
                   @endauth
                 </span>
               </div>
-              <p class="text-lg leading-8 text-gray-600">
-                Campobravo es un establecimiento de servicio cuyo objetivo es preparar y vender comidas y bebidas para satisfacer a los clientes. También, se encarga de ofrecer otras comodidades a los clientes, como servicio a la mesa, servicio de entregas a domicilio, métodos de pago óptimos, y más.
-              </p>
+              <p class="text-lg leading-8 text-gray-600">{{ $local->description }}</p>
               <div class="mt-10 flex items-center gap-x-6">
                 <a href="#" class="rounded-md bg-indigo-600 text-sm font-semibold text-white shadow-sm px-3.5 py-2.5 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
-                <a href="{{ $local->url_site }}" target="_blank" class="text-sm font-semibold leading-6 text-gray-900">Visitar web <span aria-hidden="true">→</span></a>
+                <a href="{{ $local->website }}" target="_blank" class="text-sm font-semibold leading-6 text-gray-900">Visitar web <span aria-hidden="true">→</span></a>
               </div>
             </div>
-            <img src="{{ asset("uploads/images/local/$local->image")}}" alt="" class="mt-10 w-full max-w-lg rounded-2xl object-cover aspect-[6/5] sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36">
+            <img src="{{ asset("uploads/images/" . $local['cover-photo'])}}" alt="" class="mt-10 w-full max-w-lg rounded-2xl object-cover aspect-[6/5] sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36">
           </div>
         </div>
         <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
@@ -111,15 +116,15 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
         <dl class="divide-y divide-gray-100">
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium text-gray-900">Dirección</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $local->street }} {{ $local['street-number'] }}</dd>
           </div>
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium text-gray-900">Barrio</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Backend Developer</dd>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $local->neighborhood->name }}</dd>
           </div>
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium text-gray-900">Teléfono</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
           </div>
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium text-gray-900">Email</dt>
@@ -127,7 +132,7 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
           </div>
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium text-gray-900">Descripción</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $local->description }}</dd>
           </div>
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium leading-6 text-gray-900">Certificado</dt>
@@ -135,16 +140,15 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
               <ul role="list" class="rounded-md border border-gray-200 divide-y divide-gray-100">
                 <li class="flex items-center justify-between py-4 pr-5 pl-4 text-sm leading-6">
                   <div class="flex w-0 flex-1 items-center">
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 flex-shrink-0 text-gray-400">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m9 13.5 3 3m0 0 3-3m-3 3v-6m1.06-4.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                     </svg>
                     <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                      <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                      <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                      <span class="truncate font-medium">certificado_libre_de_gluten.pdf</span>
                     </div>
                   </div>
                   <div class="ml-4 flex-shrink-0">
-                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                    <a href="{{ asset('uploads/files/' . $local->certificate) }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
                   </div>
                 </li>
               </ul>
@@ -154,41 +158,38 @@ $days = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domin
             <dt class="text-sm font-medium leading-6 text-gray-900">Redes sociales</dt>
             <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <ul role="list" class="rounded-md border border-gray-200 divide-y divide-gray-100">
-                <li class="flex items-center justify-between py-4 pr-5 pl-4 text-sm leading-6">
-                  <div class="flex w-0 flex-1 items-center">
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                    </svg>
-                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                      <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                      <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                @foreach($local['social-networks'] as $socialNetwork)
+                  <li class="flex items-center justify-between py-4 pr-5 pl-4 text-sm leading-6">
+                    <div class="flex w-0 flex-1 items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 flex-shrink-0 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                      </svg>
+                      <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                        <span class="truncate font-medium">{{ $socialNetwork['name'] }}</span>
+                      </div>
                     </div>
-                  </div>
-                  <div class="ml-4 flex-shrink-0">
-                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-                  </div>
-                </li>
-                <li class="flex items-center justify-between py-4 pr-5 pl-4 text-sm leading-6">
-                  <div class="flex w-0 flex-1 items-center">
-                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
-                    </svg>
-                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                      <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                      <span class="flex-shrink-0 text-gray-400">4.5mb</span>
+                    <div class="ml-4 flex-shrink-0">
+                      <a href="{{ $socialNetwork['url'] }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Visitar</a>
                     </div>
-                  </div>
-                  <div class="ml-4 flex-shrink-0">
-                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-                  </div>
-                </li>
+                  </li>
+                @endforeach
               </ul>
             </dd>
           </div>
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium leading-6 text-gray-900">Mapa</dt>
             <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              {!! htmlspecialchars_decode($local->url_map) !!}
+              {!! htmlspecialchars_decode($local->map) !!}
+            </dd>
+          </div>
+          <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Horarios</dt>
+            <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+              <ul>
+                @foreach($daysOfWeek as $day)
+                  <li class="capitalize"><b>{{ $local['schedules'][$day]['day'] }}</b> - <span>{{ $local['schedules'][$day]['opening-time'] }} a {{ $local['schedules'][$day]['closing-time'] }}</span></li>
+                @endforeach
+              </ul>
             </dd>
           </div>
         </dl>
