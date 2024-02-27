@@ -10,6 +10,7 @@ use App\Services\ImageService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class LocalController extends Controller
 {
@@ -26,12 +27,12 @@ class LocalController extends Controller
             $locals = Local::where('is_public', 1)->paginate(4);
         } else {
             $locals = Local::with('neighborhood')
-                ->where('is_public', 1)
-                ->where('name', 'like', '%'.$request->query('search').'%')
-                ->orWhereHas('neighborhood', function ($query) use ($request) {
-                    $query->where('name', 'like', '%'.$request->query('search').'%');
-                })
-                ->paginate(4);
+              ->where('is_public', 1)
+              ->where('name', 'like', '%'.$request->query('search').'%')
+              ->orWhereHas('neighborhood', function ($query) use ($request) {
+                  $query->where('name', 'like', '%'.$request->query('search').'%');
+              })
+              ->paginate(4);
         }
 
         return view('sections.locals', [
@@ -62,37 +63,77 @@ class LocalController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         try {
-            if ($request->hasFile('image')) {
-                $image = new ImageService($request->image, public_path('uploads/images/local'));
-                $image->saveImage();
+            if ($request->hasFile('cover-photo')) {
+                $coverPhoto = $request->file('cover-photo');
+                $coverPhotoName = Str::uuid().'.'.$coverPhoto->getClientOriginalExtension();
+                $coverPhoto->storeAs('', $coverPhotoName, 'public-images');
+            }
+            if ($request->hasFile('certificate')) {
+                $certificate = $request->file('certificate');
+                $certificateName = Str::uuid().'.'.$certificate->getClientOriginalExtension();
+                $certificate->storeAs('', $certificateName, 'public-files');
             }
 
-            $formData = $request->input();
-            $formData['image'] = $image->imageName ?? null;
-
-            //obtener el user id con laravel permission
+            $formData = $request->all();
+            $formData['social-networks'] = [
+                'facebook' => $formData['social-facebook'],
+                'instagram' => $formData['social-instagram'],
+                'tiktok' => $formData['social-tiktok'],
+            ];
+            $formData['schedules'] = [
+                'monday' => [
+                    'opening-time' => $formData['monday-opening-time'],
+                    'closing-time' => $formData['monday-closing-time'],
+                ],
+                'tuesday' => [
+                    'opening-time' => $formData['tuesday-opening-time'],
+                    'closing-time' => $formData['tuesday-closing-time'],
+                ],
+                'wednesday' => [
+                    'opening-time' => $formData['wednesday-opening-time'],
+                    'closing-time' => $formData['wednesday-closing-time'],
+                ],
+                'thursday' => [
+                    'opening-time' => $formData['thursday-opening-time'],
+                    'closing-time' => $formData['thursday-closing-time'],
+                ],
+                'friday' => [
+                    'opening-time' => $formData['friday-opening-time'],
+                    'closing-time' => $formData['friday-closing-time'],
+                ],
+                'saturday' => [
+                    'opening-time' => $formData['saturday-opening-time'],
+                    'closing-time' => $formData['saturday-closing-time'],
+                ],
+                'sunday' => [
+                    'opening-time' => $formData['sunday-opening-time'],
+                    'closing-time' => $formData['sunday-closing-time'],
+                ],
+            ];
+            $formData['cover-photo'] = $coverPhotoName;
+            $formData['certificate'] = $certificateName;
             $formData['user_id'] = auth()->user()->id;
 
-            $local = Local::create([
+            Local::create([
                 'user_id' => $formData['user_id'],
-                'neighborhood_id' => $formData['neighborhood_id'],
-                'name' => $formData['name'],
-                'address' => $formData['address'],
-                'opening_time' => $formData['opening_time'],
-                'closing_time' => $formData['closing_time'],
-                'url_site' => $formData['url_site'],
+                'street' => $formData['street'],
+                'street-number' => $formData['street-number'],
                 'phone' => $formData['phone'],
-                'url_map' => $formData['url_map'],
-                'terms' => $formData['terms'],
-                'image_alt' => $formData['image_alt'],
-                'image' => $formData['image'],
+                'neighborhood_id' => $formData['neighborhood_id'],
+                'map' => $formData['map'],
+                'website' => $formData['website'],
+                'description' => $formData['description'],
+                'cover-photo' => $formData['cover-photo'],
+                'certificate' => $formData['certificate'],
+                'social-networks' => $formData['social-networks'],
+                'schedules' => $formData['schedules'],
+                'terms' => $formData['terms'] === 'on' ? 1 : 0,
             ]);
 
-            return redirect()->route('locals.index')->with('success', 'Local creado correctamente');
+            return redirect()->route('locals.create')->with('success', 'Local creado correctamente');
         } catch (Exception $e) {
-            return redirect()->route('locals.index')->with('error', 'Error al crear el local');
+            return redirect()->route('locals.index')->with('error', 'Error al crear el local'.$e->getMessage());
         }
     }
 
@@ -120,7 +161,7 @@ class LocalController extends Controller
      */
     public function edit($local)
     {
-        //
+    //
     }
 
     public function update(LocalUpdateRequest $request, $id)

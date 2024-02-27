@@ -5,7 +5,7 @@
 @section('title', 'Registra tu local')
 @section('content')
   <section class="mx-auto max-w-xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-2xl lg:px-8">
-    <form action="{{ route('locals.create')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('locals.store')}}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12">
@@ -46,11 +46,11 @@
               </div>
             </div>
             <div class="sm:col-span-3">
-              <label for="neighborhood" class="block text-sm font-medium leading-6 text-gray-900">Barrio</label>
+              <label for="neighborhood_id" class="block text-sm font-medium leading-6 text-gray-900">Barrio</label>
               <div class="mt-2">
                 <select
-                  id="neighborhood"
-                  name="neighborhood"
+                  id="neighborhood_id"
+                  name="neighborhood_id"
                   class="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>Seleccionar</option>
@@ -356,6 +356,20 @@
             </div>
           </div>
         </div>
+        <fieldset>
+          <legend class="sr-only">Términos y condiciones</legend>
+          <div class="space-y-5">
+            <div class="relative flex items-start">
+              <div class="flex h-6 items-center">
+                <input id="terms" aria-describedby="terms" name="terms" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+              </div>
+              <div class="ml-3 text-sm leading-6">
+                <label for="terms" class="font-medium text-gray-900">Acepto</label>
+                <span id="terms" class="text-gray-500"><span class="sr-only">Acepto </span>los términos y condiciones</span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
       </div>
       <div class="mt-6 flex items-center justify-end gap-x-6">
         <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancelar</button>

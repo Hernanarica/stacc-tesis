@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             //      PostsSeeder::class,
             NeighborhoodsSeeder::class,
-            LocalsSeeder::class,
-            OpinionSeeder::class,
+            //            LocalsSeeder::class,
+            //            OpinionSeeder::class,
         ]);
     }
 }

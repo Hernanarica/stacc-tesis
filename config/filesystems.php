@@ -44,6 +44,18 @@ return [
             'throw' => false,
         ],
 
+        'public-images' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/images'),
+            'visibility' => 'public',
+        ],
+
+        'public-files' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/files'),
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
