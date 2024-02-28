@@ -21,7 +21,7 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'email' => ['required'],
@@ -29,12 +29,12 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'email.required' => 'El email es obligatorio',
-            'password.required' => 'La contrasena es obligatorio',
-            'password.min' => 'Debe tener como minimo 4 caracteres',
+            'password.required' => 'La contraseña es obligatorio',
+            'password.min' => 'Debe tener como mínimo 4 caracteres',
         ];
     }
 }

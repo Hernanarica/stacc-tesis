@@ -42,7 +42,6 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //			throw_if(($request->category !== 'visitor' || $request->category !== 'owner'), 'Categoria invalida');
         try {
             if ($request->hasFile('image')) {
                 $image = new ImageService($request->image, public_path('uploads/images/profile'));
@@ -61,7 +60,7 @@ class UserController extends Controller
 
             $user->assignRole($request->category);
 
-            return redirect()->route('home.index')->with('success', 'Usuario registrado con exito');
+            return redirect()->route('home.index')->with('success', 'Usuario registrado con éxito');
         } catch (Throwable $e) {
             return redirect()->route('home.index')->with('error', 'Error al crear el usuario');
         }

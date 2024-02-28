@@ -17,11 +17,11 @@ class LoginController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (Auth::attempt($credentials)) {
-            return to_route('home.index')->with('success', 'Login realizado com exito');
+            return to_route('home.index')->with('success', 'Login realizado com éxito');
         }
 
-        return back()->with([
-            'error' => 'Credenciales incorrectas',
+        return redirect()->back()->withInput()->with([
+          'error' => 'Credenciales incorrectas',
         ]);
     }
 }
