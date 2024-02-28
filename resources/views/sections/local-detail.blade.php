@@ -278,7 +278,7 @@ $scores = ['1', '2', '3', '4', '5'];
                   <p class="ml-3 text-sm text-gray-700">{{ $opinion->score }}<span class="sr-only"> out of 5 stars</span></p>
                 </div>
                 <div class="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
-                  <h3 class="text-sm font-medium text-gray-900">Can&#039;t say enough good things</h3>
+                  <h3 class="text-sm font-medium text-gray-900">{{ $opinion->title }}</h3>
 
                   <div class="mt-3 text-sm text-gray-500 space-y-6">
                     <p>{{ $opinion->opinion }}</p>
