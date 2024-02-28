@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OpinionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -37,6 +38,11 @@ Route::controller(RegisterController::class)->prefix('/registrar')->group(functi
 Route::controller(LoginController::class)->prefix('/login')->group(function () {
     Route::get('', 'index')->name('login.index');
     Route::post('', 'store')->name('login.store');
+});
+
+Route::controller(OpinionController::class)->prefix('/opinions')->group(function () {
+//    Route::get('', 'index')->name('login.index');
+    Route::post('', 'store')->name('opinions.store');
 });
 
 Route::controller(UserController::class)->middleware('auth')->prefix('users')->group(function () {

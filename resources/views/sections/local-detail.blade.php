@@ -1,7 +1,10 @@
 <?php
+  use \Illuminate\Support\Carbon;
 /** @var \App\Models\Local $local */
+/** @var \App\Models\Opinion $opinions */
 
 $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+$scores = ['1', '2', '3', '4', '5'];
 
 //foreach ($daysOfWeek as $day) {
 //  echo '<pre>';
@@ -192,269 +195,104 @@ $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday
               </ul>
             </dd>
           </div>
+          @auth()
+            <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-8 lg:max-w-7xl">
+              <form
+                  action="{{ route('opinions.store', ['user_id' => auth()->user()->id, 'local_id' => $local->id]) }}"
+                  method="post"
+                  class="space-y-6"
+              >
+                @csrf
+                <div>
+                  <label for="title" class="block text-sm font-medium leading-6 text-gray-900">Título</label>
+                  <div class="mt-2">
+                    <input
+                        id="title"
+                        name="title"
+                        type="text"
+                        value="{{ old('title') }}"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    >
+                    @if($errors->has('title'))
+                      <span class="text-red-500 text-xs">{{ $errors->first('title') }}</span>
+                    @endif
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="score" class="block text-sm font-medium leading-6 text-gray-900">Puntaje</label>
+                    <select
+                        id="score"
+                        name="score"
+                        class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    >
+                      <option value="">Seleccionar</option>
+                      @foreach($scores as $score)
+                        <option value="{{ $score }}">{{ $score }}</option>
+                      @endforeach
+                    </select>
+                    @if($errors->has('score'))
+                      <span class="text-red-500 text-xs">{{ $errors->first('score') }}</span>
+                    @endif
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="opinion" class="block text-sm font-medium leading-6 text-gray-900">Comentarios</label>
+                    <div class="mt-2">
+                    <textarea
+                        rows="4"
+                        name="opinion"
+                        id="opinion"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                      @if($errors->has('opinion'))
+                        <span class="text-red-500 text-xs">{{ $errors->first('opinion') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button type="submit" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Comentar</button>
+                </div>
+              </form>
+            </div>
+          @endauth
         </dl>
       </div>
     </div>
-
     <div class="bg-white">
       <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 class="text-lg font-medium text-gray-900">Recent reviews</h2>
+        <h2 class="text-lg font-medium text-gray-900">Reseñas</h2>
         <div class="mt-6 border-t border-b border-gray-200 pb-10 space-y-10 divide-y divide-gray-200">
-          <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-            <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
-              <div class="flex items-center xl:col-span-1">
-                <div class="flex items-center">
-                  <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
+          @foreach($opinions as $opinion)
+            <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
+              <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
+                <div class="flex items-center xl:col-span-1">
+                  <div class="flex items-center">
+                    @for ($i = 1; $i <= $opinion->score; $i++)
+                      <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                      </svg>
+                    @endfor
+                  </div>
+                  <p class="ml-3 text-sm text-gray-700">{{ $opinion->score }}<span class="sr-only"> out of 5 stars</span></p>
                 </div>
-                <p class="ml-3 text-sm text-gray-700">5<span class="sr-only"> out of 5 stars</span></p>
-              </div>
+                <div class="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
+                  <h3 class="text-sm font-medium text-gray-900">Can&#039;t say enough good things</h3>
 
-              <div class="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
-                <h3 class="text-sm font-medium text-gray-900">Can&#039;t say enough good things</h3>
-
-                <div class="mt-3 text-sm text-gray-500 space-y-6">
-                  <p>I was really pleased with the overall shopping experience. My order even included a little personal, handwritten note, which delighted me!</p>
-                  <p>The product quality is amazing, it looks and feel even better than I had anticipated. Brilliant stuff! I would gladly recommend this store to my friends. And, now that I think of it... I actually have, many times!</p>
+                  <div class="mt-3 text-sm text-gray-500 space-y-6">
+                    <p>{{ $opinion->opinion }}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-              <p class="font-medium text-gray-900">Risako M</p>
-              <time datetime="2021-01-06" class="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:mt-2 lg:ml-0 lg:border-0 lg:pl-0">May 16, 2021</time>
-            </div>
-          </div>
-
-          <!-- More reviews... -->
-          <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-            <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
-              <div class="flex items-center xl:col-span-1">
-                <div class="flex items-center">
-                  <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <p class="ml-3 text-sm text-gray-700">5<span class="sr-only"> out of 5 stars</span></p>
-              </div>
-
-              <div class="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
-                <h3 class="text-sm font-medium text-gray-900">Can&#039;t say enough good things</h3>
-
-                <div class="mt-3 text-sm text-gray-500 space-y-6">
-                  <p>I was really pleased with the overall shopping experience. My order even included a little personal, handwritten note, which delighted me!</p>
-                  <p>The product quality is amazing, it looks and feel even better than I had anticipated. Brilliant stuff! I would gladly recommend this store to my friends. And, now that I think of it... I actually have, many times!</p>
-                </div>
+              <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
+                <p class="font-medium text-gray-900">{{ $opinion->user->name }} {{ $opinion->user->lastname }}</p>
+                <time datetime="2021-01-06" class="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:mt-2 lg:ml-0 lg:border-0 lg:pl-0">{{ Carbon::parse($opinion->current_date)->diffForHumans() }}</time>
               </div>
             </div>
-
-            <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-              <p class="font-medium text-gray-900">Risako M</p>
-              <time datetime="2021-01-06" class="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:mt-2 lg:ml-0 lg:border-0 lg:pl-0">May 16, 2021</time>
-            </div>
-          </div>
-          <div class="pt-10 lg:grid lg:grid-cols-12 lg:gap-x-8">
-            <div class="lg:col-span-8 lg:col-start-5 xl:col-span-9 xl:col-start-4 xl:grid xl:grid-cols-3 xl:items-start xl:gap-x-8">
-              <div class="flex items-center xl:col-span-1">
-                <div class="flex items-center">
-                  <!-- Active: "text-yellow-400", Inactive: "text-gray-200" -->
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                  <svg class="h-5 w-5 flex-shrink-0 text-yellow-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                  </svg>
-                </div>
-                <p class="ml-3 text-sm text-gray-700">5<span class="sr-only"> out of 5 stars</span></p>
-              </div>
-
-              <div class="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
-                <h3 class="text-sm font-medium text-gray-900">Can&#039;t say enough good things</h3>
-
-                <div class="mt-3 text-sm text-gray-500 space-y-6">
-                  <p>I was really pleased with the overall shopping experience. My order even included a little personal, handwritten note, which delighted me!</p>
-                  <p>The product quality is amazing, it looks and feel even better than I had anticipated. Brilliant stuff! I would gladly recommend this store to my friends. And, now that I think of it... I actually have, many times!</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
-              <p class="font-medium text-gray-900">Risako M</p>
-              <time datetime="2021-01-06" class="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:mt-2 lg:ml-0 lg:border-0 lg:pl-0">May 16, 2021</time>
-            </div>
-          </div>
-
+          @endforeach
         </div>
       </div>
     </div>
-
-
   </section>
-
-{{--  <div class="mx-auto max-w-7xl px-6 lg:px-8">--}}
-{{--    <div class="hidden lg:block">--}}
-{{--      <div class="flex gap-12">--}}
-{{--        <div class="overflow-hidden">--}}
-{{--          <dl class="sm:divide-y sm:divide-gray-200">--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-5 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Dirección</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-5 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Barrio</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->neighborhood->name }}</dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-5 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Teléfono</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-5 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Redes sociales</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">--}}
-{{--                <ul>--}}
-{{--                  <li><a href="{{ $local->url_site }}" target="_blank">{{ $local->url_site }}</a></li>--}}
-{{--                  <li><a href="{{ $local->url_site }}" target="_blank">{{ $local->url_site }}</a></li>--}}
-{{--                  <li><a href="{{ $local->url_site }}" target="_blank">{{ $local->url_site }}</a></li>--}}
-{{--                </ul>--}}
-{{--              </dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-5 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Mapa</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">--}}
-{{--                {!! htmlspecialchars_decode($local->url_map) !!}--}}
-{{--              </dd>--}}
-{{--            </div>--}}
-{{--          </dl>--}}
-{{--        </div>--}}
-
-{{--        <div class="w-full md:max-w-xs">--}}
-{{--          <h3 class="font-medium text-gray-900">Horarios</h3>--}}
-{{--          <dl class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">--}}
-{{--            @foreach($days as $day)--}}
-{{--              <div class="flex justify-between py-3 text-sm font-medium">--}}
-{{--                <dt class="capitalize text-gray-500">{{ $day }}</dt>--}}
-{{--                <dd class="flex items-center gap-1 whitespace-nowrap text-gray-900">--}}
-{{--                  <svg--}}
-{{--                      xmlns="http://www.w3.org/2000/svg"--}}
-{{--                      fill="none"--}}
-{{--                      viewBox="0 0 24 24"--}}
-{{--                      stroke-width="1.5"--}}
-{{--                      stroke="currentColor"--}}
-{{--                      class="h-3 w-3"--}}
-{{--                  >--}}
-{{--                    <path stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>--}}
-{{--                  </svg>--}}
-{{--                  <span>{{ $local->opening_time }} a {{ $local->closing_time }}</span>--}}
-{{--                </dd>--}}
-{{--              </div>--}}
-{{--            @endforeach--}}
-{{--          </dl>--}}
-{{--        </div>--}}
-{{--      </div>--}}
-{{--    </div>--}}
-{{--    <div class="mt-[53%] sm:mt-64 lg:hidden">--}}
-{{--      <div class="flex flex-col gap-6">--}}
-{{--        <div class="overflow-hidden">--}}
-{{--          <dl class="sm:divide-y sm:divide-gray-200">--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Direccion</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->address }}</dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Teléfono</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Email</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">local@gmail.com</dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Salary expectation</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>--}}
-{{--            </div>--}}
-{{--            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">--}}
-{{--              <dt class="text-sm font-medium text-gray-500">Descripcion</dt>--}}
-{{--              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint--}}
-{{--                do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id--}}
-{{--                mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing--}}
-{{--                reprehenderit deserunt qui eu.--}}
-{{--              </dd>--}}
-{{--            </div>--}}
-{{--          </dl>--}}
-{{--        </div>--}}
-
-{{--        <div class="flex flex-col items-center gap-8 sm:px-6 md:flex-row">--}}
-{{--          <div class="w-full md:max-w-xs">--}}
-{{--            <h3 class="font-medium text-gray-900">Horarios</h3>--}}
-{{--            <dl class="mt-2 border-t border-b border-gray-200 divide-y divide-gray-200">--}}
-{{--              @foreach($days as $day)--}}
-{{--                <div class="flex justify-between py-3 text-sm font-medium">--}}
-{{--                  <dt class="capitalize text-gray-500">{{ $day }}</dt>--}}
-{{--                  <dd class="flex items-center gap-1 whitespace-nowrap text-gray-900">--}}
-{{--                    <svg--}}
-{{--                        xmlns="http://www.w3.org/2000/svg"--}}
-{{--                        fill="none"--}}
-{{--                        viewBox="0 0 24 24"--}}
-{{--                        stroke-width="1.5"--}}
-{{--                        stroke="currentColor"--}}
-{{--                        class="h-3 w-3"--}}
-{{--                    >--}}
-{{--                      <path stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>--}}
-{{--                    </svg>--}}
-{{--                    <span>{{ $local->opening_time }} a {{ $local->closing_time }}</span>--}}
-{{--                  </dd>--}}
-{{--                </div>--}}
-{{--              @endforeach--}}
-{{--            </dl>--}}
-{{--          </div>--}}
-
-{{--          <div class="w-full">--}}
-{{--            <div class="overflow-hidden sm:mx-auto sm:w-fit md:w-[350px] md:aspect-square md:rounded-full">--}}
-{{--              {!! htmlspecialchars_decode($local->url_map) !!}--}}
-{{--            </div>--}}
-{{--          </div>--}}
-
-{{--        </div>--}}
-
-{{--      </div>--}}
-{{--    </div>--}}
-{{--  </div>--}}
 @endsection

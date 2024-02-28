@@ -7,6 +7,7 @@ use App\Http\Requests\LocalStoreRequest;
 use App\Http\Requests\LocalUpdateRequest;
 use App\Models\Local;
 use App\Models\Neighborhoods;
+use App\Models\Opinion;
 use App\Services\ImageService;
 use Exception;
 use Illuminate\Http\Request;
@@ -165,9 +166,11 @@ class LocalController extends Controller
     {
         //por medio del ID del local, se obtiene el local
         $local = Local::find($local);
+        $opinions = Opinion::where('local_id', $local->id)->get();
 
         return view('sections.local-detail', [
             'local' => $local,
+            'opinions' => $opinions,
         ]);
     }
 
