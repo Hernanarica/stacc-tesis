@@ -23,7 +23,6 @@ class UserFactory extends Factory
             'email' => fake()->email(),
             'category' => fake()->randomElement(['visitor', 'owner']),
             'image' => 'default-image.png',
-            'image_alt' => 'default alt',
             'password' => Hash::make('asdf1234'),
         ];
     }

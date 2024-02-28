@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('street-number');
             $table->string('phone');
             $table->foreignId('neighborhood_id')->constrained('neighborhoods')->after('user_id')->onDelete('cascade');
-            $table->string('map');
+            $table->text('map');
             $table->string('website');
             $table->text('description');
             $table->string('cover-photo');

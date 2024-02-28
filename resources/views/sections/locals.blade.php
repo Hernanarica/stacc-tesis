@@ -54,7 +54,7 @@
             <div class="relative">
               <div class="relative h-72 w-full overflow-hidden rounded-lg">
                 <img
-                    src="{{ asset("uploads/images/" . $local['cover-photo'])}}"
+                    src="{{ asset('./uploads/images/local/' . $local['cover-photo'])}}"
                     alt="{{ $local->name }}"
                     class=" max-w-lg inline-block aspect-video object-cover shadow-xl"
                 />
@@ -64,21 +64,7 @@
                   {{ $local->name }}
                 </h3>
                 <h3 class="text-sm font-medium text-gray-900">{{ $local->address }}
-                  , {{ $local->neighborhood->name }}</h3>
-                <p class="flex items-center gap-1 mt-1 text-sm text-gray-500">
-                  <svg
-                      class="w-4 h-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  {{ $local->opening_time }} a {{ $local->closing_time }}
-                </p>
+                   {{ $local->neighborhood->name }}</h3>
               </div>
               <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
                 <div aria-hidden="true"

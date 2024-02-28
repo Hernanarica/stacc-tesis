@@ -52,7 +52,6 @@ class UserController extends Controller
                 'name' => $request->name,
                 'lastname' => $request->lastname,
                 'image' => $image->imageName ?? null,
-                'image_alt' => $image->imageAlt ?? null,
                 'email' => $request->email,
                 'category' => $request->category,
                 'password' => Hash::make($request->password),
@@ -114,7 +113,6 @@ class UserController extends Controller
             'lastname' => $request->lastname,
             'email' => $request->email,
             'image' => $image->imageName ?? $user->image,
-            'image_alt' => $image->imageAlt ?? $user->image_alt,
             'category' => $request->category,
         ]);
 

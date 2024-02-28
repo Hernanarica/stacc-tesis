@@ -10,7 +10,8 @@
 			<div class="mt-8 flex flex-col">
 				<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
 					<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-						@if(empty($locals))
+{{--            si $locals tiene algo mostrar --}}
+            @if($locals->count() > 0)
 						<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
 							@foreach($locals as $local)
 								{{--				listado de mis locales con su funcion de editar --}}
@@ -30,7 +31,7 @@
 										<td class="px-3 py-4 whitespace-nowrap">
 											<div class="flex items-center">
 												<div class="flex-shrink-0 h-10 w-10">
-													<img class="h-10 w-10 rounded-full" src="{{ url('/uploads/images/local/' . $local->image)}}" alt="{{$local->image_alt}}">
+													<img class="h-10 w-10 rounded-full" src="{{ url('/uploads/images/local/' . $local['cover-photo'])}}" alt="foto del local {{$local->name}}">
 												</div>
 											</div>
 										</td>
