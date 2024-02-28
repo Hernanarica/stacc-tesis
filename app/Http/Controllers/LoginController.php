@@ -21,7 +21,7 @@ class LoginController extends Controller
         }
 
         return redirect()->back()->withInput()->with([
-          'error' => 'Credenciales incorrectas',
+            'error' => 'Credenciales incorrectas',
         ]);
     }
 }

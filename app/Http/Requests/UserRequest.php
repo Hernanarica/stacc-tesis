@@ -39,9 +39,9 @@ class UserRequest extends FormRequest
             'lastname.required' => 'El apellido es obligatorio',
             'email.required' => 'El email es obligatorio',
             'email.unique' => 'El email ya existe',
-            'category.required' => 'La categoria es obligatoria',
+            'category.required' => 'La categoría es obligatoria',
             'password.required' => 'La contraseña es obligatorio',
-            'password.min' => 'La contraseña debe tener como minimo 4 caracteres',
+            'password.min' => 'La contraseña debe tener como mínimo 4 caracteres',
         ];
     }
 }
