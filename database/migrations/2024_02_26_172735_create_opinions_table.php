@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('local_id')->constrained();
-            $table->unsignedTinyInteger('title');
+            $table->string('title');
             $table->unsignedTinyInteger('score');
             $table->text('opinion');
             $table->date('current_date');

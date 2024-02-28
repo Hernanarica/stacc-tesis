@@ -59,8 +59,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '8:00',
                         'closing-time' => '20:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '8:00',
                         'closing-time' => '20:00',
                     ],
@@ -120,8 +120,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '8:00',
                         'closing-time' => '20:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '8:00',
                         'closing-time' => '20:00',
                     ],
@@ -181,8 +181,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '8:00',
                         'closing-time' => '20:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '8:00',
                         'closing-time' => '20:00',
                     ],
@@ -240,8 +240,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '9:00',
                         'closing-time' => '00:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '9:00',
                         'closing-time' => '00:00',
                     ],
@@ -299,8 +299,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
@@ -358,8 +358,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
@@ -417,8 +417,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
@@ -476,8 +476,8 @@ class LocalsSeeder extends Seeder
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
-                    'sabado' => [
-                        'day' => 'sabado',
+                    'sábado' => [
+                        'day' => 'sábado',
                         'opening-time' => '9:00',
                         'closing-time' => '11:00',
                     ],
