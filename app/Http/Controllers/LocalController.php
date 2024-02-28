@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LocalRequest;
+use App\Http\Requests\LocalStoreRequest;
 use App\Http\Requests\LocalUpdateRequest;
 use App\Models\Local;
 use App\Models\Neighborhoods;
@@ -61,7 +62,7 @@ class LocalController extends Controller
      * @param  LocalRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(LocalStoreRequest $request)
     {
         try {
             if ($request->hasFile('cover-photo')) {

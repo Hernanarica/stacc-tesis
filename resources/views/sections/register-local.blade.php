@@ -1,5 +1,9 @@
 <?php
 /** @var \App\Models\Local[] $neighborhoods */
+
+//echo '<pre>';
+//print_r($errors);
+//echo '</pre>';
 ?>
 @extends('layout.layout')
 @section('title', 'Registra tu local')
@@ -20,7 +24,9 @@
                   name="name"
                   id="name"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('name') }}"
                 >
+                @if($errors->has('name'))<span class="text-red-500 text-xs">{{ $errors->first('name') }}</span>@endif
               </div>
             </div>
             <div class="sm:col-span-3">
@@ -31,7 +37,9 @@
                   name="street"
                   id="street"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('street') }}"
                 >
+                @if($errors->has('street'))<span class="text-red-500 text-xs">{{ $errors->first('street') }}</span>@endif
               </div>
             </div>
             <div class="sm:col-span-3">
@@ -42,7 +50,9 @@
                   name="street-number"
                   id="street-number"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('street-number') }}"
                 >
+                @if($errors->has('street-number'))<span class="text-red-500 text-xs">{{ $errors->first('street-number') }}</span>@endif
               </div>
             </div>
             <div class="sm:col-span-3">
@@ -53,7 +63,9 @@
                   name="phone"
                   id="phone"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('phone') }}"
                 >
+                @if($errors->has('phone'))<span class="text-red-500 text-xs">{{ $errors->first('phone') }}</span>@endif
               </div>
             </div>
             <div class="sm:col-span-3">
@@ -69,6 +81,7 @@
                     <option value="{{ $neighborhood->id }}" @if(old('neighborhood_id') == $neighborhood->id) selected @endif>{{ $neighborhood->name }}</option>
                   @endforeach
                 </select>
+                @if($errors->has('neighborhood_id'))<span class="text-red-500 text-xs">{{ $errors->first('neighborhood_id') }}</span>@endif
               </div>
             </div>
             <div class="sm:col-span-3">
@@ -87,7 +100,9 @@
                   name="map"
                   id="map"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('map') }}"
                 >
+                @if($errors->has('map'))<span class="text-red-500 text-xs">{{ $errors->first('map') }}</span>@endif
               </div>
             </div>
             <div class="sm:col-span-3">
@@ -98,7 +113,9 @@
                   name="website"
                   id="website"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('website') }}"
                 >
+                @if($errors->has('website'))<span class="text-red-500 text-xs">{{ $errors->first('website') }}</span>@endif
               </div>
             </div>
             <div class="col-span-full">
@@ -109,7 +126,8 @@
                   name="description"
                   rows="3"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                ></textarea>
+                >{{ old('description') }}</textarea>
+                @if($errors->has('description'))<span class="text-red-500 text-xs">{{ $errors->first('description') }}</span>@endif
               </div>
               <p class="mt-3 text-sm leading-6 text-gray-600">Descripción del local, podés incluir datos históricos del local</p>
             </div>
@@ -133,6 +151,7 @@
                   <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                 </div>
               </div>
+              @if($errors->has('cover-photo'))<span class="text-red-500 text-xs">{{ $errors->first('cover-photo') }}</span>@endif
             </div>
             <div class="col-span-full">
               <label for="certificate" class="block text-sm font-medium leading-6 text-gray-900">Certificado</label>
@@ -151,6 +170,7 @@
                   <p class="text-xs leading-5 text-gray-600">PDF, PNG, JPG up to 10MB</p>
                 </div>
               </div>
+              @if($errors->has('certificate'))<span class="text-red-500 text-xs">{{ $errors->first('certificate') }}</span>@endif
             </div>
           </div>
         </div>
@@ -166,6 +186,7 @@
                   name="social-facebook"
                   id="social-facebook"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('social-facebook') }}"
                 >
               </div>
             </div>
@@ -177,6 +198,7 @@
                   name="social-instagram"
                   id="social-instagram"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('social-instagram') }}"
                 >
               </div>
             </div>
@@ -188,14 +210,17 @@
                   name="social-tiktok"
                   id="social-tiktok"
                   class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  value="{{ old('social-tiktok') }}"
                 >
               </div>
             </div>
           </div>
+          @if($errors->has('social-networks'))<span class="text-red-500 text-xs">{{ $errors->first('social-networks') }}</span>@endif
         </div>
         <div class="border-b border-gray-900/10 pb-12">
           <h2 class="text-base font-semibold leading-7 text-gray-900">Horarios de atención</h2>
           <p class="mt-1 text-sm leading-6 text-gray-600">Agrega tus dias y horarios de atención</p>
+          @if($errors->has('schedules'))<span class="text-red-500 text-xs">{{ $errors->first('schedules') }}</span>@endif
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-3 sm:col-start-1">
               <label for="monday" class="block text-sm font-medium leading-6 text-gray-900">Lunes</label>
@@ -207,6 +232,7 @@
                     name="monday-opening-time"
                     id="monday-opening-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('monday-opening-time') }}"
                   >
                 </div>
                 <span>a</span>
@@ -217,6 +243,7 @@
                     name="monday-closing-time"
                     id="monday-closing-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('monday-closing-time') }}"
                   >
                 </div>
               </div>
@@ -231,6 +258,7 @@
                     name="tuesday-opening-time"
                     id="tuesday-opening-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('tuesday-opening-time') }}"
                   >
                 </div>
                 <span>a</span>
@@ -241,6 +269,7 @@
                     name="tuesday-closing-time"
                     id="tuesday-closing-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('tuesday-closing-time') }}"
                   >
                 </div>
               </div>
@@ -255,6 +284,7 @@
                     name="wednesday-opening-time"
                     id="wednesday-opening-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('wednesday-opening-time') }}"
                   >
                 </div>
                 <span>a</span>
@@ -265,6 +295,7 @@
                     name="wednesday-closing-time"
                     id="wednesday-closing-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('wednesday-closing-time') }}"
                   >
                 </div>
               </div>
@@ -279,6 +310,7 @@
                     name="thursday-opening-time"
                     id="thursday-opening-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('thursday-opening-time') }}"
                   >
                 </div>
                 <span>a</span>
@@ -289,6 +321,7 @@
                     name="thursday-closing-time"
                     id="thursday-closing-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('thursday-closing-time') }}"
                   >
                 </div>
               </div>
@@ -303,6 +336,7 @@
                     name="friday-opening-time"
                     id="friday-opening-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('friday-opening-time') }}"
                   >
                 </div>
                 <span>a</span>
@@ -313,6 +347,7 @@
                     name="friday-closing-time"
                     id="friday-closing-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('friday-closing-time') }}"
                   >
                 </div>
               </div>
@@ -327,6 +362,7 @@
                     name="saturday-opening-time"
                     id="saturday-opening-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('saturday-opening-time') }}"
                   >
                 </div>
                 <span>a</span>
@@ -337,6 +373,7 @@
                     name="saturday-closing-time"
                     id="saturday-closing-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('saturday-closing-time') }}"
                   >
                 </div>
               </div>
@@ -351,6 +388,7 @@
                     name="sunday-opening-time"
                     id="sunday-opening-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('sunday-opening-time') }}"
                   >
                 </div>
                 <span>a</span>
@@ -361,6 +399,7 @@
                     name="sunday-closing-time"
                     id="sunday-closing-time"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    value="{{ old('sunday-closing-time') }}"
                   >
                 </div>
               </div>
@@ -372,13 +411,21 @@
           <div class="space-y-5">
             <div class="relative flex items-start">
               <div class="flex h-6 items-center">
-                <input id="terms" aria-describedby="terms" name="terms" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+                <input
+                  id="terms"
+                  aria-describedby="terms"
+                  name="terms"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  @checked(old('terms'))
+                >
               </div>
               <div class="ml-3 text-sm leading-6">
                 <label for="terms" class="font-medium text-gray-900">Acepto</label>
                 <span id="terms" class="text-gray-500"><span class="sr-only">Acepto </span>los términos y condiciones</span>
               </div>
             </div>
+            @if($errors->has('terms'))<span class="text-red-500 text-xs">{{ $errors->first('terms') }}</span>@endif
           </div>
         </fieldset>
       </div>
