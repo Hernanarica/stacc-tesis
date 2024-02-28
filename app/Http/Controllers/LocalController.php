@@ -25,7 +25,7 @@ class LocalController extends Controller
     {
         if (empty($request->search)) {
             //traer todos los locales solo si son visibles
-            $locals = Local::where('is_public', 1)->paginate(4);
+            $locals = Local::where('is_public', 1)->paginate(10);
         } else {
             $locals = Local::with('neighborhood')
               ->where('is_public', 1)
@@ -33,7 +33,7 @@ class LocalController extends Controller
               ->orWhereHas('neighborhood', function ($query) use ($request) {
                   $query->where('name', 'like', '%'.$request->query('search').'%');
               })
-              ->paginate(4);
+              ->paginate(10);
         }
 
         return view('sections.locals', [

@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             RolesAndPermissionsSeeder::class,
             UsersSeeder::class,
             //      PostsSeeder::class,
-            NeighborhoodsSeeder::class,
-            //            LocalsSeeder::class,
             //            OpinionSeeder::class,
+            NeighborhoodsSeeder::class,
+            LocalsSeeder::class,
         ]);
     }
 }

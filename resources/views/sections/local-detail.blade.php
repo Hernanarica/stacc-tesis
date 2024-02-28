@@ -1,14 +1,8 @@
 <?php
 /** @var \App\Models\Local $local */
 
-$daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+$daysOfWeek = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sabado', 'domingo'];
 
-//foreach ($daysOfWeek as $day) {
-//  echo '<pre>';
-//  print_r($local['schedules'][$day]['day']);
-//  echo '</pre>';
-//}
-//dd($local['schedules']);
 ?>
 @extends('layout.layout')
 @section('title', $local->name)
@@ -100,7 +94,7 @@ $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday
                 <a href="{{ $local->website }}" target="_blank" class="text-sm font-semibold leading-6 text-gray-900">Visitar web <span aria-hidden="true">→</span></a>
               </div>
             </div>
-            <img src="{{ asset("uploads/images/" . $local['cover-photo'])}}" alt="" class="mt-10 w-full max-w-lg rounded-2xl object-cover aspect-[6/5] sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36">
+            <img src="{{ asset("uploads/images/local/" . $local['cover-photo'])}}" alt="" class="mt-10 w-full max-w-lg rounded-2xl object-cover aspect-[6/5] sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36">
           </div>
         </div>
         <div class="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-white sm:h-32"></div>
@@ -125,10 +119,6 @@ $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium text-gray-900">Teléfono</dt>
             <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $local->phone }}</dd>
-          </div>
-          <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
-            <dt class="text-sm font-medium text-gray-900">Email</dt>
-            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
           </div>
           <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-8 lg:max-w-7xl">
             <dt class="text-sm font-medium text-gray-900">Descripción</dt>
@@ -158,18 +148,18 @@ $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday
             <dt class="text-sm font-medium leading-6 text-gray-900">Redes sociales</dt>
             <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <ul role="list" class="rounded-md border border-gray-200 divide-y divide-gray-100">
-                @foreach($local['social-networks'] as $socialNetwork)
+                @foreach($local['social-networks'] as $red => $url )
                   <li class="flex items-center justify-between py-4 pr-5 pl-4 text-sm leading-6">
                     <div class="flex w-0 flex-1 items-center">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 flex-shrink-0 text-gray-400">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
                       </svg>
                       <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                        <span class="truncate font-medium">{{ $socialNetwork['name'] }}</span>
+                        <span class="truncate font-medium">{{ $red }}</span>
                       </div>
                     </div>
                     <div class="ml-4 flex-shrink-0">
-                      <a href="{{ $socialNetwork['url'] }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Visitar</a>
+                      <a href="{{ $url }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Visitar</a>
                     </div>
                   </li>
                 @endforeach

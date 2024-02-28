@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('password');
             $table->enum('category', ['admin', 'visitor', 'owner']);
             $table->string('image')->nullable();
-            $table->string('image_alt')->nullable();
             $table->timestamps();
         });
     }
