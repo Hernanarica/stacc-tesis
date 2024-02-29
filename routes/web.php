@@ -31,7 +31,7 @@ Route::post('/logout', [LogoutController::class, 'index'])->name('logout.index')
 Route::get('/posts', [UserController::class, 'index'])->name('post.index');
 
 Route::controller(RegisterController::class)->prefix('/registrar')->group(function () {
-    Route::get('', [RegisterController::class, 'index'])->name('register.create');
+    Route::get('', [RegisterController::class, 'index'])->name('register.index');
     Route::post('', [RegisterController::class, 'store'])->name('register.store');
 });
 
@@ -65,10 +65,10 @@ Route::group(['middleware' => ['role:admin|owner']], function () {
 });
 
 Route::group(['middleware' => ['role:admin|owner|visitor']], function () {
-    Route::controller(FavoriteController::class)->prefix('favorito')->group(function () {
-        Route::get('', 'index')->name('favorite.index');
-        Route::post('/{id}', 'store')->name('favorite.store');
-        Route::delete('/{id}', 'destroy')->name('favorite.destroy');
+    Route::controller(FavoriteController::class)->prefix('favoritos')->group(function () {
+        Route::get('', 'index')->name('favorites.index');
+        Route::post('/{id}', 'store')->name('favorites.store');
+        Route::delete('/{id}', 'destroy')->name('favorites.destroy');
     });
 });
 

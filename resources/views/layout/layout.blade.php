@@ -1,3 +1,38 @@
+@php
+    $navItems = [
+        [
+            'name' => 'Inicio',
+            'route' => 'home.index',
+            'auth' => false,
+        ],
+        [
+            'name' => 'Locales',
+            'route' => 'locals.index',
+            'auth' => false,
+        ],
+        [
+            'name' => 'Contacto',
+            'route' => 'contact.index',
+            'auth' => false,
+        ],
+        [
+            'name' => 'Registrate',
+            'route' => 'register.index',
+            'auth' => false,
+        ],
+        [
+            'name' => 'Mis favoritos',
+            'route' => 'favorites.index',
+            'auth' => true,
+        ],
+        [
+            'name' => 'Mis locales',
+            'route' => 'locals.index',
+            'auth' => true,
+            'roles' => ['owner']
+        ],
+    ];
+@endphp
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -12,234 +47,132 @@
     <title>Stacc | @yield('title', 'Bienvenido')</title>
   </head>
   <body>
-    <header>
-      <x-wrapper>
-        <div class="flex justify-between items-center">
-          <div>
-            <a href="{{ route('home.index') }}">
-              <img
-                  src="{{ asset('src/assets/images/logos/logo_red.png') }}"
-                  alt="stacc logo"
-                  width="70"
-                  class="align-middle"
-              >
-            </a>
-          </div>
-
-          <nav class="py-3 hidden lg:block">
-            <ul class="flex items-center gap-6">
-              <li>
-                <a
-                    href="{{ route('home.index') }}"
-                    class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                >inicio</a>
-              </li>
-              <li>
-                <a
-                    href="{{ route('locals.index') }}"
-                    class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                >Locales</a>
-              </li>
-              <li>
-                <a
-                    href="{{ route('contact.index') }}"
-                    class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                >Contacto</a>
-              </li>
-              @auth()
-                <li>
-                  <a
-                      href="{{ route('favorite.index') }}"
-                      class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                  >Mis favoritos</a>
-                </li>
-                @role('owner')
-                <li>
-                  <a
-                      href="{{ route('store.index') }}"
-                      class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                  >Mis Locales</a>
-                </li>
-                @endrole
-                @role('admin|owner')
-                <li>
-                  <a
-                      href="{{ route('locals.create') }}"
-                      class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                  >Crear local</a>
-                </li>
-                @endrole
-                @role('owner|visitor')
-                <li>
-                  <a
-                      href="{{ route('profile.index') }}"
-                      class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                  >Mi perfil</a>
-                </li>
-                @endrole
-                @role('admin')
-                <li>
-                  <a
-                      href="{{ route('dashboard.index') }}"
-                      class="inline-block w-full py-1 font-medium text-gray-600 text-md lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded"
-                  >Panel de control</a>
-                </li>
-                @endrole
-              @endauth
-            </ul>
-          </nav>
-
-          <nav class="hidden lg:block">
-            <ul class="flex items-center gap-3">
-              @guest()
-                <li>
-                  <a
-                      href="{{ route('login.index') }}"
-                      class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                  >Inicia sesion</a>
-                </li>
-                <li>
-                  <a
-                      href="{{ route('register.create') }}"
-                      class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-stacc-purple to-stacc-red focus:shadow-outline focus:outline-none"
-                  >Registrate</a>
-                </li>
-              @endguest
-              @auth()
-                <form
-                    action="{{ route('logout.index') }}"
-                    method="post"
-                    class="hidden lg:block"
-                >
-                  @csrf
-                  <button type="submit"
-                          class="flex items-center gap-2 py-1 lg:text-lg hover:bg-gray-100 lg:px-3 lg:py-2 rounded font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
-                    </svg>
-                    Logout
-                  </button>
-                </form>
-              @endauth
-            </ul>
-          </nav>
-
-          <button class="lg:hidden" id="menuBtn">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-10 h-10 text-gray-500"
-                id="iconOpen"
-            >
-              <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-10 h-10 text-gray-500 hidden"
-                id="iconClose"
-            >
-              <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-              />
+    <header class="bg-white">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+            <span class="sr-only">Open main menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
         </div>
-        <nav class="py-3 hidden" id="navbar">
-          <ul class="w-full h-fit space-y-2">
-            <li>
-              <a href="{{ route('home.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">inicio</a>
-            </li>
-            <li>
-              <a href="{{ route('locals.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Locales</a>
-            </li>
-            <li>
-              <a href="{{ route('contact.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Contacto</a>
-            </li>
-            <li>
-              <a href="{{ route('favorite.index') }}"
-                 class="inline-block w-full py-1 font-medium text-gray-600 text-md">Mis favoritos</a>
-            </li>
-            @role('owner')
-            <li>
-              <a href="{{ route('store.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Mis
-                locales</a>
-            </li>
-            @endrole
-            @role('admin')
-            <li>
-              <a href="{{ route('locals.create') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Crear
-                local</a>
-            </li>
-            @endrole
+        <div class="hidden lg:flex lg:gap-x-12">
+            <a href="{{ route('home.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Inicio</a>
+            <a href="{{ route('locals.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Locales</a>
+            <a href="{{ route('contact.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Contacto</a>
             @guest()
-              <li>
-                <a href="{{ route('login.index') }}" class="inline-block w-full py-1 font-medium text-gray-600 text-md">Inicia
-                  sesion</a>
-              </li>
-              <li>
-                <a href="{{ route('register.create') }}"
-                   class="inline-block w-full py-1 font-medium text-gray-600 text-md">Registrate</a>
-              </li>
+              <a href="{{ route('register.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Registrate</a>
             @endguest
             @auth()
-              <form action="{{ route('logout.index') }}" method="post">
-                @csrf
-                <button type="submit" class="flex items-center gap-2 py-1 font-medium">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                       stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/>
-                  </svg>
-                  Logout
-                </button>
-              </form>
+              <a href="{{ route('favorites.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mis favoritos</a>
+              @role('owner')
+                <a href="{{ route('store.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mis locales</a>
+              @endrole
+              @role('admin|owner')
+                <a href="{{ route('locals.create') }}" class="text-sm font-semibold leading-6 text-gray-900">Crear local</a>
+              @endrole
+              @role('owner|visitor')
+                <a href="{{ route('profile.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mi perfil</a>
+              @endrole
+              @role('admin')
+                <a href="{{ route('dashboard.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Panel de control</a>
+              @endrole
             @endauth
-          </ul>
-        </nav>
-      </x-wrapper>
+        </div>
+        @auth()
+          <form action="{{ route('logout.index') }}" method="post" class="hidden lg:flex lg:flex-1 lg:justify-end">
+            @csrf
+            <button class="text-sm font-semibold leading-6 text-gray-900">Cerrar sesión <span aria-hidden="true">&rarr;</span></button>
+          </form>
+        @elseguest()
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="{{ route('login.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Iniciar sesión <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        @endauth
+      </nav>
+      <!-- Mobile menu, show/hide based on menu open state. -->
+      <div class="lg:hidden" role="dialog" aria-modal="true">
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-10"></div>
+        <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Stacc</span>
+              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+            </a>
+            <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+              <span class="sr-only">Close menu</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="space-y-2 py-6">
+                <a href="{{ route('home.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Inicio</a>
+                <a href="{{ route('locals.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Locales</a>
+                <a href="{{ route('contact.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contacto</a>
+                @guest()
+                  <a href="{{ route('register.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Registrate</a>
+                @endguest
+                @auth()
+                  <a href="{{ route('favorites.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Mis favoritos</a>
+                  @role('owner')
+                  <a href="{{ route('store.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Mis locales</a>
+                  @endrole
+                  @role('admin|owner')
+                  <a href="{{ route('locals.create') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Crear local</a>
+                  @endrole
+                  @role('owner|visitor')
+                  <a href="{{ route('profile.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Mi perfil</a>
+                  @endrole
+                  @role('admin')
+                  <a href="{{ route('dashboard.index') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Panel de control</a>
+                  @endrole
+                @endauth
+              </div>
+              <div class="py-6">
+                <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
     {{--	 mensajes globales de notificaciones con estilos en tailwindcss	--}}
 
     @if(session('success'))
-      <div
-          class="fixed top-0 right-0 z-50 w-full max-w-xs mx-4 mt-4 overflow-hidden bg-green-500 rounded-lg shadow-lg pointer-events-auto md:max-w-xs message-session">
-        <div class="overflow-hidden bg-green-500 rounded-lg shadow-xs">
-          <div class="p-4">
-            <div class="flex items-center">
-              <div class="p-2 text-green-100 bg-green-600 rounded-full">
-                <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                     stroke="currentColor" viewBox="0 0 24 24">
-                  <path d="M5 13l4 4L19 7"></path>
-                </svg>
+      <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 message-session">
+        <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+          <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+            <div class="p-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div class="ml-3 w-0 flex-1 pt-0.5">
+                  <p class="text-sm font-medium text-gray-900">Operación exitosa!</p>
+                  <p class="mt-1 text-sm text-gray-500">{{ session('success') }}</p>
+                </div>
+                <div class="ml-4 flex flex-shrink-0">
+                  <button type="button" id="close" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <span class="sr-only">Close</span>
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-              <div class="mx-3">
-                <p class="text-sm font-medium text-white">
-                  {{ session('success') }}
-                </p>
-              </div>
-              <button
-                  class="p-1 transition duration-150 ease-in-out rounded-md hover:bg-green-600 focus:outline-none focus:bg-green-600">
-                <svg class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor" id="close">
-                  <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414l-4.293 4.293 4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414l4.293-4.293-4.293-4.293a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-              </button>
             </div>
           </div>
         </div>
@@ -247,30 +180,29 @@
       @vite('resources/js/notification.js')
     @endif
     @if(session('error'))
-      <div
-          class="fixed top-0 right-0 z-50 w-full max-w-sm mx-4 mt-4 overflow-hidden bg-red-500 rounded-lg shadow-lg pointer-events-auto md:max-w-md message-session">
-        <div class="overflow-hidden bg-red-500 rounded-lg shadow-xs">
-          <div class="p-4">
-            <div class="flex items center">
-              <div class="p-2 text-red-100 bg-red-600 rounded-full">
-                <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                     stroke="currentColor" viewBox="0 0 24 24">
-                  <path d="M5 13l4 4L19 7"></path>
-                </svg>
+      <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 message-session">
+        <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+          <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+            <div class="p-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-red-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                  </svg>
+                </div>
+                <div class="ml-3 w-0 flex-1 pt-0.5">
+                  <p class="text-sm font-medium text-gray-900">Error!</p>
+                  <p class="mt-1 text-sm text-gray-500">{{ session('error') }}</p>
+                </div>
+                <div class="ml-4 flex flex-shrink-0">
+                  <button type="button" id="close" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <span class="sr-only">Close</span>
+                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-              <div class="mx-3">
-                <p class="text-sm font-medium text-white">
-                  {{ session('error') }}
-                </p>
-              </div>
-              <button
-                  class="p-1 transition duration-150 ease-in-out rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">
-                <svg class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor" id="close">
-                  <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414l-4.293 4.293 4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414l4.293-4.293-4.293-4.293a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-              </button>
             </div>
           </div>
         </div>
