@@ -1,38 +1,3 @@
-@php
-    $navItems = [
-        [
-            'name' => 'Inicio',
-            'route' => 'home.index',
-            'auth' => false,
-        ],
-        [
-            'name' => 'Locales',
-            'route' => 'locals.index',
-            'auth' => false,
-        ],
-        [
-            'name' => 'Contacto',
-            'route' => 'contact.index',
-            'auth' => false,
-        ],
-        [
-            'name' => 'Registrate',
-            'route' => 'register.index',
-            'auth' => false,
-        ],
-        [
-            'name' => 'Mis favoritos',
-            'route' => 'favorites.index',
-            'auth' => true,
-        ],
-        [
-            'name' => 'Mis locales',
-            'route' => 'locals.index',
-            'auth' => true,
-            'roles' => ['owner']
-        ],
-    ];
-@endphp
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -75,9 +40,9 @@
               @role('owner')
                 <a href="{{ route('store.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mis locales</a>
               @endrole
-              @role('admin|owner')
-                <a href="{{ route('locals.create') }}" class="text-sm font-semibold leading-6 text-gray-900">Crear local</a>
-              @endrole
+{{--              @role('admin|owner')--}}
+{{--                <a href="{{ route('locals.create') }}" class="text-sm font-semibold leading-6 text-gray-900">Crear local</a>--}}
+{{--              @endrole--}}
               @role('owner|visitor')
                 <a href="{{ route('profile.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mi perfil</a>
               @endrole

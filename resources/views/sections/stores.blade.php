@@ -4,86 +4,71 @@
 @extends('layout.layout')
 @section('title', 'Mis Locales')
 @section('content')
-	<x-wrapper>
-		<h2 class="text-3xl font-bold text-gray-700">Mis Locales</h2>
-		<section class="min-h-[calc(100vh-140px)]">
-			<div class="mt-8 flex flex-col">
-				<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-					<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-{{--            si $locals tiene algo mostrar --}}
-            @if($locals->count() > 0)
-						<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-							@foreach($locals as $local)
-								{{--				listado de mis locales con su funcion de editar --}}
-								<table class="min-w-full divide-y divide-gray-300">
-									<thead class="bg-gray-50">
-									<tr>
-										<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">imagen</th>
-										<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Nombre</th>
-										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Direccion</th>
-										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Teléfono</th>
-										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Estado</th>
-										<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Acciones</th>
-									</tr>
-									</thead>
-									<tbody class="bg-white divide-y divide-gray-200">
-									<tr>
-										<td class="px-3 py-4 whitespace-nowrap">
-											<div class="flex items-center">
-												<div class="flex-shrink-0 h-10 w-10">
-													<img class="h-10 w-10 rounded-full" src="{{ url('/uploads/images/local/' . $local['cover-photo'])}}" alt="foto del local {{$local->name}}">
-												</div>
-											</div>
-										</td>
-										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$local->name}}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->street}} {{$local['street-number']}}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->phone}}</td>
-										{{--								poner si esta habilitado o no --}}
-										@if($local->is_public === 1)
-											<td>
-									<span class="inline-flex leading-5 font-semibold rounded-full bg-emerald-300 text-emerald-700 p-1.5">
-										Habilitado
-									</span>
-											</td>
-										@else
-											<td>
-									<span class="inline-flex leading-5 font-semibold rounded-full bg-red-300 text-red-700 p-1.5">
-										Deshabilitado
-									</span>
-											</td>
-										@endif
-										<td class="whitespace-nowrap px-3 py-4 flex items-center gap-2 text-sm text-gray-500">
-											<a href="{{ route('store.show', $local->id) }}" class="" aria-label="Editar el usuario {{$local->name}}">
-												<button class="px-3 py-2 flex items-center gap-2 bg-blue-500 text-white rounded">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-														<path stroke-linecap="round" stroke-linejoin="round"
-														      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-													</svg>
-													Editar
-												</button>
-											</a>
-											{{--								a con un boton para eliminar, cuando hace el click abrir modal --}}
-											<a href="{{ route('store.delete', $local->id) }}" class="" aria-label="Eliminar el local {{$local->name}}">
-												<button class="px-3 py-2 flex items-center gap-2 bg-red-500 text-white rounded">
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-														      d="M6 18L18 6M6 6l12 12" />
-													</svg>
-													Pedir baja
-												</button>
-											</a>
-										</td>
-								</table>
-							@endforeach
-						</div>
-						@else
-							<div class="pt-8">
-								<h3 class="text-3xl font-bold text-gray-700 text-center mx-auto w-full">No tienes locales por ahora, agregue un local...</h3>
-							</div>
-						@endif
-					</div>
-				</div>
-			</div>
-		</section>
-	</x-wrapper>
+  <div class="mx-auto min-h-[calc(100vh-80px)] max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Mis locales</h1>
+        <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+      </div>
+      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        <a href="{{ route('locals.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Crear nuevo</a>
+      </div>
+    </div>
+
+    @if($locals->isEmpty())
+      <h1>No hay locales</h1>
+    @else
+      <div class="mt-8 flow-root">
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+              <tr>
+                <th scope="col" class="pr-3 pl-4 text-left text-sm font-semibold text-gray-900 py-3.5 sm:pl-0">Dirección</th>
+                <th scope="col" class="px-3 text-left text-sm font-semibold text-gray-900 py-3.5">Contacto</th>
+                <th scope="col" class="px-3 text-left text-sm font-semibold text-gray-900 py-3.5">Status</th>
+                <th scope="col" class="relative pr-4 pl-3 py-3.5 sm:pr-0">
+                  <span class="sr-only">Editar</span>
+                  <span class="sr-only">Pedir baja</span>
+                </th>
+              </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+              @foreach($locals as $local)
+                <tr>
+                  <td class="whitespace-nowrap py-5 pr-3 pl-4 text-sm sm:pl-0">
+                    <div class="flex items-center">
+                      <div class="h-11 w-11 flex-shrink-0">
+                        <img class="h-11 w-11 rounded-full" src="uploads/images/local/{{ $local['cover-photo'] }}" alt="{{ $local->name }}">
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">{{ $local->name }}</div>
+                        <div class="mt-1 text-gray-500">{{ $local->street }} {{ $local['street-number'] }} ({{ $local->neighborhood->name }})</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    <a href="tel:{{ $local->phone }}" class="block text-gray-900">{{ $local->phone }}</a>
+                    <a href="{{ $local->website }}" target="_blank" class="block mt-1 text-gray-500">{{ $local->website }}</a>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+                    @if($local->is_public)
+                      <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Habilitado</span>
+                    @else
+                      <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">Inhabilitado</span>
+                    @endif
+                  </td>
+                  <td class="relative whitespace-nowrap py-5 pr-4 pl-3 text-right text-sm font-medium sm:pr-0">
+                    <a href="{{ route('store.show', $local->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $local->name }}</span></a>
+                    <a href="{{ route('store.delete', $local->id) }}" class="text-red-600 hover:text-red-900">Pedir baja<span class="sr-only">, {{ $local->name }}</span></a>
+                  </td>
+                </tr>
+              @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    @endif
+  </div>
 @endsection
