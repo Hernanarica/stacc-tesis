@@ -4,91 +4,98 @@
 @extends('layout.layout-dashboard')
 @section('title', 'Panel de control | Usuarios')
 @section('dashboard')
-	<x-wrapper>
-		<div class="p-2 ">
-			<div class="">
-				<form action="{{route('dashboard.users.view')}}" method="get" class="flex items-center max-w-sm">
-					@csrf
-					<label for="simple-search" class="sr-only">Search</label>
-					<div class="relative w-full">
-						<div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-							<svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-								      clip-rule="evenodd"></path>
-							</svg>
-						</div>
-						<input name="search" type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:border-stacc-purple focus:ring-stacc-purple focus:outline-none focus:ring
-						focus:ring-opacity-40 block w-full pl-10 p-2.5" placeholder="Buscar local" value=" {{request()->search}}">
-					</div>
-					<button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border bg-gradient-to-r from-stacc-purple to-stacc-red">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-						</svg>
-						<span class="sr-only">Search</span>
-					</button>
-				</form>
-			</div>
-			<div class="mt-3 col-span-3 md:col-span-2 lg:col-span-3">
-				<p class="text-sm text-gray-500 dark:text-gray-400">Busca por nombre o por correo del usuario</p>
-			</div>
-			<div>
-				<div class="mt-8 flex flex-col">
-					<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-						<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-							<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-								<table class="min-w-full divide-y divide-gray-300">
-									<thead class="bg-gray-50">
-										<tr>
-											<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Nombre</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Apellido</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rol</th>
-											<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Acciones</th>
-										</tr>
-									</thead>
-									<tbody class="divide-y divide-gray-200 bg-white">
-										@foreach($users as $user)
-											<tr>
-												<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ $user->name }}</td>
-												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->lastname }}</td>
-												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->email }}</td>
-												<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->category }}</td>
-												<td class="whitespace-nowrap px-3 py-4 flex items-center gap-2 text-sm text-gray-500">
-													<a href="{{ route('dashboard.user.edit', $user->id) }}" class="" aria-label="Editar el usuario {{$user->name}}">
-														<button class="px-3 py-2 flex items-center gap-2 bg-blue-500 text-white rounded">
-															<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-																<path stroke-linecap="round" stroke-linejoin="round"
-																      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-															</svg>
-															Editar
-														</button>
-													</a>
-													<form action="{{ route('dashboard.user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('¿Seguro deseas eliminar el usuario?')">
-														@csrf
-														@method('DELETE')
-														<button type="submit" class="px-3 py-2 flex items-center gap-2 bg-red-500 text-white rounded" >
-															<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-																<path stroke-linecap="round" stroke-linejoin="round"
-																      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-															</svg>
-															Eliminar
-														</button>
-													</form>
-												</td>
-											</tr>
-										@endforeach
-									</tbody>
-								</table>
-							</div>
-							
-							<div class="mt-5">
-								{{ $users->links() }}
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</x-wrapper>
+  <section>
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div class="sm:flex sm:items-center">
+        <div class="sm:flex-auto">
+          <h1 class="text-base font-semibold leading-6 text-gray-900">Usuarios</h1>
+          <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+        </div>
+        <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+          <form
+            action="{{route('dashboard.users.view')}}"
+            method="get"
+            class="flex items-center"
+          >
+            @csrf
+            <div class="w-full">
+              <label for="search" class="sr-only">Buscar</label>
+              <div class="relative mt-2 rounded-md shadow-sm">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-gray-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                  </svg>
+                </div>
+                <input
+                  type="search"
+                  name="search"
+                  id="search"
+                  class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Buscar usuario"
+                  value="{{ request()->search }}"
+                  list="users-list"
+                >
+                <datalist id="users-list">
+                  @foreach($users as $user)
+                    <option value="{{ $user->name }}">
+                  @endforeach
+                </datalist>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="mt-8 flow-root">
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <table class="min-w-full divide-y divide-gray-300">
+              <thead>
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Nombre completo</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Rol</th>
+                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
+                  <span class="sr-only">Actions</span>
+                </th>
+              </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 bg-white">
+              @foreach($users as $user)
+                <tr>
+                  <td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+                    <div class="flex items-center">
+                      <div class="h-11 w-11 flex-shrink-0">
+                        <img class="h-11 w-11 rounded-full" src="{{ $user->image }}" alt="{{ $user->name }}">
+                      </div>
+                      <div class="ml-4">
+                        <div class="font-medium text-gray-900">{{ $user->name }} {{ $user->lastname }}</div>
+                        <div class="mt-1 text-gray-500">{{ $user->email }}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">{{ $user->category }}</td>
+                  <td class="relative whitespace-nowrap py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 space-x-2">
+                    <a href="{{ route('dashboard.user.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar<span class="sr-only">, {{ $user->name }} {{ $user->lastname }}</span></a>
+                    <form
+                      action="{{ route('dashboard.user.destroy', $user->id) }}"
+                      method="POST"
+                      class="inline"
+                      onsubmit="return confirm('¿Seguro deseas eliminar el usuario?')"
+                    >
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="inline text-red-600 hover:text-red-900">Eliminar<span class="sr-only">, {{ $user->name }} {{ $user->lastname }}</span></button>
+                    </form>
+                  </td>
+                </tr>
+              @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        {{ $users->links() }}
+      </div>
+    </div>
+  </section>
 @endsection
