@@ -279,7 +279,8 @@ $scores = ['1', '2', '3', '4', '5'];
             </dd>
           </div>
           @auth()
-            <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-8 lg:max-w-7xl">
+            @role('visitor')
+              <div class="mx-auto max-w-2xl px-4 py-6 sm:grid sm:grid-cols-2 sm:gap-4 sm:px-8 lg:max-w-7xl">
               <form
                   action="{{ route('opinions.store', ['user_id' => auth()->user()->id, 'local_id' => $local->id]) }}"
                   method="post"
@@ -339,6 +340,7 @@ $scores = ['1', '2', '3', '4', '5'];
                 </div>
               </form>
             </div>
+            @endrole
           @endauth
         </dl>
       </div>
@@ -363,7 +365,6 @@ $scores = ['1', '2', '3', '4', '5'];
                   </div>
                   <div class="mt-4 lg:mt-6 xl:col-span-2 xl:mt-0">
                     <h3 class="text-sm font-medium text-gray-900">{{ $opinion->title }}</h3>
-
                     <div class="mt-3 text-sm text-gray-500 space-y-6">
                       <p>{{ $opinion->opinion }}</p>
                     </div>

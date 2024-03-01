@@ -11,3 +11,9 @@ function createDirectoryIfNotExist(string $dir = ''): string
 
     return $dir;
 }
+
+function isActiveLink(string $link = ''): string {
+  $currentRoute = Route::currentRouteName();
+
+  return $currentRoute === $link ? 'bg-gray-50' : '';
+}

@@ -101,7 +101,7 @@
                         <button type="submit" class="inline text-green-600 hover:text-green-900">Habilitar<span class="sr-only">, {{ $local->name }}</span></button>
                       </form>
                     @endif
-                    <a href="{{ route('dashboard.local.edit', $local->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar<span class="sr-only">, {{ $local->name }}</span></a>
+{{--                    <a href="{{ route('dashboard.local.edit', $local->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar<span class="sr-only">, {{ $local->name }}</span></a>--}}
                     <form
                       action="{{ route('local.delete', $local->id) }}"
                       method="POST"

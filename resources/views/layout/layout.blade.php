@@ -117,7 +117,7 @@
     {{--	 mensajes globales de notificaciones con estilos en tailwindcss	--}}
 
     @if(session('success'))
-      <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 message-session">
+      <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 message-session z-10">
         <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
           <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div class="p-4">
@@ -147,7 +147,7 @@
       @vite('resources/js/notification.js')
     @endif
     @if(session('error'))
-      <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 message-session">
+      <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 message-session z-10">
         <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
           <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div class="p-4">

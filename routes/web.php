@@ -92,7 +92,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 //user dashboard
 Route::delete('panel/eliminar-usuario/{id}', [UserController::class, 'destroy'])->name('dashboard.user.destroy')->middleware(['role:admin']);
 Route::get('panel/edit-usuario/{id}', [UserController::class, 'editUser'])->name('dashboard.user.edit')->middleware(['role:admin']);
-Route::put('panel/update-usuario/{id}', [UserController::class, 'updateUser'])->name('dashboard.user.update')->middleware(['role:admin']);
+Route::patch('panel/update-usuario/{id}', [UserController::class, 'updateUser'])->name('dashboard.user.update')->middleware(['role:admin']);
 
 //local dashboard
 Route::delete('eliminar/{id}', [LocalController::class, 'delete'])->name('local.delete')->middleware(['role:admin']);
