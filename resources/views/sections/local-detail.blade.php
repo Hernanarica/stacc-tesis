@@ -192,8 +192,8 @@ $scores = ['1', '2', '3', '4', '5'];
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">{{ $local['schedules']['lunes']['day'] }}</span>
-                      <span class="truncate font-medium">{{ $local['schedules']['lunes']['monday-opening-time'] }} a {{ $local['schedules']['lunes']['monday-closing-time'] }}</span>
+                      <span class="truncate font-medium capitalize underline">Lunes</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['monday']['opening-time'] }} a {{ $local['schedules']['monday']['closing-time'] }}</span>
                     </div>
                   </div>
                 </li>
@@ -205,8 +205,8 @@ $scores = ['1', '2', '3', '4', '5'];
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">{{ $local['schedules']['martes']['day'] }}</span>
-                      <span class="truncate font-medium">{{ $local['schedules']['martes']['tuesday-opening-time'] }} a {{ $local['schedules']['martes']['tuesday-closing-time'] }}</span>
+                      <span class="truncate font-medium capitalize underline">Martes</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['tuesday']['opening-time'] }} a {{ $local['schedules']['tuesday']['closing-time'] }}</span>
                     </div>
                   </div>
                 </li>
@@ -218,8 +218,20 @@ $scores = ['1', '2', '3', '4', '5'];
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">{{ $local['schedules']['miercoles']['day'] }}</span>
-                      <span class="truncate font-medium">{{ $local['schedules']['miercoles']['wednesday-opening-time'] }} a {{ $local['schedules']['miercoles']['wednesday-closing-time'] }}</span>
+                      <span class="truncate font-medium capitalize underline">Miércoles</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['wednesday']['opening-time'] }} a {{ $local['schedules']['wednesday']['closing-time'] }}</span>
+                    </div>
+                  </div>
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex items-center min-w-0 flex-1 gap-2">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                      </span>
+                      <span class="truncate font-medium capitalize underline">Jueves</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['thursday']['opening-time'] }} a {{ $local['schedules']['thursday']['closing-time'] }}</span>
                     </div>
                   </div>
                 </li>
@@ -231,8 +243,9 @@ $scores = ['1', '2', '3', '4', '5'];
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">{{ $local['schedules']['jueves']['day'] }}</span>
-                      <span class="truncate font-medium">{{ $local['schedules']['jueves']['thursday-opening-time'] }} a {{ $local['schedules']['jueves']['thursday-closing-time'] }}</span>
+
+                      <span class="truncate font-medium capitalize underline">Viernes</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['friday']['opening-time'] }} a {{ $local['schedules']['friday']['closing-time'] }}</span>
                     </div>
                   </div>
                 </li>
@@ -244,8 +257,8 @@ $scores = ['1', '2', '3', '4', '5'];
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">{{ $local['schedules']['viernes']['day'] }}</span>
-                      <span class="truncate font-medium">{{ $local['schedules']['viernes']['friday-opening-time'] }} a {{ $local['schedules']['viernes']['friday-closing-time'] }}</span>
+                      <span class="truncate font-medium capitalize underline">Sábado</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['saturday']['opening-time'] }} a {{ $local['schedules']['saturday']['closing-time'] }}</span>
                     </div>
                   </div>
                 </li>
@@ -257,21 +270,8 @@ $scores = ['1', '2', '3', '4', '5'];
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">{{ $local['schedules']['sabado']['day'] }}</span>
-                      <span class="truncate font-medium">{{ $local['schedules']['sabado']['saturday-opening-time'] }} a {{ $local['schedules']['sabado']['saturday-closing-time'] }}</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
-                  <div class="flex w-0 flex-1 items-center">
-                    <div class="ml-4 flex items-center min-w-0 flex-1 gap-2">
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                      </span>
-                      <span class="truncate font-medium capitalize underline">{{ $local['schedules']['domingo']['day'] }}</span>
-                      <span class="truncate font-medium">{{ $local['schedules']['domingo']['sunday-opening-time'] }} a {{ $local['schedules']['domingo']['sunday-closing-time'] }}</span>
+                      <span class="truncate font-medium capitalize underline">Domingo</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['sunday']['opening-time'] }} a {{ $local['schedules']['sunday']['closing-time'] }}</span>
                     </div>
                   </div>
                 </li>

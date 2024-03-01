@@ -93,40 +93,40 @@ class LocalController extends Controller
                 ],
             ];
             $formData['schedules'] = [
-                'lunes' => [
-                    'day' => 'lunes',
-                    'monday-opening-time' => $formData['monday-opening-time'],
-                    'monday-closing-time' => $formData['monday-closing-time'],
+                'monday' => [
+                    'day' => 'monday',
+                    'opening-time' => $formData['monday-opening-time'],
+                    'closing-time' => $formData['monday-closing-time'],
                 ],
-                'martes' => [
-                    'day' => 'martes',
-                    'tuesday-opening-time' => $formData['tuesday-opening-time'],
-                    'tuesday-closing-time' => $formData['tuesday-closing-time'],
+                'tuesday' => [
+                    'day' => 'tuesday',
+                    'opening-time' => $formData['tuesday-opening-time'],
+                    'closing-time' => $formData['tuesday-closing-time'],
                 ],
-                'miercoles' => [
-                    'day' => 'miercoles',
-                    'wednesday-opening-time' => $formData['wednesday-opening-time'],
-                    'wednesday-closing-time' => $formData['wednesday-closing-time'],
+                'wednesday' => [
+                    'day' => 'wednesday',
+                    'opening-time' => $formData['wednesday-opening-time'],
+                    'closing-time' => $formData['wednesday-closing-time'],
                 ],
-                'jueves' => [
-                    'day' => 'jueves',
-                    'thursday-opening-time' => $formData['thursday-opening-time'],
-                    'thursday-closing-time' => $formData['thursday-closing-time'],
+                'thursday' => [
+                    'day' => 'thursday',
+                    'opening-time' => $formData['thursday-opening-time'],
+                    'closing-time' => $formData['thursday-closing-time'],
                 ],
-                'viernes' => [
-                    'day' => 'viernes',
-                    'friday-opening-time' => $formData['friday-opening-time'],
-                    'friday-closing-time' => $formData['friday-closing-time'],
+                'friday' => [
+                    'day' => 'friday',
+                    'opening-time' => $formData['friday-opening-time'],
+                    'closing-time' => $formData['friday-closing-time'],
                 ],
-                'sabado' => [
-                    'day' => 'sabado',
-                    'saturday-opening-time' => $formData['saturday-opening-time'],
-                    'saturday-closing-time' => $formData['saturday-closing-time'],
+                'saturday' => [
+                    'day' => 'saturday',
+                    'opening-time' => $formData['saturday-opening-time'],
+                    'closing-time' => $formData['saturday-closing-time'],
                 ],
-                'domingo' => [
-                    'day' => 'domingo',
-                    'sunday-opening-time' => $formData['sunday-opening-time'],
-                    'sunday-closing-time' => $formData['sunday-closing-time'],
+                'sunday' => [
+                    'day' => 'sunday',
+                    'opening-time' => $formData['sunday-opening-time'],
+                    'closing-time' => $formData['sunday-closing-time'],
                 ],
             ];
             $formData['cover-photo'] = $coverPhotoName;
@@ -204,40 +204,40 @@ class LocalController extends Controller
             }
 
           $formData['schedules'] = [
-            'lunes' => [
-              'day' => 'lunes',
-              'monday-opening-time' => $formData['monday-opening-time'],
-              'monday-closing-time' => $formData['monday-closing-time'],
+            'monday' => [
+              'day' => 'monday',
+              'opening-time' => $formData['monday-opening-time'],
+              'closing-time' => $formData['monday-closing-time'],
             ],
-            'martes' => [
-              'day' => 'martes',
-              'tuesday-opening-time' => $formData['tuesday-opening-time'],
-              'tuesday-closing-time' => $formData['tuesday-closing-time'],
+            'tuesday' => [
+              'day' => 'tuesday',
+              'opening-time' => $formData['tuesday-opening-time'],
+              'closing-time' => $formData['tuesday-closing-time'],
             ],
-            'miercoles' => [
-              'day' => 'miercoles',
-              'wednesday-opening-time' => $formData['wednesday-opening-time'],
-              'wednesday-closing-time' => $formData['wednesday-closing-time'],
+            'wednesday' => [
+              'day' => 'wednesday',
+              'opening-time' => $formData['wednesday-opening-time'],
+              'closing-time' => $formData['wednesday-closing-time'],
             ],
-            'jueves' => [
-              'day' => 'jueves',
-              'thursday-opening-time' => $formData['thursday-opening-time'],
-              'thursday-closing-time' => $formData['thursday-closing-time'],
+            'thursday' => [
+              'day' => 'thursday',
+              'opening-time' => $formData['thursday-opening-time'],
+              'closing-time' => $formData['thursday-closing-time'],
             ],
-            'viernes' => [
-              'day' => 'viernes',
-              'friday-opening-time' => $formData['friday-opening-time'],
-              'friday-closing-time' => $formData['friday-closing-time'],
+            'friday' => [
+              'day' => 'friday',
+              'opening-time' => $formData['friday-opening-time'],
+              'closing-time' => $formData['friday-closing-time'],
             ],
-            'sabado' => [
-              'day' => 'sabado',
-              'saturday-opening-time' => $formData['saturday-opening-time'],
-              'saturday-closing-time' => $formData['saturday-closing-time'],
+            'saturday' => [
+              'day' => 'saturday',
+              'opening-time' => $formData['saturday-opening-time'],
+              'closing-time' => $formData['saturday-closing-time'],
             ],
-            'domingo' => [
-              'day' => 'domingo',
-              'sunday-opening-time' => $formData['sunday-opening-time'],
-              'sunday-closing-time' => $formData['sunday-closing-time'],
+            'sunday' => [
+              'day' => 'sunday',
+              'opening-time' => $formData['sunday-opening-time'],
+              'closing-time' => $formData['sunday-closing-time'],
             ],
           ];
 
