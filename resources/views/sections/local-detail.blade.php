@@ -52,7 +52,7 @@ $scores = ['1', '2', '3', '4', '5'];
                 <span>
                   @auth()
                     @if(!$local->isFavorited())
-                      <form action="{{ route('favorite.store', [ 'id' => $local->id ]) }}" method="post">
+                      <form action="{{ route('favorites.store', [ 'id' => $local->id ]) }}" method="post">
                         @csrf
                         <button class="group">
                           <svg
@@ -72,7 +72,7 @@ $scores = ['1', '2', '3', '4', '5'];
                         </button>
                       </form>
                     @else
-                      <form action="{{ route('favorite.destroy', [ 'id' => $local->id ]) }}" method="post">
+                      <form action="{{ route('favorites.destroy', [ 'id' => $local->id ]) }}" method="post">
                         @csrf
                         @method('delete')
                         <button class="group">
