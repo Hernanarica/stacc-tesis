@@ -36,9 +36,11 @@
               <a href="{{ route('register.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Registrate</a>
             @endguest
             @auth()
-              <a href="{{ route('favorites.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mis favoritos</a>
               @role('owner')
                 <a href="{{ route('store.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mis locales</a>
+              @endrole
+              @role('visitor')
+                <a href="{{ route('favorites.index') }}" class="text-sm font-semibold leading-6 text-gray-900">Mis favoritos</a>
               @endrole
 {{--              @role('admin|owner')--}}
 {{--                <a href="{{ route('locals.create') }}" class="text-sm font-semibold leading-6 text-gray-900">Crear local</a>--}}
