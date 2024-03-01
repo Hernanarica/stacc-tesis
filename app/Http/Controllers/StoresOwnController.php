@@ -54,12 +54,12 @@ class StoresOwnController extends Controller
         $local = Local::findOrFail($id);
 
         if ($request->hasFile('cover-photo')) {
-          $image = new ImageService($request->image, public_path('uploads/images/local/'));
+          $image = new ImageService($request['cover-photo'], public_path('uploads/images/local/'));
           $image->saveImage();
 
           $formData['cover-photo'] = $image->imageName;
 
-          File::delete(public_path("uploads/images/local/{$local['cover-photo']}"));
+          File::delete(public_path("uploads/images/local/{$local['cover-photo'] }"));
         } else {
           $formData['cover-photo'] = $local['cover-photo'];
         }
