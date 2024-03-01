@@ -3,20 +3,20 @@
 /** @var \App\Models\Local $local */
 /** @var \App\Models\Neighborhoods[] $neighborhoods */
 
-$timeLunesOt = date('H:i', strtotime($local->schedules['lunes']['monday-opening-time']));
-$timeLunesCt = date('H:i', strtotime($local->schedules['lunes']['monday-closing-time']));
-$timeMartesOt = date('H:i', strtotime($local->schedules['martes']['tuesday-opening-time']));
-$timeMartesCt = date('H:i', strtotime($local->schedules['martes']['tuesday-closing-time']));
-$timeMiercolesOt = date('H:i', strtotime($local->schedules['miercoles']['wednesday-opening-time']));
-$timeMiercolesCt = date('H:i', strtotime($local->schedules['miercoles']['wednesday-closing-time']));
-$timeJuevesOt = date('H:i', strtotime($local->schedules['jueves']['thursday-opening-time']));
-$timeJuevesCt = date('H:i', strtotime($local->schedules['jueves']['thursday-closing-time']));
-$timeViernesOt = date('H:i', strtotime($local->schedules['viernes']['friday-opening-time']));
-$timeViernesCt = date('H:i', strtotime($local->schedules['viernes']['friday-closing-time']));
-$timeSabadoOt = date('H:i', strtotime($local->schedules['sabado']['saturday-opening-time']));
-$timeSabadoCt = date('H:i', strtotime($local->schedules['sabado']['saturday-closing-time']));
-$timeDomingoOt = date('H:i', strtotime($local->schedules['domingo']['sunday-opening-time']));
-$timeDomingoCt = date('H:i', strtotime($local->schedules['domingo']['sunday-closing-time']));
+$timeLunesOt = date('H:i', strtotime($local->schedules['monday']['opening-time']));
+$timeLunesCt = date('H:i', strtotime($local->schedules['monday']['closing-time']));
+$timeMartesOt = date('H:i', strtotime($local->schedules['tuesday']['opening-time']));
+$timeMartesCt = date('H:i', strtotime($local->schedules['tuesday']['closing-time']));
+$timeMiercolesOt = date('H:i', strtotime($local->schedules['wednesday']['opening-time']));
+$timeMiercolesCt = date('H:i', strtotime($local->schedules['wednesday']['closing-time']));
+$timeJuevesOt = date('H:i', strtotime($local->schedules['thursday']['opening-time']));
+$timeJuevesCt = date('H:i', strtotime($local->schedules['thursday']['closing-time']));
+$timeViernesOt = date('H:i', strtotime($local->schedules['friday']['opening-time']));
+$timeViernesCt = date('H:i', strtotime($local->schedules['friday']['closing-time']));
+$timeSabadoOt = date('H:i', strtotime($local->schedules['saturday']['opening-time']));
+$timeSabadoCt = date('H:i', strtotime($local->schedules['saturday']['closing-time']));
+$timeDomingoOt = date('H:i', strtotime($local->schedules['sunday']['opening-time']));
+$timeDomingoCt = date('H:i', strtotime($local->schedules['sunday']['closing-time']));
 ?>
 @extends('layout.layout')
 @section('title', 'Editar local ' . $local->name)
@@ -285,12 +285,12 @@ $timeDomingoCt = date('H:i', strtotime($local->schedules['domingo']['sunday-clos
             </div>
           @else
             <div class="sm:col-span-2">
-              <label for="social-facebook" class="block text-sm font-medium leading-6 text-gray-900">Tiktok</label>
+              <label for="social-tiktok" class="block text-sm font-medium leading-6 text-gray-900">Tiktok</label>
               <div class="mt-2">
                 <input
                     type="url"
-                    name="social-facebook"
-                    id="social-facebook"
+                    name="social-tiktok"
+                    id="social-tiktok"
                     class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 >
               </div>
