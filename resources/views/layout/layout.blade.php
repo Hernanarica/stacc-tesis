@@ -87,8 +87,7 @@
             @endauth
         </div>
         @auth()
-          <form action="{{ route('logout.index') }}" method="post" class="hidden lg:flex lg:flex-1 lg:justify-end">
-            @csrf
+          <form action="{{ route('logout.index') }}" method="post" class="hidden m-0 lg:flex lg:flex-1 lg:justify-end">
             <button class="text-sm font-semibold leading-6 text-gray-900">Cerrar sesión <span aria-hidden="true">&rarr;</span></button>
           </form>
         @elseguest()
