@@ -93,40 +93,40 @@ class LocalController extends Controller
                 ],
             ];
             $formData['schedules'] = [
-                'monday' => [
-                    'day' => 'monday',
-                    'opening-time' => $formData['monday-opening-time'],
-                    'closing-time' => $formData['monday-closing-time'],
+                'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => $formData['monday-opening-time'],
+                    'monday-closing-time' => $formData['monday-closing-time'],
                 ],
-                'tuesday' => [
-                    'day' => 'tuesday',
-                    'opening-time' => $formData['tuesday-opening-time'],
-                    'closing-time' => $formData['tuesday-closing-time'],
+                'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => $formData['tuesday-opening-time'],
+                    'tuesday-closing-time' => $formData['tuesday-closing-time'],
                 ],
-                'wednesday' => [
-                    'day' => 'wednesday',
-                    'opening-time' => $formData['wednesday-opening-time'],
-                    'closing-time' => $formData['wednesday-closing-time'],
+                'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => $formData['wednesday-opening-time'],
+                    'wednesday-closing-time' => $formData['wednesday-closing-time'],
                 ],
-                'thursday' => [
-                    'day' => 'thursday',
-                    'opening-time' => $formData['thursday-opening-time'],
-                    'closing-time' => $formData['thursday-closing-time'],
+                'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => $formData['thursday-opening-time'],
+                    'thursday-closing-time' => $formData['thursday-closing-time'],
                 ],
-                'friday' => [
-                    'day' => 'friday',
-                    'opening-time' => $formData['friday-opening-time'],
-                    'closing-time' => $formData['friday-closing-time'],
+                'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => $formData['friday-opening-time'],
+                    'friday-closing-time' => $formData['friday-closing-time'],
                 ],
-                'saturday' => [
-                    'day' => 'saturday',
-                    'opening-time' => $formData['saturday-opening-time'],
-                    'closing-time' => $formData['saturday-closing-time'],
+                'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => $formData['saturday-opening-time'],
+                    'saturday-closing-time' => $formData['saturday-closing-time'],
                 ],
-                'sunday' => [
-                    'day' => 'sunday',
-                    'opening-time' => $formData['sunday-opening-time'],
-                    'closing-time' => $formData['sunday-closing-time'],
+                'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => $formData['sunday-opening-time'],
+                    'sunday-closing-time' => $formData['sunday-closing-time'],
                 ],
             ];
             $formData['cover-photo'] = $coverPhotoName;
@@ -188,20 +188,65 @@ class LocalController extends Controller
     public function update(LocalUpdateRequest $request, $id)
     {
         try {
-            $request->validate((LocalUpdateRequest::rules()), LocalUpdateRequest::messages());
+            $request->validate((LocalUpdateRequest::rules()));
             $formData = $request->input();
             $local = Local::findOrFail($id);
 
-            if ($request->hasFile('image')) {
-                $image = new ImageService($request->image, public_path('uploads/images/local'));
+            if ($request->hasFile('cover-photo')) {
+                $image = new ImageService($request->image, public_path('uploads/images/local/'));
                 $image->saveImage();
 
-                $formData['image'] = $image->imageName;
+                $formData['cover-photo'] = $image->imageName;
 
-                File::delete(public_path("uploads/images/local/{$local->image}"));
+                File::delete(public_path("uploads/images/local/{$local['cover-photo']}"));
             } else {
-                $formData['image'] = $local->image;
+                $formData['cover-photo'] = $local['cover-photo'];
             }
+
+          $formData['schedules'] = [
+            'lunes' => [
+              'day' => 'lunes',
+              'monday-opening-time' => $formData['monday-opening-time'],
+              'monday-closing-time' => $formData['monday-closing-time'],
+            ],
+            'martes' => [
+              'day' => 'martes',
+              'tuesday-opening-time' => $formData['tuesday-opening-time'],
+              'tuesday-closing-time' => $formData['tuesday-closing-time'],
+            ],
+            'miercoles' => [
+              'day' => 'miercoles',
+              'wednesday-opening-time' => $formData['wednesday-opening-time'],
+              'wednesday-closing-time' => $formData['wednesday-closing-time'],
+            ],
+            'jueves' => [
+              'day' => 'jueves',
+              'thursday-opening-time' => $formData['thursday-opening-time'],
+              'thursday-closing-time' => $formData['thursday-closing-time'],
+            ],
+            'viernes' => [
+              'day' => 'viernes',
+              'friday-opening-time' => $formData['friday-opening-time'],
+              'friday-closing-time' => $formData['friday-closing-time'],
+            ],
+            'sabado' => [
+              'day' => 'sabado',
+              'saturday-opening-time' => $formData['saturday-opening-time'],
+              'saturday-closing-time' => $formData['saturday-closing-time'],
+            ],
+            'domingo' => [
+              'day' => 'domingo',
+              'sunday-opening-time' => $formData['sunday-opening-time'],
+              'sunday-closing-time' => $formData['sunday-closing-time'],
+            ],
+          ];
+
+            //actualizar los datos de la redes sociales
+            $formData['social-networks'] = [
+              'facebook' => $formData['social-facebook'],
+              'instagram' => $formData['social-instagram'],
+              'tiktok' => $formData['social-tiktok'],
+            ];
 
             $local->update($formData);
 

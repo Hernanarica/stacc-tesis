@@ -36,38 +36,38 @@ class LocalsSeeder extends Seeder
                 'schedules' => json_encode([
                     'lunes' => [
                         'day' => 'lunes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '13:00',
+                        'monday-opening-time' => '8:00',
+                        'monday-closing-time' => '13:00',
                     ],
                     'martes' => [
                         'day' => 'martes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '13:00',
+                        'tuesday-opening-time' => '8:00',
+                        'tuesday-closing-time' => '13:00',
                     ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
+                    'miercoles' => [
+                        'day' => 'miercoles',
+                        'wednesday-opening-time' => '8:00',
+                        'wednesday-closing-time' => '20:00',
                     ],
                     'jueves' => [
                         'day' => 'jueves',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
+                        'thursday-opening-time' => '8:00',
+                        'thursday-closing-time' => '20:00',
                     ],
                     'viernes' => [
                         'day' => 'viernes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
+                        'friday-opening-time' => '8:00',
+                        'friday-closing-time' => '20:00',
                     ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
+                    'sabado' => [
+                        'day' => 'sabado',
+                        'saturday-opening-time' => '8:00',
+                        'saturday-closing-time' => '20:00',
                     ],
                     'domingo' => [
                         'day' => 'domingo',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
+                        'sunday-opening-time' => '8:00',
+                        'sunday-closing-time' => '20:00',
                     ],
                 ]),
                 'terms' => 1,
@@ -95,41 +95,41 @@ class LocalsSeeder extends Seeder
                     'tiktok' => 'https://www.tiktok.com/lacasona'
                 ]),
                 'schedules' => json_encode([
-                    'lunes' => [
-                        'day' => 'lunes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '13:00',
-                    ],
-                    'martes' => [
-                        'day' => 'martes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '13:00',
-                    ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'jueves' => [
-                        'day' => 'jueves',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'viernes' => [
-                        'day' => 'viernes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'domingo' => [
-                        'day' => 'domingo',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
+                  'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => '8:00',
+                    'monday-closing-time' => '13:00',
+                  ],
+                  'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => '8:00',
+                    'tuesday-closing-time' => '13:00',
+                  ],
+                  'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => '8:00',
+                    'wednesday-closing-time' => '20:00',
+                  ],
+                  'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => '8:00',
+                    'thursday-closing-time' => '20:00',
+                  ],
+                  'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => '8:00',
+                    'friday-closing-time' => '20:00',
+                  ],
+                  'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => '8:00',
+                    'saturday-closing-time' => '20:00',
+                  ],
+                  'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => '8:00',
+                    'sunday-closing-time' => '20:00',
+                  ],
                 ]),
                 'terms' => 1,
                 'is_favorite' => 1,
@@ -156,41 +156,41 @@ class LocalsSeeder extends Seeder
                     'tiktok' => 'https://www.tiktok.com/lacasona'
                 ]),
                 'schedules' => json_encode([
-                    'lunes' => [
-                        'day' => 'lunes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '13:00',
-                    ],
-                    'martes' => [
-                        'day' => 'martes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '13:00',
-                    ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'jueves' => [
-                        'day' => 'jueves',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'viernes' => [
-                        'day' => 'viernes',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
-                    'domingo' => [
-                        'day' => 'domingo',
-                        'opening-time' => '8:00',
-                        'closing-time' => '20:00',
-                    ],
+                  'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => '8:00',
+                    'monday-closing-time' => '13:00',
+                  ],
+                  'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => '8:00',
+                    'tuesday-closing-time' => '13:00',
+                  ],
+                  'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => '8:00',
+                    'wednesday-closing-time' => '20:00',
+                  ],
+                  'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => '8:00',
+                    'thursday-closing-time' => '20:00',
+                  ],
+                  'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => '8:00',
+                    'friday-closing-time' => '20:00',
+                  ],
+                  'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => '8:00',
+                    'saturday-closing-time' => '20:00',
+                  ],
+                  'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => '8:00',
+                    'sunday-closing-time' => '20:00',
+                  ],
                 ]),
                 'terms' => 1,
                 'is_favorite' => 1,
@@ -204,7 +204,7 @@ class LocalsSeeder extends Seeder
                 'name' => 'Buenos Aires Verde',
                 'street' => 'Gorriti',
                 'street-number' => '5657',
-                'phone' => '4775-9594',
+                'phone' => '47759594',
                 'neighborhood_id' => 24,
                 'map' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53322.147593104964!2d-58.43726886025117!3d-34.57618863594581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb58d70ef8617%3A0x7fda5067acd45136!2sBuenos+Aires+Verde!5e0!3m2!1ses!2sar!4v1557697751530!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
                 'website' => 'www.bsasverde.com',
@@ -215,41 +215,41 @@ class LocalsSeeder extends Seeder
                     'instagram' => 'https://www.instagram.com/buenosairesverde',
                 ]),
                 'schedules' => json_encode([
-                    'lunes' => [
-                        'day' => 'lunes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '00:00',
-                    ],
-                    'martes' => [
-                        'day' => 'martes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '00:00',
-                    ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '9:00',
-                        'closing-time' => '00:00',
-                    ],
-                    'jueves' => [
-                        'day' => 'jueves',
-                        'opening-time' => '9:00',
-                        'closing-time' => '00:00',
-                    ],
-                    'viernes' => [
-                        'day' => 'viernes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '00:00',
-                    ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '9:00',
-                        'closing-time' => '00:00',
-                    ],
-                    'domingo' => [
-                        'day' => 'domingo',
-                        'opening-time' => '00:00',
-                        'closing-time' => '00:00',
-                    ],
+                  'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => '8:00',
+                    'monday-closing-time' => '13:00',
+                  ],
+                  'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => '8:00',
+                    'tuesday-closing-time' => '13:00',
+                  ],
+                  'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => '8:00',
+                    'wednesday-closing-time' => '20:00',
+                  ],
+                  'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => '8:00',
+                    'thursday-closing-time' => '20:00',
+                  ],
+                  'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => '8:00',
+                    'friday-closing-time' => '20:00',
+                  ],
+                  'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => '8:00',
+                    'saturday-closing-time' => '20:00',
+                  ],
+                  'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => '8:00',
+                    'sunday-closing-time' => '20:00',
+                  ],
                 ]),
                 'terms' => 1,
                 'is_favorite' => 1,
@@ -274,41 +274,41 @@ class LocalsSeeder extends Seeder
                     'instagram' => 'https://www.instagram.com/jade.sintacc/',
                 ]),
                 'schedules' => json_encode([
-                    'lunes' => [
-                        'day' => 'lunes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'martes' => [
-                        'day' => 'martes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'jueves' => [
-                        'day' => 'jueves',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'viernes' => [
-                        'day' => 'viernes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'domingo' => [
-                        'day' => 'domingo',
-                        'opening-time' => '13:00',
-                        'closing-time' => '11:00',
-                    ],
+                  'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => '8:00',
+                    'monday-closing-time' => '13:00',
+                  ],
+                  'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => '8:00',
+                    'tuesday-closing-time' => '13:00',
+                  ],
+                  'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => '8:00',
+                    'wednesday-closing-time' => '20:00',
+                  ],
+                  'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => '8:00',
+                    'thursday-closing-time' => '20:00',
+                  ],
+                  'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => '8:00',
+                    'friday-closing-time' => '20:00',
+                  ],
+                  'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => '8:00',
+                    'saturday-closing-time' => '20:00',
+                  ],
+                  'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => '8:00',
+                    'sunday-closing-time' => '20:00',
+                  ],
                 ]),
                 'terms' => 1,
                 'is_favorite' => 1,
@@ -322,7 +322,7 @@ class LocalsSeeder extends Seeder
                 'name' => 'Chila',
                 'street' => 'Av. Alicia Moreau de Justo',
                 'street-number' => '1160',
-                'phone' => '011 4343-6067',
+                'phone' => '01143436067',
                 'neighborhood_id' => 29,
                 'map' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.7310605966854!2d-58.368694923476255!3d-34.61096155788202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3352a1cbc33af%3A0x8663ae2be358730c!2sCHILA!5e0!3m2!1ses!2sar!4v1673283207733!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
                 'website' => 'https://www.chilarestaurant.com/en/home/',
@@ -333,41 +333,41 @@ class LocalsSeeder extends Seeder
                     'instagram' => 'https://www.instagram.com/',
                 ]),
                 'schedules' => json_encode([
-                    'lunes' => [
-                        'day' => 'lunes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'martes' => [
-                        'day' => 'martes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'jueves' => [
-                        'day' => 'jueves',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'viernes' => [
-                        'day' => 'viernes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'domingo' => [
-                        'day' => 'domingo',
-                        'opening-time' => '13:00',
-                        'closing-time' => '11:00',
-                    ],
+                  'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => '8:00',
+                    'monday-closing-time' => '13:00',
+                  ],
+                  'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => '8:00',
+                    'tuesday-closing-time' => '13:00',
+                  ],
+                  'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => '8:00',
+                    'wednesday-closing-time' => '20:00',
+                  ],
+                  'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => '8:00',
+                    'thursday-closing-time' => '20:00',
+                  ],
+                  'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => '8:00',
+                    'friday-closing-time' => '20:00',
+                  ],
+                  'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => '8:00',
+                    'saturday-closing-time' => '20:00',
+                  ],
+                  'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => '8:00',
+                    'sunday-closing-time' => '20:00',
+                  ],
                 ]),
                 'terms' => 1,
                 'is_favorite' => 1,
@@ -392,41 +392,41 @@ class LocalsSeeder extends Seeder
                     'instagram' => 'https://www.instagram.com/buono.italiankitchen/',
                 ]),
                 'schedules' => json_encode([
-                    'lunes' => [
-                        'day' => 'lunes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'martes' => [
-                        'day' => 'martes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'jueves' => [
-                        'day' => 'jueves',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'viernes' => [
-                        'day' => 'viernes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'domingo' => [
-                        'day' => 'domingo',
-                        'opening-time' => '13:00',
-                        'closing-time' => '11:00',
-                    ],
+                  'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => '8:00',
+                    'monday-closing-time' => '13:00',
+                  ],
+                  'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => '8:00',
+                    'tuesday-closing-time' => '13:00',
+                  ],
+                  'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => '8:00',
+                    'wednesday-closing-time' => '20:00',
+                  ],
+                  'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => '8:00',
+                    'thursday-closing-time' => '20:00',
+                  ],
+                  'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => '8:00',
+                    'friday-closing-time' => '20:00',
+                  ],
+                  'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => '8:00',
+                    'saturday-closing-time' => '20:00',
+                  ],
+                  'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => '8:00',
+                    'sunday-closing-time' => '20:00',
+                  ],
                 ]),
                 'terms' => 1,
                 'is_favorite' => 1,
@@ -451,41 +451,41 @@ class LocalsSeeder extends Seeder
                     'instagram' => 'https://www.instagram.com/arambururesto/',
                 ]),
                 'schedules' => json_encode([
-                    'lunes' => [
-                        'day' => 'lunes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'martes' => [
-                        'day' => 'martes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'miércoles' => [
-                        'day' => 'miércoles',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'jueves' => [
-                        'day' => 'jueves',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'viernes' => [
-                        'day' => 'viernes',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'sábado' => [
-                        'day' => 'sábado',
-                        'opening-time' => '9:00',
-                        'closing-time' => '11:00',
-                    ],
-                    'domingo' => [
-                        'day' => 'domingo',
-                        'opening-time' => '13:00',
-                        'closing-time' => '11:00',
-                    ],
+                  'lunes' => [
+                    'day' => 'lunes',
+                    'monday-opening-time' => '8:00',
+                    'monday-closing-time' => '13:00',
+                  ],
+                  'martes' => [
+                    'day' => 'martes',
+                    'tuesday-opening-time' => '8:00',
+                    'tuesday-closing-time' => '13:00',
+                  ],
+                  'miercoles' => [
+                    'day' => 'miercoles',
+                    'wednesday-opening-time' => '8:00',
+                    'wednesday-closing-time' => '20:00',
+                  ],
+                  'jueves' => [
+                    'day' => 'jueves',
+                    'thursday-opening-time' => '8:00',
+                    'thursday-closing-time' => '20:00',
+                  ],
+                  'viernes' => [
+                    'day' => 'viernes',
+                    'friday-opening-time' => '8:00',
+                    'friday-closing-time' => '20:00',
+                  ],
+                  'sabado' => [
+                    'day' => 'sabado',
+                    'saturday-opening-time' => '8:00',
+                    'saturday-closing-time' => '20:00',
+                  ],
+                  'domingo' => [
+                    'day' => 'domingo',
+                    'sunday-opening-time' => '8:00',
+                    'sunday-closing-time' => '20:00',
+                  ],
                 ]),
                 'terms' => 1,
                 'is_favorite' => 1,

@@ -48,26 +48,76 @@ class StoresOwnController extends Controller
 
     public function update(LocalUpdateRequest $request, $id)
     {
+      try {
         $request->validated();
         $formData = $request->input();
         $local = Local::findOrFail($id);
 
-        if ($request->hasFile('image')) {
-            $image = new ImageService($request->image, public_path('uploads/images/local'));
-            $image->saveImage();
+        if ($request->hasFile('cover-photo')) {
+          $image = new ImageService($request['cover-photo'], public_path('uploads/images/local/'));
+          $image->saveImage();
 
-            $formData['image'] = $image->imageName;
+          $formData['cover-photo'] = $image->imageName;
 
-            File::delete(public_path("uploads/images/local/{$local->image}"));
+          File::delete(public_path("uploads/images/local/{$local['cover-photo'] }"));
         } else {
-            $formData['image'] = $local->image;
+          $formData['cover-photo'] = $local['cover-photo'];
         }
+
+        $formData['schedules'] = [
+          'lunes' => [
+            'day' => 'lunes',
+            'monday-opening-time' => $formData['monday-opening-time'],
+            'monday-closing-time' => $formData['monday-closing-time'],
+          ],
+          'martes' => [
+            'day' => 'martes',
+            'tuesday-opening-time' => $formData['tuesday-opening-time'],
+            'tuesday-closing-time' => $formData['tuesday-closing-time'],
+          ],
+          'miercoles' => [
+            'day' => 'miercoles',
+            'wednesday-opening-time' => $formData['wednesday-opening-time'],
+            'wednesday-closing-time' => $formData['wednesday-closing-time'],
+          ],
+          'jueves' => [
+            'day' => 'jueves',
+            'thursday-opening-time' => $formData['thursday-opening-time'],
+            'thursday-closing-time' => $formData['thursday-closing-time'],
+          ],
+          'viernes' => [
+            'day' => 'viernes',
+            'friday-opening-time' => $formData['friday-opening-time'],
+            'friday-closing-time' => $formData['friday-closing-time'],
+          ],
+          'sabado' => [
+            'day' => 'sabado',
+            'saturday-opening-time' => $formData['saturday-opening-time'],
+            'saturday-closing-time' => $formData['saturday-closing-time'],
+          ],
+          'domingo' => [
+            'day' => 'domingo',
+            'sunday-opening-time' => $formData['sunday-opening-time'],
+            'sunday-closing-time' => $formData['sunday-closing-time'],
+          ],
+        ];
+
+        //actualizar los datos de la redes sociales
+        $formData['social-networks'] = [
+          'facebook' => $formData['social-facebook'],
+          'instagram' => $formData['social-instagram'],
+          'tiktok' => $formData['social-tiktok'],
+        ];
 
         $local->update($formData);
 
         $local->save();
 
         return redirect()->route('store.index')->with('success', 'Local actualizado correctamente');
+      } catch (Exception $e) {
+        return redirect()->route('store.index')->with('error', 'Error al actualizar el local');
+
+      }
     }
 
     public function delete($id)

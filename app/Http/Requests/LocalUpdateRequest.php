@@ -25,28 +25,32 @@ class LocalUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:2'],
-            'address' => ['required', 'min:5'],
-            'opening_time' => ['required'],
-            'closing_time' => ['required'],
-            'url_site' => ['required'],
-            'url_map' => ['required'],
+            'street' => ['required', 'min:2'],
+            'street-number' => ['required', 'numeric'],
             'phone' => ['required', 'numeric'],
+            'neighborhood_id' => ['required'],
+            'map' => ['required'],
+            'website' => ['required'],
+            'description' => ['required', 'min:5'],
         ];
     }
 
       public function messages()
       {
           return [
-              'name.required' => 'El nombre no puede estar vacío.',
-              'name.min' => 'El nombre tiene que tener mas de 2 caracteres',
-              'address.required' => 'La dirección no puede estar vacío.',
-              'address.min' => 'La dirección no puede ser menor a 5 caracteres.',
-              'opening_time.required' => 'El horario de apertura no puede estar vacío.',
-              'closing_time.required' => 'El horario de cierre no puede estar vacío.',
-              'url_site.required' => 'La url sel site no puede estar vacía.',
-              'url_map.required' => 'El iframe del mapa no puede estar vacío.',
-              'phone.required' => 'El teléfono no puede estar vacío.',
-              'phone.numeric' => 'Escribe un número telefónico válido',
+              'name.required' => 'El nombre es requerido',
+              'name.min' => 'El nombre debe tener al menos 2 caracteres',
+              'street.required' => 'La calle es requerida',
+              'street.min' => 'La calle debe tener al menos 2 caracteres',
+              'street-number.required' => 'El número de calle es requerido',
+              'street-number.numeric' => 'El número de calle debe ser un número',
+              'phone.required' => 'El teléfono es requerido',
+              'phone.numeric' => 'El teléfono debe ser un número',
+              'neighborhood_id.required' => 'El barrio es requerido',
+              'map.required' => 'El mapa es requerido',
+              'website.required' => 'El sitio web es requerido',
+              'description.required' => 'La descripción es requerida',
+              'description.min' => 'La descripción debe tener al menos 5 caracteres',
           ];
       }
 }

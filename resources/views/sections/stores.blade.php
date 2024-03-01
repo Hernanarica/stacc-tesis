@@ -36,7 +36,7 @@
 											</div>
 										</td>
 										<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{$local->name}}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->address}}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->street}} {{$local['street-number']}}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{$local->phone}}</td>
 										{{--								poner si esta habilitado o no --}}
 										@if($local->is_public === 1)
