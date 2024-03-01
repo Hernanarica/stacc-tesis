@@ -3,7 +3,6 @@
 /** @var \App\Models\Local $local */
 /** @var \App\Models\Opinion $opinions */
 
-$daysOfWeek = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
 $scores = ['1', '2', '3', '4', '5'];
 
 //foreach ($daysOfWeek as $day) {
@@ -185,9 +184,62 @@ $scores = ['1', '2', '3', '4', '5'];
             <dt class="text-sm font-medium leading-6 text-gray-900">Horarios</dt>
             <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
               <ul>
-                @foreach($daysOfWeek as $day)
-                  <li class="capitalize"><b>{{ $local['schedules'][$day]['day'] }}</b> - <span>{{ $local['schedules'][$day]['opening-time'] }} a {{ $local['schedules'][$day]['closing-time'] }}</span></li>
-                @endforeach
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium ">{{ $local['schedules']['lunes']['day'] }}</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['lunes']['monday-opening-time'] }} - {{ $local['schedules']['lunes']['monday-closing-time'] }}</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium ">{{ $local['schedules']['martes']['day'] }}</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['martes']['tuesday-opening-time'] }} - {{ $local['schedules']['martes']['tuesday-closing-time'] }}</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium ">{{ $local['schedules']['miercoles']['day'] }}</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['miercoles']['wednesday-opening-time'] }} - {{ $local['schedules']['miercoles']['wednesday-closing-time'] }}</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium ">{{ $local['schedules']['jueves']['day'] }}</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['jueves']['thursday-opening-time'] }} - {{ $local['schedules']['jueves']['thursday-closing-time'] }}</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium ">{{ $local['schedules']['viernes']['day'] }}</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['viernes']['friday-opening-time'] }} - {{ $local['schedules']['viernes']['friday-closing-time'] }}</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium ">{{ $local['schedules']['sabado']['day'] }}</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['sabado']['saturday-opening-time'] }} - {{ $local['schedules']['sabado']['saturday-closing-time'] }}</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex items-center justify-between py-2 pr-5 pl-4 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium ">{{ $local['schedules']['domingo']['day'] }}</span>
+                      <span class="truncate font-medium">{{ $local['schedules']['domingo']['sunday-opening-time'] }} - {{ $local['schedules']['domingo']['sunday-closing-time'] }}</span>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </dd>
           </div>
