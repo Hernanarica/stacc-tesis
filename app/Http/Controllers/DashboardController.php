@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LocalUpdateRequest;
 use App\Models\Local;
 use App\Models\Neighborhoods;
+use App\Models\Opinion;
 use App\Models\User;
 use App\Services\ImageService;
 use http\Env\Request;
@@ -14,10 +15,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $usersCount = User::all()->count();
+        $localsCant = Local::all()->count();
+        $opinionsCant = Opinion::all()->count();
 
         return view('sections.dashboard', [
-            'users' => $users,
+            'usersCant' => $usersCount,
+            'localsCant' => $localsCant,
+            'opinionsCant' => $opinionsCant,
         ]);
     }
 
