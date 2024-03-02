@@ -17,7 +17,7 @@
         <div class="flex lg:flex-1">
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+            <img class="h-8 w-auto" src="{{asset("./src/assets/images/logos/logo_red.png")}}" alt="logo de stacc">
           </a>
         </div>
         <div class="flex lg:hidden">

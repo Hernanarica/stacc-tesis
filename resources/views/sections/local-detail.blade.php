@@ -47,7 +47,7 @@ $scores = ['1', '2', '3', '4', '5'];
           <div class="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
             <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">{{ $local->name }}</h1>
             <div class="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-              <div class="flex items-center gap-3">
+              <div class="flex items-center gap-3 mb-5">
                 <span class="rounded-full bg-green-600/10 px-3 py-1 text-sm font-semibold leading-6 text-green-600 ring-1 ring-inset ring-indigo-600/10">Abierto</span>
                 <span>
                   @auth()
@@ -111,8 +111,8 @@ $scores = ['1', '2', '3', '4', '5'];
 
     <div class="overflow-hidden bg-white shadow sm:rounded-lg">
       <div class="mx-auto max-w-2xl px-4 py-6 sm:px-8 lg:max-w-7xl">
-        <h3 class="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>
-        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
+        <h3 class="text-base font-semibold leading-7 text-gray-900">Información del Restaurant</h3>
+{{--        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Horario, fotos y dirección</p>--}}
       </div>
       <div class="border-t border-gray-100">
         <dl class="divide-y divide-gray-100">
