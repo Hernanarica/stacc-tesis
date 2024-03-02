@@ -88,8 +88,6 @@ class UserController extends Controller
     }
 
     /**
-     * @param  \App\Http\Requests\UserUpdateRequest  $request
-     * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function updateUser(UserUpdateRequest $request, $id)
@@ -125,7 +123,7 @@ class UserController extends Controller
      * It finds the user by the id, deletes the image from the public folder, deletes the user from the database, and
      * redirects the user back to the view page with a success message
      *
-     * @param  id  $id The id of the user to be deleted.
+     * @param  id  $id  The id of the user to be deleted.
      */
     public function destroy($id)
     {

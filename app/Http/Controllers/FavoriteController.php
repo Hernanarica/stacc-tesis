@@ -21,7 +21,7 @@ class FavoriteController extends Controller
     /**
      * When a user visits the route `locals/{id}/favorite`, add a favorite to the local with the given id.
      *
-     * @param  id  $id The id of the local you want to add to your favorites.
+     * @param  id  $id  The id of the local you want to add to your favorites.
      * @return \Illuminate\Http\RedirectResponse route to the local show page.
      */
     public function store($id)
@@ -36,7 +36,7 @@ class FavoriteController extends Controller
      * It finds the local with the given id, removes it from the user's favorites, and then redirects the user back to the
      * local's show page
      *
-     * @param  id  $id The id of the local that we want to remove from the favorites list.
+     * @param  id  $id  The id of the local that we want to remove from the favorites list.
      * @return \Illuminate\Http\RedirectResponse route to the local show page.
      */
     public function destroy($id)

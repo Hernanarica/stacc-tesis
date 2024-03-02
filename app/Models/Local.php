@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Local extends Model
 {
-    use HasFactory, Favoriteable;
+    use Favoriteable, HasFactory;
 
     protected $fillable = [
         'user_id',

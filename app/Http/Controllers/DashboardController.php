@@ -57,7 +57,7 @@ class DashboardController extends Controller
     /**
      * It changes the status of a local.
      *
-     * @param  local  $local The name of the route parameter.
+     * @param  local  $local  The name of the route parameter.
      */
     public function changeStatus($local)
     {
@@ -75,7 +75,7 @@ class DashboardController extends Controller
     /**
      * It returns a view with the local object
      *
-     * @param  id  $id The id of the local you want to edit.
+     * @param  id  $id  The id of the local you want to edit.
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view 'sections.dashboard-local-edit' is being returned.
      */
     public function localEdit($id): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
@@ -94,8 +94,8 @@ class DashboardController extends Controller
      * new image service, saves the image, adds the image name to the form data, deletes the old image, updates the local and
      * saves it
      *
-     * @param  LocalUpdateRequest  $request request The request object.
-     * @param  id  $id The id of the local to update
+     * @param  LocalUpdateRequest  $request  request The request object.
+     * @param  id  $id  The id of the local to update
      * @return \Illuminate\Http\RedirectResponse view with the local data
      */
     public function updateLocal(LocalUpdateRequest $request, $id)

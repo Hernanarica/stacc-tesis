@@ -41,7 +41,7 @@ Route::controller(LoginController::class)->prefix('/login')->group(function () {
 });
 
 Route::controller(OpinionController::class)->prefix('/opinions')->group(function () {
-//    Route::get('', 'index')->name('login.index');
+    //    Route::get('', 'index')->name('login.index');
     Route::post('', 'store')->name('opinions.store');
 });
 
@@ -108,6 +108,7 @@ Route::controller(PostController::class)->middleware('auth')->prefix('posts')->g
 
 Route::controller(ContactController::class)->prefix('/contact')->group(function () {
     Route::get('', 'index')->name('contact.index');
+    Route::post('', 'store')->name('contact.store');
 });
 
 Route::post('/users', [UserController::class, 'store'])->name('user.store');

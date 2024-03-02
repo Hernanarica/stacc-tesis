@@ -18,12 +18,12 @@ class OpinionStoreRequest extends FormRequest
         ];
     }
 
-     protected function prepareForValidation()
-     {
-         $this->merge([
-             'current_date' => date('Y-m-d'),
-         ]);
-     }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'current_date' => date('Y-m-d'),
+        ]);
+    }
 
     public function authorize(): bool
     {

@@ -35,22 +35,22 @@ class LocalUpdateRequest extends FormRequest
         ];
     }
 
-      public function messages()
-      {
-          return [
-              'name.required' => 'El nombre es requerido',
-              'name.min' => 'El nombre debe tener al menos 2 caracteres',
-              'street.required' => 'La calle es requerida',
-              'street.min' => 'La calle debe tener al menos 2 caracteres',
-              'street-number.required' => 'El número de calle es requerido',
-              'street-number.numeric' => 'El número de calle debe ser un número',
-              'phone.required' => 'El teléfono es requerido',
-              'phone.numeric' => 'El teléfono debe ser un número',
-              'neighborhood_id.required' => 'El barrio es requerido',
-              'map.required' => 'El mapa es requerido',
-              'website.required' => 'El sitio web es requerido',
-              'description.required' => 'La descripción es requerida',
-              'description.min' => 'La descripción debe tener al menos 5 caracteres',
-          ];
-      }
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'name.min' => 'El nombre debe tener al menos 2 caracteres',
+            'street.required' => 'La calle es requerida',
+            'street.min' => 'La calle debe tener al menos 2 caracteres',
+            'street-number.required' => 'El número de calle es requerido',
+            'street-number.numeric' => 'El número de calle debe ser un número',
+            'phone.required' => 'El teléfono es requerido',
+            'phone.numeric' => 'El teléfono debe ser un número',
+            'neighborhood_id.required' => 'El barrio es requerido',
+            'map.required' => 'El mapa es requerido',
+            'website.required' => 'El sitio web es requerido',
+            'description.required' => 'La descripción es requerida',
+            'description.min' => 'La descripción debe tener al menos 5 caracteres',
+        ];
+    }
 }

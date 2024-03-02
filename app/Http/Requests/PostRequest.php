@@ -18,7 +18,7 @@ class PostRequest extends FormRequest
         return true;
     }
 
-//	Solo para postman
+    //	Solo para postman
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json($validator->errors(), 403));

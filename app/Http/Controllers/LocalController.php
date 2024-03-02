@@ -19,7 +19,7 @@ class LocalController extends Controller
     /**
      * It will search for locals by name or neighborhood name, and paginate the results
      *
-     * @param  Request  $request request The request object.
+     * @param  Request  $request  request The request object.
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View view with the locals and the search query.
      */
     public function index(Request $request)
@@ -29,12 +29,12 @@ class LocalController extends Controller
             $locals = Local::where('is_public', 1)->paginate(10);
         } else {
             $locals = Local::with('neighborhood')
-              ->where('is_public', 1)
-              ->where('name', 'like', '%'.$request->query('search').'%')
-              ->orWhereHas('neighborhood', function ($query) use ($request) {
-                  $query->where('name', 'like', '%'.$request->query('search').'%');
-              })
-              ->paginate(10);
+                ->where('is_public', 1)
+                ->where('name', 'like', '%'.$request->query('search').'%')
+                ->orWhereHas('neighborhood', function ($query) use ($request) {
+                    $query->where('name', 'like', '%'.$request->query('search').'%');
+                })
+                ->paginate(10);
         }
 
         return view('sections.locals', [
@@ -160,7 +160,6 @@ class LocalController extends Controller
      * Display the specified resource.
      *
      * @param  Local  $local
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($local): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
@@ -182,7 +181,7 @@ class LocalController extends Controller
      */
     public function edit($local)
     {
-    //
+        //
     }
 
     public function update(LocalUpdateRequest $request, $id)
@@ -203,49 +202,49 @@ class LocalController extends Controller
                 $formData['cover-photo'] = $local['cover-photo'];
             }
 
-          $formData['schedules'] = [
-            'monday' => [
-              'day' => 'monday',
-              'opening-time' => $formData['monday-opening-time'],
-              'closing-time' => $formData['monday-closing-time'],
-            ],
-            'tuesday' => [
-              'day' => 'tuesday',
-              'opening-time' => $formData['tuesday-opening-time'],
-              'closing-time' => $formData['tuesday-closing-time'],
-            ],
-            'wednesday' => [
-              'day' => 'wednesday',
-              'opening-time' => $formData['wednesday-opening-time'],
-              'closing-time' => $formData['wednesday-closing-time'],
-            ],
-            'thursday' => [
-              'day' => 'thursday',
-              'opening-time' => $formData['thursday-opening-time'],
-              'closing-time' => $formData['thursday-closing-time'],
-            ],
-            'friday' => [
-              'day' => 'friday',
-              'opening-time' => $formData['friday-opening-time'],
-              'closing-time' => $formData['friday-closing-time'],
-            ],
-            'saturday' => [
-              'day' => 'saturday',
-              'opening-time' => $formData['saturday-opening-time'],
-              'closing-time' => $formData['saturday-closing-time'],
-            ],
-            'sunday' => [
-              'day' => 'sunday',
-              'opening-time' => $formData['sunday-opening-time'],
-              'closing-time' => $formData['sunday-closing-time'],
-            ],
-          ];
+            $formData['schedules'] = [
+                'monday' => [
+                    'day' => 'monday',
+                    'opening-time' => $formData['monday-opening-time'],
+                    'closing-time' => $formData['monday-closing-time'],
+                ],
+                'tuesday' => [
+                    'day' => 'tuesday',
+                    'opening-time' => $formData['tuesday-opening-time'],
+                    'closing-time' => $formData['tuesday-closing-time'],
+                ],
+                'wednesday' => [
+                    'day' => 'wednesday',
+                    'opening-time' => $formData['wednesday-opening-time'],
+                    'closing-time' => $formData['wednesday-closing-time'],
+                ],
+                'thursday' => [
+                    'day' => 'thursday',
+                    'opening-time' => $formData['thursday-opening-time'],
+                    'closing-time' => $formData['thursday-closing-time'],
+                ],
+                'friday' => [
+                    'day' => 'friday',
+                    'opening-time' => $formData['friday-opening-time'],
+                    'closing-time' => $formData['friday-closing-time'],
+                ],
+                'saturday' => [
+                    'day' => 'saturday',
+                    'opening-time' => $formData['saturday-opening-time'],
+                    'closing-time' => $formData['saturday-closing-time'],
+                ],
+                'sunday' => [
+                    'day' => 'sunday',
+                    'opening-time' => $formData['sunday-opening-time'],
+                    'closing-time' => $formData['sunday-closing-time'],
+                ],
+            ];
 
             //actualizar los datos de la redes sociales
             $formData['social-networks'] = [
-              'facebook' => $formData['social-facebook'],
-              'instagram' => $formData['social-instagram'],
-              'tiktok' => $formData['social-tiktok'],
+                'facebook' => $formData['social-facebook'],
+                'instagram' => $formData['social-instagram'],
+                'tiktok' => $formData['social-tiktok'],
             ];
 
             $local->update($formData);
@@ -260,9 +259,6 @@ class LocalController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($id): \Illuminate\Http\RedirectResponse
     {

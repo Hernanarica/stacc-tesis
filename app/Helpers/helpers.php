@@ -1,8 +1,5 @@
 <?php
-/**
- * @param  string  $dir
- * @return string
- */
+
 function createDirectoryIfNotExist(string $dir = ''): string
 {
     if (! is_dir($dir)) {
@@ -12,8 +9,9 @@ function createDirectoryIfNotExist(string $dir = ''): string
     return $dir;
 }
 
-function isActiveLink(string $link = ''): string {
-  $currentRoute = Route::currentRouteName();
+function isActiveLink(string $link = ''): string
+{
+    $currentRoute = Route::currentRouteName();
 
-  return $currentRoute === $link ? 'bg-gray-50' : '';
+    return $currentRoute === $link ? 'bg-gray-50' : '';
 }
