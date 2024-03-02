@@ -8,7 +8,7 @@
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
         <h1 class="text-base font-semibold leading-6 text-gray-900">Mis locales</h1>
-        <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+        <p class="mt-2 text-sm text-gray-700">Una lista de todos tus locales</p>
       </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
         <a href="{{ route('locals.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Crear nuevo</a>
@@ -59,7 +59,7 @@
                     @endif
                   </td>
                   <td class="relative whitespace-nowrap py-5 pr-4 pl-3 text-right text-sm font-medium sm:pr-0">
-                    <a href="{{ route('store.show', $local->id) }}" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, {{ $local->name }}</span></a>
+                    <a href="{{ route('store.show', $local->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar<span class="sr-only">, {{ $local->name }}</span></a>
                     <a href="{{ route('store.delete', $local->id) }}" class="text-red-600 hover:text-red-900">Pedir baja<span class="sr-only">, {{ $local->name }}</span></a>
                   </td>
                 </tr>

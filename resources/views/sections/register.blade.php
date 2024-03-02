@@ -15,7 +15,7 @@
 @section('content')
   <section class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crear cuenta</h2>
     </div>
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form
@@ -113,12 +113,14 @@
                 </svg>
                 <div class="mt-4 flex text-sm leading-6 text-gray-600">
                   <label for="image" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                    <span>Upload a file</span>
+                    <span>Cargar un archivo</span>
                     <input id="image" name="image" type="file" class="sr-only">
                   </label>
-                  <p class="pl-1">or drag and drop</p>
+                  <p class="pl-1">o arrastrar y soltar
+
+                  </p>
                 </div>
-                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF menos de 10MB</p>
               </div>
             </div>
             @if($errors->has('image'))<span class="text-red-500 text-xs">{{ $errors->first('image') }}</span>@endif

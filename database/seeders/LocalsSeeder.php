@@ -138,14 +138,14 @@ class LocalsSeeder extends Seeder
             [
                 'id' => 3,
                 'user_id' => 2,
-                'name' => 'gout GLUTEN FREE',
+                'name' => 'GOUT GLUTEN FREE',
                 'street' => 'Montevideo',
                 'street-number' => '1480',
                 'phone' => '01148113701',
                 'neighborhood_id' => 43,
                 'map' => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105137.24338706768!2d-58.50141491090092!3d-34.56522949948272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccabc7af91789%3A0x1e7680518acb8259!2sGOUT%20GLUTEN%20FREE!5e0!3m2!1ses-419!2sar!4v1638231387925!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
                 'website' => 'www.goutglutenfree.com.ar',
-                'description' => 'Gout Gluten Free es un restaurante de comida con más de 10 años de experiencia.',
+                'description' => 'GOUT GLUTEN FREE es un lugar dedicado especialmente a la elaboración y venta de productos libres de gluten',
                 'cover-photo' => 'gout-barrionorte.jpg',
                 'certificate' => 'gout_certificate.jpg',
                 'social-networks' => json_encode([
