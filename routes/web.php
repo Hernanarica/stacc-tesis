@@ -85,7 +85,7 @@ Route::group(['middleware' => ['role:admin']], function () {
         Route::patch('/disable-local/{local}', 'changeStatus')->name('dashboard.locals.disable');
         Route::patch('/enable-local/{local}', 'changeStatus')->name('dashboard.locals.enable');
         Route::get('/{id}/editar-local', 'localEdit')->name('dashboard.local.edit');
-        Route::put('/update-local/{id}', 'updateLocal')->name('dashboard.locals.update');
+        Route::patch('/update-local/{id}', 'updateLocal')->name('dashboard.locals.update');
     });
 });
 
@@ -122,4 +122,4 @@ Route::patch('/mis-locales/{id}', [StoresOwnController::class, 'update'])->name(
 //perfil
 Route::get('/perfil', [ProfileController::class, 'index'])->name('profile.index')->middleware(['role:owner|visitor']);
 Route::get('/perfil/editar', [ProfileController::class, 'edit'])->name('profile.edit')->middleware(['role:owner|visitor']);
-Route::put('/perfil/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['role:owner|visitor']);
+Route::patch('/perfil/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['role:owner|visitor']);

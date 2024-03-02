@@ -20,12 +20,10 @@
 		<div class="flex justify-center py-5">
 			<form action="{{ route('dashboard.locals.update', ['id' => $local->id]) }}" enctype="multipart/form-data" method="post" class="form-edit">
 				@csrf
-				@method('PUT')
+				@method('PATCH')
 				<div class="text-center">
 					<h2 class="text-4xl font-bold text-center text-gray-700">Actualizar local</h2>
 				</div>
-				@csrf
-				@method('put')
 				<div class="grid grid-cols-1 gap-6 mt-2 md:grid-cols-2">
 					<div class="">
 						<label for="name" class="block form-label mb-2">

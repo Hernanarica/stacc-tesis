@@ -22,6 +22,27 @@ $timeDomingoCt = date('H:i', strtotime($local->schedules['sunday']['closing-time
 @section('title', 'Editar local ' . $local->name)
 @section('content')
   <section class="w-full max-w-2xl mx-auto">
+    <div class="mx-auto max-w-7xl">
+      <nav class="flex" aria-label="Breadcrumb">
+        <ol role="list" class="flex items-center space-x-4">
+          <li>
+            <div>
+              <a href="{{ route('store.index') }}" class="text-gray-400 hover:text-gray-500">
+                <span>Mis locales</span>
+              </a>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="h-5 w-5 flex-shrink-0 text-gray-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+              </svg>
+              <a href="#" class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700" aria-current="page">{{$local->name}}</a>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
     <form action="{{ route('store.update', ['id' => $local->id]) }}" enctype="multipart/form-data" method="post" class="form-edit">
       @csrf
       @method('PATCH')
@@ -31,8 +52,7 @@ $timeDomingoCt = date('H:i', strtotime($local->schedules['sunday']['closing-time
       <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12">
           <h2 class="text-base font-semibold leading-7 text-gray-900">Actualiza los datos de tu local</h2>
-          <h3 class="text-base font-semibold leading-7 text-gray-900">Datos de {{$local->name}}</h3>
-          <p class="mt-1 text-sm leading-6 text-gray-600">Utilice una dirección permanente donde pueda recibir correo.</p>
+          <p class="text-base leading-7 text-gray-900">Datos de {{$local->name}}</p>
           <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-3">
               <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>

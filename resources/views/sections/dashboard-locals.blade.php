@@ -9,7 +9,7 @@
       <div class="sm:flex sm:items-center">
         <div class="sm:flex-auto">
           <h1 class="text-base font-semibold leading-6 text-gray-900">Locales</h1>
-          <p class="mt-2 text-sm text-gray-700">A list of all the users in your account including their name, title, email and role.</p>
+          <p class="mt-2 text-sm text-gray-700">Lista de todos locales</p>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
           <form
