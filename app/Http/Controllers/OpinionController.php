@@ -18,6 +18,6 @@ class OpinionController extends Controller
             'current_date' => $request->current_date,
         ]);
 
-        return to_route('locals.index');
+        return redirect()->back()->with('success', 'Opinión agregada correctamente.');
     }
 }

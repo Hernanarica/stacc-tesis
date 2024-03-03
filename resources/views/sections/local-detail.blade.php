@@ -1,9 +1,9 @@
 <?php
-  use \Illuminate\Support\Carbon;
-/** @var \App\Models\Local $local */
-/** @var \App\Models\Opinion $opinions */
+    use \Illuminate\Support\Carbon;
+    /** @var \App\Models\Local $local */
+    /** @var \App\Models\Opinion $opinions */
 
-$scores = ['1', '2', '3', '4', '5'];
+    $scores = ['1', '2', '3', '4', '5'];
 
 //foreach ($daysOfWeek as $day) {
 //  echo '<pre>';
