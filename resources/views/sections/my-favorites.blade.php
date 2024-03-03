@@ -1,10 +1,10 @@
 <?php
-  use \Illuminate\Support\Carbon;
-/** @var \ChristianKuri\LaravelFavorite\Models\Favorite $favorites */
+    use \Illuminate\Support\Carbon;
+    use \Illuminate\Support\Str;
+    /** @var \ChristianKuri\LaravelFavorite\Models\Favorite $favorites */
 
-Carbon::setLocale('es');
-
-$currentDay = now()->dayName;
+    $currentDay = Str::lower(now()->dayName);
+    $currentTime = now()->setTimezone('America/Argentina/Buenos_Aires')->format('H:i');
 ?>
 @extends('layout.layout')
 @section('title', 'Mis favoritos')
@@ -27,10 +27,11 @@ $currentDay = now()->dayName;
                 <dd class="text-sm text-gray-500">{{ $favorite->name }} ({{ $favorite->neighborhood->name }})</dd>
                 <dt class="sr-only">Role</dt>
                 <dd class="mt-3">
-                    <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                      Abierto
-{{--                      Abierto {{ $favorite->schedules['viernes']["$currentDay-closing-time"] }}--}}
-                    </span>
+                  @if($favorite->schedules[$currentDay]['closing-time'] > $currentTime)
+                    <span class="inline-flex items-center rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Abierto</span>
+                  @else
+                    <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">Cerrado</span>
+                  @endif
                 </dd>
               </dl>
             </div>
