@@ -6,8 +6,8 @@ const $close = document.getElementById('close');
 const $msj = document.getElementsByClassName('message-session');
 
 $menuBtn.addEventListener('click', () => {
-	$navbar.classList.toggle('hidden');
-	$iconOpen.classList.toggle('hidden');
-	$iconClose.classList.toggle('hidden');
+  $navbar.classList.toggle('hidden');
+  $iconOpen.classList.toggle('hidden');
+  $iconClose.classList.toggle('hidden');
 });
 

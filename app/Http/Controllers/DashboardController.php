@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Services\ImageService;
 use http\Env\Request;
 use Illuminate\Support\Facades\File;
+use Resend\Laravel\Facades\Resend;
 
 class DashboardController extends Controller
 {
@@ -59,15 +60,38 @@ class DashboardController extends Controller
      *
      * @param  local  $local  The name of the route parameter.
      */
-    public function changeStatus($local)
+    public function changeStatus(Local $local)
     {
-        $local = Local::find($local);
         if ($local->is_public == 1) {
             $local->is_public = 0;
+            $local->save();
+
+            Resend::emails()->send([
+                'from' => 'Stacc <contact.stacc@stacc.persianasfv.com>',
+                'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
+                'subject' => 'Stacc | Tu local fue inhabilitado',
+                'html' => '
+                      <div>
+                          <p>' . $local->user->name . ' ' . $local->user->lastname . ' tu pedido fue recibido y tu local fue inhabilitado de forma exitosa, esperamos volver a ver tu local en stacc, saludos.</p>
+                      </div> 
+                  ',
+            ]);
         } else {
             $local->is_public = 1;
+            $local->save();
+
+            Resend::emails()->send([
+              'from' => 'Stacc <contact.stacc@stacc.persianasfv.com>',
+              'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
+              'subject' => 'Stacc | ¡Tu local fue habilitado!',
+              'html' => '
+                  <div>
+                      <p>' . $local->user->name . ' ' . $local->user->lastname . ' ¡Felicidades! Tus datos fueron relevados y tu local fue habilitado de forma exitosa</p>
+                      <a href="https://stacc.persianasfv.com/locals" target="_blank">Visitar local</a>
+                  </div> 
+              ',
+            ]);
         }
-        $local->save();
 
         return redirect()->route('dashboard.locals.view')->with('success', 'Local actualizado correctamente');
     }

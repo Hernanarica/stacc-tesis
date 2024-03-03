@@ -58,9 +58,9 @@
                       <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">Inhabilitado</span>
                     @endif
                   </td>
-                  <td class="relative whitespace-nowrap py-5 pr-4 pl-3 text-right text-sm font-medium sm:pr-0">
+                  <td class="relative whitespace-nowrap py-5 pr-4 pl-3 text-right space-x-4 text-sm font-medium sm:pr-0">
                     <a href="{{ route('store.show', $local->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar<span class="sr-only">, {{ $local->name }}</span></a>
-                    <a href="{{ route('store.delete', $local->id) }}" class="text-red-600 hover:text-red-900">Pedir baja<span class="sr-only">, {{ $local->name }}</span></a>
+                    <a href="{{ route('store.delete', $local->id) }}" class="text-red-600 hover:text-red-900">Solicitar baja<span class="sr-only">, {{ $local->name }}</span></a>
                   </td>
                 </tr>
               @endforeach
