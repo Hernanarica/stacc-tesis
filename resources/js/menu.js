@@ -1,13 +1,12 @@
-const $menuBtn = document.getElementById('menuBtn');
-const $navbar = document.getElementById('navbar');
-const $iconOpen = document.getElementById('iconOpen');
-const $iconClose = document.getElementById('iconClose');
-const $close = document.getElementById('close');
-const $msj = document.getElementsByClassName('message-session');
+const $btnMenuOpen = document.getElementById('btnMenuOpen')
+const $btnMenuClose = document.getElementById('btnMenuClose')
+const $menuMob = document.getElementById('menuMob')
 
-$menuBtn.addEventListener('click', () => {
-  $navbar.classList.toggle('hidden');
-  $iconOpen.classList.toggle('hidden');
-  $iconClose.classList.toggle('hidden');
+$btnMenuClose.addEventListener('click', () => {
+  $menuMob.classList.toggle('hidden');
+});
+
+$btnMenuOpen.addEventListener('click', () => {
+  $menuMob.classList.toggle('hidden');
 });
 
