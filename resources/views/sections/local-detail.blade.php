@@ -1,17 +1,14 @@
-<?php
+@php
     use \Illuminate\Support\Carbon;
     /** @var \App\Models\Local $local */
     /** @var \App\Models\Opinion $opinions */
 
     $scores = ['1', '2', '3', '4', '5'];
+    $currentDay = Str::lower(now()->dayName);
+    $currentTime = now()->setTimezone('America/Argentina/Buenos_Aires')->format('H:i');
 
-//foreach ($daysOfWeek as $day) {
-//  echo '<pre>';
-//  print_r($local['schedules'][$day]['day']);
-//  echo '</pre>';
-//}
-//dd($local['schedules']);
-?>
+    Carbon::setLocale('es');
+@endphp
 @extends('layout.layout')
 @section('title', $local->name)
 @section('content')
@@ -47,7 +44,11 @@
             <h1 class="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">{{ $local->name }}</h1>
             <div class="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
               <div class="flex items-center gap-3 mb-5">
-                <span class="rounded-full bg-green-600/10 px-3 py-1 text-sm font-semibold leading-6 text-green-600 ring-1 ring-inset ring-indigo-600/10">Abierto</span>
+                @if($local->schedules[$currentDay]['closing-time'] > $currentTime)
+                  <span class="rounded-full bg-green-600/10 px-3 py-1 text-sm font-semibold leading-6 text-green-600 ring-1 ring-inset ring-green-600/10">Abierto</span>
+                @else
+                  <span class="rounded-full bg-red-600/10 px-3 py-1 text-sm font-semibold leading-6 text-red-600 ring-1 ring-inset ring-red-600/10">Cerrado</span>
+                @endif
                 <span>
                   @auth()
                     @if(!$local->isFavorited())
@@ -110,7 +111,7 @@
 
     <div class="overflow-hidden bg-white shadow sm:rounded-lg">
       <div class="mx-auto max-w-2xl px-4 py-6 sm:px-8 lg:max-w-7xl">
-        <h3 class="text-base font-semibold leading-7 text-gray-900">Información del Restaurant</h3>
+        <h3 class="text-base font-semibold leading-7 text-gray-900">Información del restaurant</h3>
 {{--        <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Horario, fotos y dirección</p>--}}
       </div>
       <div class="border-t border-gray-100">
@@ -145,7 +146,7 @@
                     </div>
                   </div>
                   <div class="ml-4 flex-shrink-0">
-                    <a href="{{ asset('uploads/files/' . $local->certificate) }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                    <a href="{{ asset('uploads/files/' . $local->certificate) }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Descargar</a>
                   </div>
                 </li>
               </ul>
@@ -335,7 +336,7 @@
                   </div>
                 </div>
                 <div>
-                  <button type="submit" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Comentar</button>
+                  <button type="submit" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Publicar</button>
                 </div>
               </form>
             </div>
@@ -371,7 +372,7 @@
                 </div>
                 <div class="mt-6 flex items-center text-sm lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:mt-0 lg:flex-col lg:items-start xl:col-span-3">
                   <p class="font-medium text-gray-900">{{ $opinion->user->name }} {{ $opinion->user->lastname }}</p>
-                  <time datetime="2021-01-06" class="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:mt-2 lg:ml-0 lg:border-0 lg:pl-0">{{ Carbon::parse($opinion->current_date)->diffForHumans() }}</time>
+                  <time datetime="2021-01-06" class="ml-4 border-l border-gray-200 pl-4 text-gray-500 lg:mt-2 lg:ml-0 lg:border-0 lg:pl-0">{{ Carbon::parse($opinion->created_at)->diffForHumans() }}</time>
                 </div>
               </div>
             @endforeach
