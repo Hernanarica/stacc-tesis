@@ -39,7 +39,6 @@ $scores = ['1', '2', '3', '4', '5'];
           </li>
         </ol>
       </nav>
-
     </div>
     <div class="bg-white">
       <div class="relative isolate overflow-hidden">
