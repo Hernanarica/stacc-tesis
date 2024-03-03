@@ -16,7 +16,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         Resend::emails()->send([
-            'from' => 'Stacc <contact.stacc@stacc.persianasfv.com>',
+            'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
             'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
             'subject' => 'Contacto Stacc',
             'html' => '
@@ -28,6 +28,24 @@ class ContactController extends Controller
                         <li>Email: ' . $request->email . '</li>
                         <li>Mensaje: ' . $request->message . '</li>
                     </ul>
+                </div> 
+            ',
+        ]);
+
+        return to_route('home.index')->with('success', 'Email enviado! Pronto nos comunicaremos.');
+    }
+
+    public function disable(Request $request, Local $local)
+    {
+        Resend::emails()->send([
+            'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
+            'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
+            'subject' => 'Stacc | Solicitud de baja',
+            'html' => '
+                <div>
+                    <p><b>' . auth()->user()->name . ' ' . auth()->user()->lastname . '</b> esta solicitando la inhabilitación de su local: ' . $local->name . ' </p>
+                    <p><b>Motivo:</b></p>
+                    <p>' . $request->message .'</p>
                 </div> 
             ',
         ]);

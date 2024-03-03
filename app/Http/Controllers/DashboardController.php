@@ -67,7 +67,7 @@ class DashboardController extends Controller
             $local->save();
 
             Resend::emails()->send([
-                'from' => 'Stacc <contact.stacc@stacc.persianasfv.com>',
+                'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
                 'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
                 'subject' => 'Stacc | Tu local fue inhabilitado',
                 'html' => '
@@ -81,13 +81,13 @@ class DashboardController extends Controller
             $local->save();
 
             Resend::emails()->send([
-              'from' => 'Stacc <contact.stacc@stacc.persianasfv.com>',
+              'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
               'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
               'subject' => 'Stacc | ¡Tu local fue habilitado!',
               'html' => '
                   <div>
                       <p>' . $local->user->name . ' ' . $local->user->lastname . ' ¡Felicidades! Tus datos fueron relevados y tu local fue habilitado de forma exitosa</p>
-                      <a href="https://stacc.persianasfv.com/locals" target="_blank">Visitar local</a>
+                      <a href="https://stacc.persianasfv.com/locals/' . $local->id .'" target="_blank">Visitar local</a>
                   </div> 
               ',
             ]);

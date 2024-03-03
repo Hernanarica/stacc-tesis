@@ -109,6 +109,7 @@ Route::controller(PostController::class)->middleware('auth')->prefix('posts')->g
 Route::controller(ContactController::class)->prefix('/contact')->group(function () {
     Route::get('', 'index')->name('contact.index');
     Route::post('', 'store')->name('contact.store');
+    Route::post('/{local}', 'disable')->name('contact.disable_local');
 });
 
 Route::post('/users', [UserController::class, 'store'])->name('user.store');
