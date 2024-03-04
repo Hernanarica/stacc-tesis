@@ -237,8 +237,11 @@ $timeDomingoCt = date('H:i', strtotime($local->schedules['sunday']['closing-time
               </div>
               <div class="col-span-full">
                 {{--                  link que te mande a otra vista donde se muestre el pdf del CERTIFICADO --}}
-                <a href="{{ route('store.show', ['id' => $local->id]) }}" class="block text-sm font-medium leading-6 text-gray-900">
-                  Click aquí para ver el <span class="font-bold uppercase">Certificado</span></a>
+                <a href="{{ asset('uploads/images/files/' . $local->certificate) }}" target="_blank" class="font-medium ">Click aquí para ver el <span class="font-bold uppercase text-indigo-600 hover:text-indigo-500">Certificado</span></a>
+
+              </div>
+              <div class="ml-4 flex-shrink-0">
+
               </div>
             </div>
           </div>

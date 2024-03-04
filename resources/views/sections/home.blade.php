@@ -238,7 +238,22 @@
               <p class="text-base leading-7 text-gray-600">En nuestro restaurante, nos comprometemos a garantizar que todos nuestros platos sean completamente libres de gluten. Utilizamos ingredientes frescos y certificados sin gluten en todas nuestras preparaciones, y tomamos precauciones especiales para evitar la contaminación cruzada en la cocina.</p>
             </dd>
           </div>
-          <!-- More questions... -->
+        </dl>
+        <dl class="mt-10 space-y-8 divide-y divide-gray-900/10">
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">¿Tienen un menú específico sin TACC o modificaciones disponibles en su menú regular?</dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-gray-600">Sí, contamos con un menú específico sin TACC que ofrece una amplia variedad de opciones deliciosas y seguras para quienes siguen una dieta libre de gluten. Además, también podemos adaptar muchos de nuestros platos regulares para que sean sin gluten según las necesidades del cliente.</p>
+            </dd>
+          </div>
+        </dl>
+        <dl class="mt-10 space-y-8 divide-y divide-gray-900/10">
+          <div class="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <dt class="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">¿Tienen opciones sin gluten para personas con otras alergias alimentarias o restricciones dietéticas?</dt>
+            <dd class="mt-4 lg:col-span-7 lg:mt-0">
+              <p class="text-base leading-7 text-gray-600">Sí, además de ofrecer opciones sin gluten, también tenemos platos adaptados para personas con otras alergias alimentarias o restricciones dietéticas, como opciones vegetarianas, veganas y sin lácteos.</p>
+            </dd>
+          </div>
         </dl>
       </div>
     </div>
