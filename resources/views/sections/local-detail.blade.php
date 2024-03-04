@@ -148,7 +148,7 @@
                     </div>
                   </div>
                   <div class="ml-4 flex-shrink-0">
-                    <a href="{{ asset('uploads/files/' . $local->certificate) }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Descargar</a>
+                    <a href="{{ asset('uploads/images/files/' . $local->certificate) }}" target="_blank" class="font-medium text-indigo-600 hover:text-indigo-500">Descargar</a>
                   </div>
                 </li>
               </ul>

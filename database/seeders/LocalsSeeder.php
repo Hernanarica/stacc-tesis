@@ -258,7 +258,7 @@ class LocalsSeeder extends Seeder
             [
                 'id' => 5,
                 'user_id' => 1,
-                'name' => 'Jade Sin Tacc',
+                'name' => 'Jade sin tacc',
                 'street' => 'Av. Monroe',
                 'street-number' => '2628',
                 'phone' => '01149663244',
@@ -317,7 +317,7 @@ class LocalsSeeder extends Seeder
             [
                 'id' => 6,
                 'user_id' => 1,
-                'name' => 'Cocelia',
+                'name' => 'COCELIA',
                 'street' => 'Av. Alicia Moreau de Justo',
                 'street-number' => '1160',
                 'phone' => '01143436067',
