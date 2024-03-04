@@ -16,8 +16,8 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         Resend::emails()->send([
-            'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
-            'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
+            'from' => 'Stacc <staccwebsite@stacc.persianasfv.com>',
+            'to' => ['stacc.contact@gmail.com'],
             'subject' => 'Contacto Stacc',
             'html' => '
                 <div>
@@ -38,14 +38,16 @@ class ContactController extends Controller
     public function disable(Request $request, Local $local)
     {
         Resend::emails()->send([
-            'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
-            'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
+            'from' => 'Stacc <staccwebsite@stacc.persianasfv.com>',
+            'to' => ['stacc.contact@gmail.com'],
             'subject' => 'Stacc | Solicitud de baja',
             'html' => '
                 <div>
-                    <p><b>' . auth()->user()->name . ' ' . auth()->user()->lastname . '</b> esta solicitando la inhabilitación de su local: ' . $local->name . ' </p>
+                    <p><b>' . auth()->user()->name . ' ' . auth()->user()->lastname . '</b> está solicitando la inhabilitación de su local: ' . $local->name . ' </p>
                     <p><b>Motivo:</b></p>
-                    <p>' . $request->message .'</p>
+                    <p>' . $request->reason .'</p>
+                    
+                    <a href="https://stacc.persianasfv.com/panel/locales" target="_blank">Inhabilitar' . $local->name .'</a>
                 </div> 
             ',
         ]);

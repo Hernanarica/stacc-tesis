@@ -67,8 +67,8 @@ class DashboardController extends Controller
             $local->save();
 
             Resend::emails()->send([
-                'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
-                'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
+                'from' => 'Stacc <staccwebsite@stacc.persianasfv.com>',
+                'to' => [$local->user->email],
                 'subject' => 'Stacc | Tu local fue inhabilitado',
                 'html' => '
                       <div>
@@ -81,8 +81,8 @@ class DashboardController extends Controller
             $local->save();
 
             Resend::emails()->send([
-              'from' => 'Stacc <stacccontact@stacc.persianasfv.com>',
-              'to' => ['hernodev@gmail.com', 'hernanaricammm@gmail.com'],
+              'from' => 'Stacc <staccwebsite@stacc.persianasfv.com>',
+              'to' => [$local->user->email],
               'subject' => 'Stacc | ¡Tu local fue habilitado!',
               'html' => '
                   <div>
