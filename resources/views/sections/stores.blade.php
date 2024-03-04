@@ -11,7 +11,7 @@
         <p class="mt-2 text-sm text-gray-700">Una lista de todos tus locales</p>
       </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <a href="{{ route('locals.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Crear nuevo</a>
+        <a href="{{ route('locals.create') }}" class="block rounded-md bg-stacc-red px-3 py-2 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red">Crear nuevo</a>
       </div>
     </div>
 

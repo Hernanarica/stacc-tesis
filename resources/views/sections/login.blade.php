@@ -16,7 +16,7 @@
                 name="email"
                 type="email"
                 value="{{ old('email') }}"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
             >
             @if($errors->has('email'))
               <span class="text-red-500 text-xs">{{ $errors->first('email') }}</span>
@@ -34,7 +34,7 @@
                 name="password"
                 type="password"
                 autocomplete="current-password"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
             >
             @if($errors->has('password'))
               <span class="text-red-500 text-xs">{{ $errors->first('password') }}</span>
@@ -44,8 +44,8 @@
 
         <div>
           <button type="submit"
-                  class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-           Entrar
+                  class="flex w-full justify-center rounded-md bg-stacc-red px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red">
+           Iniciar sesión
           </button>
         </div>
       </form>
@@ -53,7 +53,7 @@
       <p class="mt-10 text-center text-sm text-gray-500">
        ¿No tienes una cuenta?
         <a href="{{ route('register.index') }}"
-           class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Creala aquí</a>
+           class="font-semibold leading-6 text-stacc-red">Creala aquí</a>
       </p>
     </div>
   </section>

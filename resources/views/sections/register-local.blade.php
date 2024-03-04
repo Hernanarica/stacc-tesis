@@ -23,7 +23,7 @@
                   type="text"
                   name="name"
                   id="name"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('name') }}"
                 >
                 @if($errors->has('name'))<span class="text-red-500 text-xs">{{ $errors->first('name') }}</span>@endif
@@ -36,7 +36,7 @@
                   type="text"
                   name="street"
                   id="street"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('street') }}"
                 >
                 @if($errors->has('street'))<span class="text-red-500 text-xs">{{ $errors->first('street') }}</span>@endif
@@ -49,7 +49,7 @@
                   type="number"
                   name="street-number"
                   id="street-number"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('street-number') }}"
                 >
                 @if($errors->has('street-number'))<span class="text-red-500 text-xs">{{ $errors->first('street-number') }}</span>@endif
@@ -62,7 +62,7 @@
                   type="tel"
                   name="phone"
                   id="phone"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('phone') }}"
                 >
                 @if($errors->has('phone'))<span class="text-red-500 text-xs">{{ $errors->first('phone') }}</span>@endif
@@ -74,7 +74,7 @@
                 <select
                   id="neighborhood_id"
                   name="neighborhood_id"
-                  class="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>Seleccionar</option>
                   @foreach($neighborhoods as $neighborhood)
@@ -99,7 +99,7 @@
                   type="text"
                   name="map"
                   id="map"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('map') }}"
                 >
                 @if($errors->has('map'))<span class="text-red-500 text-xs">{{ $errors->first('map') }}</span>@endif
@@ -112,7 +112,7 @@
                   type="text"
                   name="website"
                   id="website"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('website') }}"
                 >
                 @if($errors->has('website'))<span class="text-red-500 text-xs">{{ $errors->first('website') }}</span>@endif
@@ -125,7 +125,7 @@
                   id="description"
                   name="description"
                   rows="3"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                 >{{ old('description') }}</textarea>
                 @if($errors->has('description'))<span class="text-red-500 text-xs">{{ $errors->first('description') }}</span>@endif
               </div>
@@ -142,13 +142,12 @@
                           clip-rule="evenodd"/>
                   </svg>
                   <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                    <label for="cover-photo" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                      <span>Upload a file</span>
+                    <label for="cover-photo" class="relative cursor-pointer rounded-md bg-white font-semibold text-stacc-red focus-within:outline-none focus-within:ring-2 focus-within:ring-stacc-red focus-within:ring-offset-2">
+                      <span>Cargar un archivo</span>
                       <input id="cover-photo" name="cover-photo" type="file" class="sr-only">
                     </label>
-                    <p class="pl-1">or drag and drop</p>
                   </div>
-                  <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                  <p class="text-xs leading-5 text-gray-600">PNG, JPG</p>
                 </div>
               </div>
               @if($errors->has('cover-photo'))<span class="text-red-500 text-xs">{{ $errors->first('cover-photo') }}</span>@endif
@@ -161,13 +160,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="m9 13.5 3 3m0 0 3-3m-3 3v-6m1.06-4.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                   </svg>
                   <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                    <label for="certificate" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                      <span>Upload a file</span>
+                    <label for="certificate" class="relative cursor-pointer rounded-md bg-white font-semibold text-stacc-red focus-within:outline-none focus-within:ring-2 focus-within:ring-stacc-red focus-within:ring-offset-2">
+                      <span>Cargar un archivo</span>
                       <input id="certificate" name="certificate" type="file" class="sr-only">
                     </label>
-                    <p class="pl-1">or drag and drop</p>
                   </div>
-                  <p class="text-xs leading-5 text-gray-600">PDF, PNG, JPG up to 10MB</p>
+                  <p class="text-xs leading-5 text-gray-600">PDF, PNG, JPG</p>
                 </div>
               </div>
               @if($errors->has('certificate'))<span class="text-red-500 text-xs">{{ $errors->first('certificate') }}</span>@endif
@@ -185,7 +183,7 @@
                   type="url"
                   name="social-facebook"
                   id="social-facebook"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('social-facebook') }}"
                 >
               </div>
@@ -197,7 +195,7 @@
                   type="url"
                   name="social-instagram"
                   id="social-instagram"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('social-instagram') }}"
                 >
               </div>
@@ -209,7 +207,7 @@
                   type="url"
                   name="social-tiktok"
                   id="social-tiktok"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('social-tiktok') }}"
                 >
               </div>
@@ -231,7 +229,7 @@
                     type="time"
                     name="monday-opening-time"
                     id="monday-opening-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('monday-opening-time') }}"
                   >
                 </div>
@@ -242,7 +240,7 @@
                     type="time"
                     name="monday-closing-time"
                     id="monday-closing-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('monday-closing-time') }}"
                   >
                 </div>
@@ -257,7 +255,7 @@
                     type="time"
                     name="tuesday-opening-time"
                     id="tuesday-opening-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('tuesday-opening-time') }}"
                   >
                 </div>
@@ -268,7 +266,7 @@
                     type="time"
                     name="tuesday-closing-time"
                     id="tuesday-closing-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('tuesday-closing-time') }}"
                   >
                 </div>
@@ -283,7 +281,7 @@
                     type="time"
                     name="wednesday-opening-time"
                     id="wednesday-opening-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('wednesday-opening-time') }}"
                   >
                 </div>
@@ -294,7 +292,7 @@
                     type="time"
                     name="wednesday-closing-time"
                     id="wednesday-closing-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('wednesday-closing-time') }}"
                   >
                 </div>
@@ -309,7 +307,7 @@
                     type="time"
                     name="thursday-opening-time"
                     id="thursday-opening-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('thursday-opening-time') }}"
                   >
                 </div>
@@ -320,7 +318,7 @@
                     type="time"
                     name="thursday-closing-time"
                     id="thursday-closing-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('thursday-closing-time') }}"
                   >
                 </div>
@@ -335,7 +333,7 @@
                     type="time"
                     name="friday-opening-time"
                     id="friday-opening-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('friday-opening-time') }}"
                   >
                 </div>
@@ -346,7 +344,7 @@
                     type="time"
                     name="friday-closing-time"
                     id="friday-closing-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('friday-closing-time') }}"
                   >
                 </div>
@@ -361,7 +359,7 @@
                     type="time"
                     name="saturday-opening-time"
                     id="saturday-opening-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('saturday-opening-time') }}"
                   >
                 </div>
@@ -372,7 +370,7 @@
                     type="time"
                     name="saturday-closing-time"
                     id="saturday-closing-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('saturday-closing-time') }}"
                   >
                 </div>
@@ -387,7 +385,7 @@
                     type="time"
                     name="sunday-opening-time"
                     id="sunday-opening-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('sunday-opening-time') }}"
                   >
                 </div>
@@ -398,7 +396,7 @@
                     type="time"
                     name="sunday-closing-time"
                     id="sunday-closing-time"
-                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                     value="{{ old('sunday-closing-time') }}"
                   >
                 </div>
@@ -416,7 +414,7 @@
                   aria-describedby="terms"
                   name="terms"
                   type="checkbox"
-                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                  class="h-4 w-4 rounded border-gray-300 text-stacc-red focus:ring-stacc-red"
                   @checked(old('terms'))
                 >
               </div>
@@ -433,7 +431,7 @@
         <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancelar</button>
         <button
           type="submit"
-          class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          class="rounded-md bg-stacc-red px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red"
         >Registrar</button>
       </div>
     </form>

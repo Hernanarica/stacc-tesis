@@ -55,7 +55,7 @@
         @auth()
           <form action="{{ route('logout.index') }}" method="post" class="hidden m-0 lg:flex lg:flex-1 lg:justify-end">
             @csrf
-            <button class="text-sm font-semibold leading-6 text-gray-900">Cerrar sesión <span aria-hidden="true">&rarr;</span></button>
+            <button class="text-sm font-semibold leading-6 text-gray-900">({{ auth()->user()->name }}) Cerrar sesión <span aria-hidden="true">&rarr;</span></button>
           </form>
         @elseguest()
           <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -69,9 +69,9 @@
         <div class="fixed inset-0 z-10"></div>
         <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div class="flex items-center justify-between">
-            <a href="#" class="-m-1.5 p-1.5">
+            <a href="{{ route('home.index') }}" class="-m-1.5 p-1.5">
               <span class="sr-only">Stacc</span>
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+              <img class="h-8 w-auto" src="{{ asset('src/assets/images/logos/logo-red-stacc.png') }}" alt="Logo de stacc">
             </a>
             <button type="button" id="btnMenuClose" class="-m-2.5 rounded-md p-2.5 text-gray-700">
               <span class="sr-only">Close menu</span>
@@ -136,12 +136,12 @@
                   </svg>
                 </div>
                 <div class="ml-3 w-0 flex-1 pt-0.5">
-                  <p class="text-sm font-medium text-gray-900">Operación exitosa!</p>
+                  <p class="text-sm font-medium text-gray-900">¡Operación exitosa!</p>
                   <p class="mt-1 text-sm text-gray-500">{{ session('success') }}</p>
                 </div>
                 <div class="ml-4 flex flex-shrink-0">
                   <button type="button" id="close" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    <span class="sr-only">Close</span>
+                    <span class="sr-only">Cerrar</span>
                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                     </svg>
@@ -167,12 +167,12 @@
                   </svg>
                 </div>
                 <div class="ml-3 w-0 flex-1 pt-0.5">
-                  <p class="text-sm font-medium text-gray-900">Error!</p>
+                  <p class="text-sm font-medium text-gray-900">¡Error!</p>
                   <p class="mt-1 text-sm text-gray-500">{{ session('error') }}</p>
                 </div>
                 <div class="ml-4 flex flex-shrink-0">
                   <button type="button" id="close" class="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    <span class="sr-only">Close</span>
+                    <span class="sr-only">Cerrar</span>
                     <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
                     </svg>

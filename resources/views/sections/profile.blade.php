@@ -50,7 +50,7 @@ if($user->category === 'admin') {
           <dd class="mt-1 text-sm leading-6 text-gray-600 sm:mt-0">
             <img
               class="h-24 w-24 rounded-full"
-              src="{{ asset('./uploads/images/profile/' . $user->image)   }}"
+              src="{{ asset('uploads/images/profile/' . $user->image)   }}"
               alt="{{ $user->name }}"
             >
           </dd>
@@ -59,9 +59,10 @@ if($user->category === 'admin') {
     </div>
 {{--    boton para mandarte a editar tu perfil, alinear a la derecha --}}
     <div class="flex justify-end mt-6">
-      <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-        Editar perfil
-      </a>
+      <a
+        href="{{ route('profile.edit') }}"
+        class="rounded-md bg-stacc-red px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red"
+      >Editar perfil</a>
     </div>
   </section>
 @endsection

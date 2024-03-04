@@ -32,9 +32,9 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'email.required' => 'El email es obligatorio',
-            'password.required' => 'La contraseña es obligatorio',
-            'password.min' => 'Debe tener como mínimo 4 caracteres',
+            'email.required' => 'El campo email es requerido',
+            'password.required' => 'El campo contraseña es requerido',
+            'password.min' => 'La contraseña debe tener al menos 4 caracteres',
         ];
     }
 }

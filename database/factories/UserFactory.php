@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'lastname' => fake()->lastName(),
             'email' => fake()->email(),
             'category' => fake()->randomElement(['visitor', 'owner']),
-            'image' => 'default-image.png',
+            'image' => "https://i.pravatar.cc/350?img=" . fake()->numberBetween(1, 70),
             'password' => Hash::make('asdf1234'),
         ];
     }

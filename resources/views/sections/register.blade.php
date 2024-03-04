@@ -33,7 +33,7 @@
                   type="text"
                   name="name"
                   id="name"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('name') }}"
               >
               @if($errors->has('name'))
@@ -48,7 +48,7 @@
                   type="text"
                   name="lastname"
                   id="lastname"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('lastname') }}"
               >
               @if($errors->has('lastname'))
@@ -63,7 +63,7 @@
                   type="text"
                   name="email"
                   id="email"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
                   value="{{ old('email') }}"
               >
               @if($errors->has('name'))
@@ -77,7 +77,7 @@
               <select
                   id="category"
                   name="category"
-                  class="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:max-w-xs sm:text-sm sm:leading-6"
               >
                 <option value="">Seleccionar</option>
                 @foreach($categories as $category)
@@ -94,7 +94,7 @@
                   type="password"
                   name="password"
                   id="password"
-                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  class="block w-full rounded-md border-0 placeholder:text-gray-400 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 py-1.5 focus:ring-2 focus:ring-inset focus:ring-stacc-red sm:text-sm sm:leading-6"
               >
               @if($errors->has('password'))
                 <span class="text-red-500 text-xs">{{ $errors->first('password') }}</span>
@@ -112,22 +112,19 @@
                         clip-rule="evenodd"/>
                 </svg>
                 <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                  <label for="image" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                  <label for="image" class="relative cursor-pointer rounded-md bg-white font-semibold text-stacc-red focus-within:outline-none focus-within:ring-2 focus-within:ring-stacc-red focus-within:ring-offset-2">
                     <span>Cargar un archivo</span>
                     <input id="image" name="image" type="file" class="sr-only">
                   </label>
-                  <p class="pl-1">o arrastrar y soltar
-
-                  </p>
                 </div>
-                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF menos de 10MB</p>
+                <p class="text-xs leading-5 text-gray-600">PNG, JPG</p>
               </div>
             </div>
             @if($errors->has('image'))<span class="text-red-500 text-xs">{{ $errors->first('image') }}</span>@endif
           </div>
         </div>
         <div>
-          <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Registrar</button>
+          <button type="submit" class="flex w-full justify-center rounded-md bg-stacc-red px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red">Registrar</button>
         </div>
       </form>
     </div>

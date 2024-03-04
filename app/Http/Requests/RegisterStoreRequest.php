@@ -22,4 +22,16 @@ class RegisterStoreRequest extends FormRequest
     {
         return true;
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'El campo nombre es requerido',
+            'lastname.required' => 'El campo apellido es requerido',
+            'email.required' => 'El campo email es requerido',
+            'email.email' => 'El campo email debe ser un email válido',
+            'password.required' => 'El campo contraseña es requerido',
+            'category.required' => 'El campo categoría es requerido',
+        ];
+    }
 }

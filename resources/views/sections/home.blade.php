@@ -3,20 +3,6 @@
 @section('content')
   <section>
     <div class="relative isolate">
-      <svg class="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]" aria-hidden="true">
-        <defs>
-          <pattern id="1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
-            <path d="M.5 200V.5H200" fill="none" />
-          </pattern>
-        </defs>
-        <svg x="50%" y="-1" class="overflow-visible fill-gray-50">
-          <path d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z" stroke-width="0" />
-        </svg>
-        <rect width="100%" height="100%" stroke-width="0" fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)" />
-      </svg>
-      <div class="absolute left-1/2 right-0 top-0 -z-10 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48" aria-hidden="true">
-        <div class="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3%, 48.4% 0%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 100%, 35.2% 81.4%, 97.2% 52.8%, 63.1% 29.5%)"></div>
-      </div>
       <div class="overflow-hidden">
         <div class="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
           <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
@@ -24,7 +10,7 @@
               <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Descubre la Deliciosa Libertad Sin Gluten.</h1>
               <p class="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">Explora una Amplia Selección de Restaurantes Especializados en Comida Sin Gluten para Saborear sin Preocupaciones</p>
               <div class="mt-10 flex items-center gap-x-6">
-                <a href="{{ route('locals.index') }}" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Buscar</a>
+                <a href="{{ route('locals.index') }}" class="rounded-md bg-stacc-red px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red">Buscar</a>
               </div>
             </div>
             <div class="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
@@ -67,12 +53,7 @@
           <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Encuentra tu próxima comida sin gluten</h2>
           <p class="mt-4 text-lg leading-8 text-gray-400">Explora una amplia selección de restaurantes especializados en comida sin gluten para saborear sin preocupaciones.</p>
           <div class="mt-10">
-            <form class="mx-auto max-w-lg">
-              <div class="flex items-center">
-                <input type="text" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-600 focus:ring focus:ring-indigo-600 focus:ring-opacity-50" placeholder="Buscar restaurantes" />
-                <a href="{{ route('locals.index')  }}" class="ml-4 rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Buscar</a>
-              </div>
-            </form>
+            <a href="{{ route('locals.index')  }}" class="ml-4 rounded-md bg-stacc-red px-3 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red">Buscar</a>
           </div>
         </div>
       </div>
@@ -86,7 +67,7 @@
     <div class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:text-center">
-          <h2 class="text-base font-semibold leading-7 text-indigo-600">Beneficios de STACC</h2>
+          <h2 class="text-base font-semibold leading-7 text-stacc-red">Beneficios de STACC</h2>
           <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Encuentra tu próxima comida sin gluten</p>
           <p class="mt-6 text-lg leading-8 text-gray-600">Explora una amplia selección de restaurantes especializados en comida sin gluten para saborear sin preocupaciones.</p>
         </div>
@@ -94,7 +75,7 @@
           <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             <div class="relative pl-16">
               <dt class="text-base font-semibold leading-7 text-gray-900">
-                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-stacc-red">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25" />
                   </svg>
@@ -106,7 +87,7 @@
             </div>
             <div class="relative pl-16">
               <dt class="text-base font-semibold leading-7 text-gray-900">
-                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-stacc-red">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                   </svg>
@@ -117,7 +98,7 @@
             </div>
             <div class="relative pl-16">
               <dt class="text-base font-semibold leading-7 text-gray-900">
-                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-stacc-red">
                   <svg width="29" height="29" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_1328_40)">
                       <path d="M45.452 46.542C45.4549 47.5893 44.7571 48.5096 43.7381 48.8023C42.6928 49.1026 41.681 48.6917 41.1002 47.7255C37.9257 42.4441 34.6273 37.2419 31.1573 32.1492C30.6934 31.4684 30.2176 30.7958 29.7582 30.112C29.2028 29.2852 28.4357 28.711 27.4466 28.7569C26.1261 28.8181 25.3735 28.0707 24.6813 27.1536C23.0453 24.9862 21.6117 22.6851 20.2844 20.3208C19.3618 18.6774 18.4957 17.001 17.6521 15.3154C17.3786 14.7689 17.2474 14.1493 17.0714 13.5571C17.0293 13.4154 17.0574 13.2484 17.0725 13.0949C17.1186 12.6253 17.3468 12.3309 17.7393 12.2166C18.1461 12.0982 18.5166 12.23 18.8049 12.6123C19.265 13.2226 19.7169 13.8391 20.1743 14.4514C23.5686 18.9961 26.9115 23.5805 30.3763 28.0707C32.6441 31.0096 35.0501 33.8451 37.4649 36.6663C39.8644 39.4697 42.3517 42.198 44.8024 44.9576C45.2453 45.4563 45.4503 45.9413 45.452 46.542Z" fill="white"/>
@@ -138,7 +119,7 @@
             </div>
             <div class="relative pl-16">
               <dt class="text-base font-semibold leading-7 text-gray-900">
-                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600">
+                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-stacc-red">
                   <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                   </svg>
@@ -166,7 +147,7 @@
             <p class="text-sm leading-6 text-gray-600">Tech lead</p>
             <ul role="list" class="mt-6 flex justify-center gap-x-6">
               <li>
-                <a href="#" class="text-gray-400 hover:text-gray-500">
+                <a href="https://twitter.com/Hernan__Arica" target="_blank" class="text-gray-400 hover:text-gray-500">
                   <span class="sr-only">X</span>
                   <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path d="M11.4678 8.77491L17.2961 2H15.915L10.8543 7.88256L6.81232 2H2.15039L8.26263 10.8955L2.15039 18H3.53159L8.87581 11.7878L13.1444 18H17.8063L11.4675 8.77491H11.4678ZM9.57608 10.9738L8.95678 10.0881L4.02925 3.03974H6.15068L10.1273 8.72795L10.7466 9.61374L15.9156 17.0075H13.7942L9.57608 10.9742V10.9738Z" />
@@ -174,7 +155,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="text-gray-400 hover:text-gray-500">
+                <a href="https://www.linkedin.com/in/hern%C3%A1n-arica-64ab7b149/" target="_blank" class="text-gray-400 hover:text-gray-500">
                   <span class="sr-only">LinkedIn</span>
                   <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
