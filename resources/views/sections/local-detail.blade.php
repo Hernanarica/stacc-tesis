@@ -13,7 +13,7 @@
 @section('title', $local->name)
 @section('content')
   <section>
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-6 space-y-5 lg:px-8">
       <nav class="flex" aria-label="Breadcrumb">
         <ol role="list" class="flex items-center space-x-4">
           <li>
@@ -36,6 +36,14 @@
           </li>
         </ol>
       </nav>
+      <div>
+        <a href="{{ route('locals.index') }}" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 h-5 w-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+          Volver
+        </a>
+      </div>
     </div>
     <div class="bg-white">
       <div class="relative isolate overflow-hidden">

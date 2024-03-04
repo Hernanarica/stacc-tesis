@@ -22,7 +22,7 @@ $timeDomingoCt = date('H:i', strtotime($local->schedules['sunday']['closing-time
 @section('title', 'Editar local ' . $local->name)
 @section('content')
   <section class="mx-auto min-h-[calc(100vh-80px)] max-w-7xl px-4 sm:px-6 lg:px-8 lg:pt-[20px]">
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-7xl space-y-5">
       <nav class="flex" aria-label="Breadcrumb">
         <ol role="list" class="flex items-center space-x-4">
           <li>
@@ -42,6 +42,14 @@ $timeDomingoCt = date('H:i', strtotime($local->schedules['sunday']['closing-time
           </li>
         </ol>
       </nav>
+      <div>
+        <a href="{{ route('store.index') }}" class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 h-5 w-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+          Volver
+        </a>
+      </div>
       <div class="pt-4">
         <h2 class="text-base font-semibold leading-7 text-gray-900">Actualiza</h2>
         <p class="text-base leading-7 text-gray-900">Datos de {{$local->name}}</p>
