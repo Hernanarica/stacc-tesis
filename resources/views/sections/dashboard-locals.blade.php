@@ -78,7 +78,7 @@
                     <a href="tel:phone" target="_blank">{{ $local->phone }}</a>
                   </td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                    <a href="tel:phone" target="_blank">{{ $local->website }}</a>
+                    <a href="{{ $local->website }}" target="_blank">{{ $local->website }}</a>
                   </td>
                   <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                     @if($local->is_public)
