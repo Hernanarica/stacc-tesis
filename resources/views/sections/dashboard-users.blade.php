@@ -12,7 +12,7 @@
           <p class="mt-2 text-sm text-gray-700">Lista de todos los usuarios</p>
         </div>
         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <form
+            <form
             action="{{route('dashboard.users.view')}}"
             method="get"
             class="flex items-center"
