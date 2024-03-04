@@ -7,8 +7,8 @@
         <div class="mx-auto max-w-7xl px-6 pb-32 pt-36 sm:pt-60 lg:px-8 lg:pt-32">
           <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div class="relative w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-              <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Descubre la Deliciosa Libertad Sin Gluten.</h1>
-              <p class="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">Explora una Amplia Selección de Restaurantes Especializados en Comida Sin Gluten para Saborear sin Preocupaciones</p>
+              <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Descubre la deliciosa libertad sin gluten.</h1>
+              <p class="mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">Explora una amplia selección de restaurantes especializados en comida sin gluten para saborear sin preocupaciones</p>
               <div class="mt-10 flex items-center gap-x-6">
                 <a href="{{ route('locals.index') }}" class="rounded-md bg-stacc-red px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stacc-red">Buscar</a>
               </div>
@@ -59,17 +59,12 @@
       </div>
     </div>
   </section>
-{{--  Beneficios de STACC:
-
-    Sección que destaque los principales beneficios de utilizar STACC, como acceso a una amplia variedad de restaurantes sin gluten, recomendaciones personalizadas y una experiencia de búsqueda intuitiva.
-    Iconos o gráficos que representen estos beneficios para una fácil comprensión. --}}
   <section>
     <div class="bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:text-center">
-          <h2 class="text-base font-semibold leading-7 text-stacc-red">Beneficios de STACC</h2>
-          <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Encuentra tu próxima comida sin gluten</p>
-          <p class="mt-6 text-lg leading-8 text-gray-600">Explora una amplia selección de restaurantes especializados en comida sin gluten para saborear sin preocupaciones.</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Beneficios de STACC</h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600">Nuestros valores.</p>
         </div>
         <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
           <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
@@ -166,7 +161,7 @@
           </li>
           <li>
             <img class="mx-auto h-56 w-56 rounded-full" src="{{ asset('src/assets/images/team/albert.jpg') }}" alt="">
-            <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">ALbert Villarroel</h3>
+            <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">Albert Villarroel</h3>
             <p class="text-sm leading-6 text-gray-600">Full stack</p>
             <ul role="list" class="mt-6 flex justify-center gap-x-6">
               <li>

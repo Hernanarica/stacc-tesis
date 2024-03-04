@@ -234,7 +234,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">Lunes</span>
+                      <span class="truncate font-medium capitalize">Lunes</span>
                       <span class="truncate font-medium">{{ $local['schedules']['monday']['opening-time'] }} a {{ $local['schedules']['monday']['closing-time'] }}</span>
                     </div>
                   </div>
@@ -247,7 +247,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">Martes</span>
+                      <span class="truncate font-medium capitalize">Martes</span>
                       <span class="truncate font-medium">{{ $local['schedules']['tuesday']['opening-time'] }} a {{ $local['schedules']['tuesday']['closing-time'] }}</span>
                     </div>
                   </div>
@@ -260,7 +260,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">Miércoles</span>
+                      <span class="truncate font-medium capitalize">Miércoles</span>
                       <span class="truncate font-medium">{{ $local['schedules']['wednesday']['opening-time'] }} a {{ $local['schedules']['wednesday']['closing-time'] }}</span>
                     </div>
                   </div>
@@ -272,7 +272,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">Jueves</span>
+                      <span class="truncate font-medium capitalize">Jueves</span>
                       <span class="truncate font-medium">{{ $local['schedules']['thursday']['opening-time'] }} a {{ $local['schedules']['thursday']['closing-time'] }}</span>
                     </div>
                   </div>
@@ -286,7 +286,7 @@
                         </svg>
                       </span>
 
-                      <span class="truncate font-medium capitalize underline">Viernes</span>
+                      <span class="truncate font-medium capitalize">Viernes</span>
                       <span class="truncate font-medium">{{ $local['schedules']['friday']['opening-time'] }} a {{ $local['schedules']['friday']['closing-time'] }}</span>
                     </div>
                   </div>
@@ -299,7 +299,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">Sábado</span>
+                      <span class="truncate font-medium capitalize">Sábado</span>
                       <span class="truncate font-medium">{{ $local['schedules']['saturday']['opening-time'] }} a {{ $local['schedules']['saturday']['closing-time'] }}</span>
                     </div>
                   </div>
@@ -312,7 +312,7 @@
                           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                       </span>
-                      <span class="truncate font-medium capitalize underline">Domingo</span>
+                      <span class="truncate font-medium capitalize">Domingo</span>
                       <span class="truncate font-medium">{{ $local['schedules']['sunday']['opening-time'] }} a {{ $local['schedules']['sunday']['closing-time'] }}</span>
                     </div>
                   </div>
